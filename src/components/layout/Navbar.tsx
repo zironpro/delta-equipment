@@ -60,17 +60,17 @@ export function Navbar() {
 		>
 			<div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 				{/* Left Logo: JCB & Delta (mobile only) */}
-				<Link className="group flex items-center gap-2 sm:gap-3" href="/">
+				<Link className="group flex items-center gap-2.5 sm:gap-3.5" href="/">
 					<Image
 						alt="JCB Official Logo"
-						className="h-7 w-auto object-contain sm:h-9"
-						height={40}
+						className="h-9 w-auto object-contain sm:h-11"
+						height={48}
 						priority
 						src="/global/logo.svg"
-						width={104}
+						width={130}
 					/>
-					<div className="h-3.5 w-[1px] bg-slate-950/25 md:hidden" />
-					<DeltaLogo className="h-3 w-auto text-slate-950 opacity-75 transition-opacity group-hover:opacity-100 md:hidden" />
+					<div className="h-5 w-[1px] bg-slate-950/30 md:hidden" />
+					<DeltaLogo className="h-4.5 w-auto text-slate-950 opacity-85 transition-opacity group-hover:opacity-100 md:hidden" />
 				</Link>
 
 				{/* Desktop Navigation Links */}
@@ -99,11 +99,11 @@ export function Navbar() {
 					</div>
 
 					{/* Desktop Vertical Divider */}
-					<div className="hidden h-5 w-[1px] bg-slate-950/20 md:block" />
+					<div className="hidden h-7 w-[1px] bg-slate-950/25 md:block" />
 
 					{/* Desktop Delta Logo */}
 					<Link className="group hidden items-center md:inline-flex" href="/">
-						<DeltaLogo className="h-3.5 w-auto text-slate-950 opacity-80 transition-opacity group-hover:opacity-100 lg:h-4" />
+						<DeltaLogo className="h-6 w-auto text-slate-950 opacity-85 transition-opacity group-hover:opacity-100 lg:h-7" />
 					</Link>
 				</div>
 
