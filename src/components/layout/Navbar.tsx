@@ -59,7 +59,7 @@ export function Navbar() {
 			)}
 		>
 			<div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-				{/* Left Logo: JCB & Delta */}
+				{/* Left Logo: JCB & Delta (mobile only) */}
 				<Link className="group flex items-center gap-2 sm:gap-3" href="/">
 					<Image
 						alt="JCB Official Logo"
@@ -69,8 +69,8 @@ export function Navbar() {
 						src="/global/logo.svg"
 						width={104}
 					/>
-					<div className="h-4 w-[1px] bg-slate-950/25 sm:h-5" />
-					<DeltaLogo className="h-3.5 w-auto text-slate-950 opacity-75 transition-opacity group-hover:opacity-100 sm:h-4.5" />
+					<div className="h-3.5 w-[1px] bg-slate-950/25 md:hidden" />
+					<DeltaLogo className="h-3 w-auto text-slate-950 opacity-75 transition-opacity group-hover:opacity-100 md:hidden" />
 				</Link>
 
 				{/* Desktop Navigation Links */}
@@ -86,7 +86,7 @@ export function Navbar() {
 					))}
 				</nav>
 
-				{/* Right Side Actions */}
+				{/* Right Side Actions & Desktop Delta Logo */}
 				<div className="flex items-center gap-4">
 					<div className="hidden items-center gap-4 sm:flex">
 						<Button
@@ -97,6 +97,14 @@ export function Navbar() {
 							<ArrowUpRight className="group-hover:-translate-y-0.5 ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
 						</Button>
 					</div>
+
+					{/* Desktop Vertical Divider */}
+					<div className="hidden h-5 w-[1px] bg-slate-950/20 md:block" />
+
+					{/* Desktop Delta Logo */}
+					<Link className="group hidden items-center md:inline-flex" href="/">
+						<DeltaLogo className="h-3.5 w-auto text-slate-950 opacity-80 transition-opacity group-hover:opacity-100 lg:h-4" />
+					</Link>
 				</div>
 
 				{/* Mobile Hamburger Menu Button */}
