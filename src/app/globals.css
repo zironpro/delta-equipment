@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
+@theme {
+	--font-heading: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+	--font-oswald: var(--font-oswald), "Oswald", sans-serif;
+	--font-sans: var(--font-manrope), "Manrope", sans-serif;
+	--font-inter: var(--font-inter), "Inter", sans-serif;
+
+	--color-jcb: #ffb800;
+	--color-jcb-hover: #e5a600;
+	--color-jcb-dark: #d49800;
+	--color-jcb-light: #fff8e6;
+	--color-jcb-subtle: rgba(255, 184, 0, 0.12);
+
+	--color-industrial-black: #0c0e12;
+	--color-industrial-dark: #161a22;
+	--color-industrial-slate: #2a303c;
+	--color-industrial-gray: #64748b;
+	--color-industrial-light: #f8fafc;
+	--color-industrial-border: #e2e8f0;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	--background: #ffffff;
+	--foreground: #0f172a;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background-color: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-manrope), var(--font-inter), system-ui, -apple-system, sans-serif;
+	font-weight: 400;
+	overflow-x: hidden;
+}
+
+button, [role="button"] {
+	cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading, .font-oswald {
+	font-weight: 500;
+}
+
+.font-heading {
+	font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+	font-weight: 500;
+}
+
+.font-oswald {
+	font-family: var(--font-oswald), "Oswald", sans-serif;
+	font-weight: 500;
+}
+
+.font-sans {
+	font-family: var(--font-manrope), "Manrope", sans-serif;
+}
+
+.font-inter {
+	font-family: var(--font-inter), "Inter", sans-serif;
+}
+
+/* Custom Soft Industrial Shadows */
+.shadow-soft-lg {
+	box-shadow:
+		0 20px 40px -15px rgba(15, 23, 42, 0.07),
+		0 0 1px 1px rgba(15, 23, 42, 0.04);
+}
+
+.shadow-soft-xl {
+	box-shadow:
+		0 25px 50px -12px rgba(15, 23, 42, 0.09),
+		0 0 1px 1px rgba(15, 23, 42, 0.04);
+}
+
+.shadow-jcb-glow {
+	box-shadow: 0 10px 30px -5px rgba(255, 184, 0, 0.4);
+}
+
+/* Subtle yellow accent highlights */
+.jcb-accent-border {
+	border-left: 4px solid #ffb800;
+}
+
+.jcb-badge {
+	background-color: #fff8e6;
+	color: #b27f00;
+	border: 1px solid rgba(255, 184, 0, 0.3);
+}
+
+/* Custom scrollbar for spec tables */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-track {
+	background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+	background: #cbd5e1;
+	border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #ffb800;
 }
