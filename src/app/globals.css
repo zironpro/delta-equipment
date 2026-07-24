@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-	--font-heading: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
-	--font-oswald: var(--font-oswald), "Oswald", sans-serif;
-	--font-sans: var(--font-manrope), "Manrope", sans-serif;
-	--font-inter: var(--font-inter), "Inter", sans-serif;
+	--font-futura: var(--font-futura), "Futura", sans-serif;
+	--font-heading: var(--font-futura), "Futura", sans-serif;
+	--font-oswald: var(--font-futura), "Futura", sans-serif;
+	--font-sans: var(--font-futura), "Futura", sans-serif;
+	--font-inter: var(--font-futura), "Futura", sans-serif;
 
-	--color-jcb: #ffb800;
-	--color-jcb-hover: #e5a600;
-	--color-jcb-dark: #d49800;
+	--color-jcb: rgb(252, 175, 32);
+	--color-jcb-hover: #e59d18;
+	--color-jcb-dark: #d69110;
 	--color-jcb-light: #fff8e6;
-	--color-jcb-subtle: rgba(255, 184, 0, 0.12);
+	--color-jcb-subtle: rgba(252, 175, 32, 0.12);
 
 	--color-industrial-black: #0c0e12;
 	--color-industrial-dark: #161a22;
@@ -28,7 +29,7 @@
 body {
 	background-color: var(--background);
 	color: var(--foreground);
-	font-family: var(--font-manrope), var(--font-inter), system-ui, -apple-system, sans-serif;
+	font-family: var(--font-futura), "Futura", sans-serif;
 	font-weight: 400;
 	overflow-x: hidden;
 }
@@ -42,21 +43,25 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-oswald {
 }
 
 .font-heading {
-	font-family: var(--font-barlow-condensed), "Barlow Condensed", sans-serif;
+	font-family: var(--font-futura), "Futura", sans-serif;
 	font-weight: 500;
 }
 
 .font-oswald {
-	font-family: var(--font-oswald), "Oswald", sans-serif;
+	font-family: var(--font-futura), "Futura", sans-serif;
 	font-weight: 500;
 }
 
 .font-sans {
-	font-family: var(--font-manrope), "Manrope", sans-serif;
+	font-family: var(--font-futura), "Futura", sans-serif;
+}
+
+.font-futura {
+	font-family: var(--font-futura), "Futura", sans-serif;
 }
 
 .font-inter {
-	font-family: var(--font-inter), "Inter", sans-serif;
+	font-family: var(--font-futura), "Futura", sans-serif;
 }
 
 /* Custom Soft Industrial Shadows */
@@ -73,18 +78,18 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-oswald {
 }
 
 .shadow-jcb-glow {
-	box-shadow: 0 10px 30px -5px rgba(255, 184, 0, 0.4);
+	box-shadow: 0 10px 30px -5px rgba(252, 175, 32, 0.4);
 }
 
 /* Subtle yellow accent highlights */
 .jcb-accent-border {
-	border-left: 4px solid #ffb800;
+	border-left: 4px solid rgb(252, 175, 32);
 }
 
 .jcb-badge {
 	background-color: #fff8e6;
 	color: #b27f00;
-	border: 1px solid rgba(255, 184, 0, 0.3);
+	border: 1px solid rgba(252, 175, 32, 0.3);
 }
 
 /* Custom scrollbar for spec tables */
@@ -100,5 +105,5 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-oswald {
 	border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-	background: #ffb800;
+	background: rgb(252, 175, 32);
 }

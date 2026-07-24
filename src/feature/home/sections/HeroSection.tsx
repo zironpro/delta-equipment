@@ -25,9 +25,9 @@ export function HeroSection() {
 			<div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8">
 				<div className="max-w-xl lg:max-w-2xl">
 					{/* Main Headline */}
-					<h1 className="mt-5 font-bold font-heading text-4xl text-slate-950 leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
-						Official JCB Dealer{" "}
-						<span className="block text-[#EAA800]">in Sudan</span>
+					<h1 className="mt-5 font-bold font-heading text-4xl text-slate-950 sm:text-6xl lg:text-7xl">
+						Reliable Machinery{" "}
+						<span className="block text-[#EAA800]">for Every Challenge</span>
 					</h1>
 
 					{/* Subtitle Copy */}

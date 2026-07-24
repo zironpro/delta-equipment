@@ -13,9 +13,9 @@ export function Footer() {
 		<footer className="border-zinc-900 border-t bg-black font-sans text-slate-300">
 			{/* Main Footer Container */}
 			<div className="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8 lg:pt-20">
-				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+				<div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-12 lg:gap-16">
 					{/* Brand Column (4 cols) */}
-					<div className="lg:col-span-4">
+					<div className="col-span-2 lg:col-span-4">
 						<div className="flex items-center gap-4">
 							<Link className="inline-block" href={"/" as Route}>
 								<DeltaLogo className="h-9 w-auto text-white" />
@@ -98,7 +98,7 @@ export function Footer() {
 					</div>
 
 					{/* Links Column 1: Machinery Spectrum (3 cols) */}
-					<div className="lg:col-span-3">
+					<div className="col-span-1 lg:col-span-3">
 						<h3 className="font-bold font-heading text-lg text-white uppercase tracking-wider">
 							Equipment Spectrum
 						</h3>
@@ -125,7 +125,7 @@ export function Footer() {
 					</div>
 
 					{/* Links Column 2: Service & Legal (2 cols) */}
-					<div className="space-y-8 lg:col-span-2">
+					<div className="col-span-1 lg:col-span-2">
 						<div>
 							<h3 className="font-bold font-heading text-lg text-white uppercase tracking-wider">
 								Services
@@ -153,7 +153,7 @@ export function Footer() {
 					</div>
 
 					{/* Links Column 3: Contact & Sudan HQ (3 cols) */}
-					<div className="lg:col-span-3">
+					<div className="col-span-2 lg:col-span-3">
 						<h3 className="font-bold font-heading text-lg text-white uppercase tracking-wider">
 							Sudan Headquarters
 						</h3>
