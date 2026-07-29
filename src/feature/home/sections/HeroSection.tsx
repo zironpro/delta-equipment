@@ -9,31 +9,19 @@ export function HeroSection() {
 		<section className="relative flex min-h-[calc(100vh-80px)] w-full flex-col justify-between overflow-hidden bg-[#FAF6F0] pt-24 pb-8 md:min-h-screen md:justify-center md:pt-28 md:pb-20">
 			{/* Full Hero Background Image */}
 			<div className="absolute inset-0 z-0">
-				{/* Mobile Hero Background Image */}
-				<Image
-					alt="Delta Heavy Equipment mobile background banner"
-					className="object-cover object-center md:hidden"
-					fill
-					priority
-					quality={100}
-					src="/images/mobile-bg-hero.png"
-				/>
-				{/* Desktop Hero Background Image */}
 				<Image
 					alt="Delta Heavy Equipment background banner"
-					className="hidden object-cover object-right md:block lg:object-center"
+					className="object-cover object-center"
 					fill
 					priority
 					quality={100}
-					src="/images/bg-hero.png"
+					src="/images/ChatGPT Image Jul 29, 2026, 11_44_45 AM.png"
 				/>
-				{/* Subtle left gradient overlay for max text legibility */}
-				<div className="absolute inset-0 bg-gradient-to-r from-[#FAF6F0]/95 via-[#FAF6F0]/70 to-transparent lg:via-[#FAF6F0]/50" />
 			</div>
 
 			{/* Foreground Content overlay */}
 			<div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-1 flex-col justify-between px-4 sm:px-6 md:block md:flex-initial lg:px-8">
-				<div className="flex h-full flex-1 flex-col justify-between max-w-xl md:block md:max-w-xl lg:max-w-2xl">
+				<div className="flex h-full max-w-xl flex-1 flex-col justify-between md:block md:max-w-xl lg:max-w-2xl">
 					{/* Top Content (Mobile & Desktop): Main Headline & Subtitle */}
 					<div>
 						<h1 className="font-bold font-heading text-4xl text-slate-950 sm:text-6xl lg:text-7xl">
@@ -43,7 +31,8 @@ export function HeroSection() {
 
 						<p className="mt-4 max-w-xl font-normal font-sans text-base text-slate-700 leading-relaxed sm:mt-5 sm:text-lg sm:leading-relaxed">
 							Sudan&apos;s premier partner for heavy machinery, high-payload
-							excavators, Loadall telehandlers, and 24/7 OEM maintenance support.
+							excavators, Loadall telehandlers, and 24/7 OEM maintenance
+							support.
 						</p>
 					</div>
 

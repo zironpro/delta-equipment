@@ -43,7 +43,7 @@ export function Navbar() {
 	}, []);
 
 	const navLinks: { name: string; href: Route }[] = [
-		{ name: "Equipment Fleet", href: "#fleet" as Route },
+		{ name: "Equipment Fleet", href: "/fleet" as Route },
 		{ name: "LiveLink Telematics", href: "#telematics" as Route },
 		{ name: "Services & Support", href: "#services" as Route },
 		{ name: "About Us", href: "#about" as Route },
