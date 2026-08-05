@@ -118,7 +118,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
-		detailImage: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/81.webp",
 		tagline: "High fuel efficiency with superior digging force and 8-ton operating capacity.",
 		operatingWeight: "8,000 kg",
 		enginePower: "76 HP",

@@ -2,13 +2,7 @@
 
 import Image from "next/image";
 
-import {
-	ArrowUpRight,
-	Download,
-	Gauge,
-	ShieldCheck,
-	Weight,
-} from "lucide-react";
+import { ArrowUpRight, Download, Gauge, Weight } from "lucide-react";
 
 import type { EquipmentItem } from "@/data/fleetData";
 
@@ -39,11 +33,6 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 					<div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end">
 						{/* Left: Model Name & Description */}
 						<div className="space-y-4 lg:col-span-8">
-							<div className="inline-flex items-center gap-2 rounded-lg border border-amber-500/30 bg-[#FFB800]/15 px-3 py-1 font-bold text-slate-900 text-xs">
-								<ShieldCheck className="h-3.5 w-3.5 text-[#d69110]" />
-								<span>Official JCB Sudan Equipment</span>
-							</div>
-
 							<h1 className="font-bold font-heading text-3xl text-slate-950 tracking-tight sm:text-5xl lg:text-6xl">
 								{item.name}
 							</h1>

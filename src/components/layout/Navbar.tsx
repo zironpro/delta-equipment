@@ -186,7 +186,7 @@ export function Navbar() {
 						{/* Dropdown Menu Panel - 2 in a row grid */}
 						{productsDropdownOpen && (
 							<div className="-translate-x-1/2 fade-in-0 zoom-in-95 absolute top-full left-1/2 z-50 w-[540px] animate-in pt-1 duration-200">
-								<div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 p-4 shadow-2xl ring-1 ring-black/20">
+								<div className="overflow-hidden rounded-lg border border-slate-800 bg-slate-950 p-4 shadow-2xl ring-1 ring-black/20">
 									<div className="px-2 pt-1 pb-2">
 										<span className="font-bold text-[#FCAF20] text-[10px] uppercase tracking-wider">
 											JCB Equipment & Tools
@@ -198,7 +198,7 @@ export function Navbar() {
 											const Icon = item.icon;
 											return (
 												<Link
-													className="group flex flex-col justify-between rounded-xl border border-slate-800/80 bg-slate-900/90 p-4 transition-all duration-200 hover:border-[#FCAF20]/50 hover:bg-slate-900"
+													className="group flex flex-col justify-between rounded-lg border border-slate-800/80 bg-slate-900/90 p-4 transition-all duration-200 hover:border-[#FCAF20]/50 hover:bg-slate-900"
 													href={item.href}
 													key={item.name}
 													onClick={() => setProductsDropdownOpen(false)}
@@ -253,7 +253,7 @@ export function Navbar() {
 						{/* Dropdown Menu Panel */}
 						{companyDropdownOpen && (
 							<div className="-translate-x-1/2 fade-in-0 zoom-in-95 absolute top-full left-1/2 z-50 w-[660px] animate-in pt-1 duration-200">
-								<div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 p-4 shadow-2xl ring-1 ring-black/20">
+								<div className="overflow-hidden rounded-lg border border-slate-800 bg-slate-950 p-4 shadow-2xl ring-1 ring-black/20">
 									<div className="grid grid-cols-12 gap-4">
 										{/* Left Side: Navigation Item Names */}
 										<div className="col-span-7 flex flex-col justify-between space-y-1">
@@ -267,7 +267,7 @@ export function Navbar() {
 												const Icon = item.icon;
 												return (
 													<Link
-														className="group flex items-start gap-3 rounded-xl p-2.5 transition-all duration-200 hover:bg-slate-900/90"
+														className="group flex items-start gap-3 rounded-lg p-2.5 transition-all duration-200 hover:bg-slate-900/90"
 														href={item.href}
 														key={item.name}
 														onClick={() => setCompanyDropdownOpen(false)}
@@ -292,16 +292,33 @@ export function Navbar() {
 										{/* Right Side: Featured Image Card */}
 										<div className="col-span-5">
 											<Link
-												className="group relative block h-full min-h-[250px] w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-900 transition-all duration-300 hover:border-[#FCAF20]/50"
+												className="relative block h-full min-h-[250px] w-full overflow-hidden rounded-lg border border-slate-800 bg-slate-900 shadow-md transition-colors hover:border-[#FCAF20]/50"
 												href={"/fleet" as Route}
 												onClick={() => setCompanyDropdownOpen(false)}
 											>
 												<Image
 													alt="JCB Delta Equipment Showcase"
-													className="object-cover transition-transform duration-500 group-hover:scale-105"
+													className="object-cover"
 													fill
+													quality={95}
 													src="/images/over-view image.webp"
 												/>
+												{/* Bottom Gradient Overlay */}
+												<div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent" />
+
+												{/* Bottom Text Overlay */}
+												<div className="absolute right-0 bottom-0 left-0 z-10 p-4">
+													<span className="font-bold text-[#FCAF20] text-[10px] uppercase tracking-wider">
+														Official JCB Partner
+													</span>
+													<h4 className="mt-0.5 font-bold text-sm text-white">
+														Sole Authorized Dealer in Sudan
+													</h4>
+													<p className="mt-1 flex items-center gap-1 font-semibold text-[11px] text-slate-300">
+														<span>Explore Equipment Fleet</span>
+														<ArrowUpRight className="h-3 w-3 text-[#FCAF20]" />
+													</p>
+												</div>
 											</Link>
 										</div>
 									</div>
@@ -337,7 +354,7 @@ export function Navbar() {
 						{/* Dropdown Menu Panel - 2 in a row square grid */}
 						{servicesDropdownOpen && (
 							<div className="-translate-x-1/2 fade-in-0 zoom-in-95 absolute top-full left-1/2 z-50 w-[540px] animate-in pt-1 duration-200">
-								<div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 p-4 shadow-2xl ring-1 ring-black/20">
+								<div className="overflow-hidden rounded-lg border border-slate-800 bg-slate-950 p-4 shadow-2xl ring-1 ring-black/20">
 									<div className="px-2 pt-1 pb-2">
 										<span className="font-bold text-[#FCAF20] text-[10px] uppercase tracking-wider">
 											JCB Technical Solutions
@@ -349,7 +366,7 @@ export function Navbar() {
 											const Icon = item.icon;
 											return (
 												<Link
-													className="group flex flex-col justify-between rounded-xl border border-slate-800/80 bg-slate-900/90 p-4 transition-all duration-200 hover:border-[#FCAF20]/50 hover:bg-slate-900"
+													className="group flex flex-col justify-between rounded-lg border border-slate-800/80 bg-slate-900/90 p-4 transition-all duration-200 hover:border-[#FCAF20]/50 hover:bg-slate-900"
 													href={item.href}
 													key={item.name}
 													onClick={() => setServicesDropdownOpen(false)}
