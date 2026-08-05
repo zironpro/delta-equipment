@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import { SearchX, Sparkles } from "lucide-react";
 
@@ -14,12 +15,20 @@ import { EquipmentCard } from "../components/EquipmentCard";
 import { EquipmentFilter } from "../components/EquipmentFilter";
 import { SpecModal } from "../components/SpecModal";
 
-export function FleetGridSection() {
+function FleetGridContent() {
+	const searchParams = useSearchParams();
 	const [selectedCategory, setSelectedCategory] = useState<string>("all");
 	const [searchQuery, setSearchQuery] = useState<string>("");
 	const [sortBy, setSortBy] = useState<string>("featured");
 	const [selectedSpecItem, setSelectedSpecItem] =
 		useState<EquipmentItem | null>(null);
+
+	useEffect(() => {
+		const cat = searchParams.get("category");
+		if (cat) {
+			setSelectedCategory(cat);
+		}
+	}, [searchParams]);
 
 	// Compute category counts
 	const categoryListWithCounts = useMemo(() => {
@@ -136,5 +145,13 @@ export function FleetGridSection() {
 				onClose={() => setSelectedSpecItem(null)}
 			/>
 		</section>
+	);
+}
+
+export function FleetGridSection() {
+	return (
+		<Suspense fallback={null}>
+			<FleetGridContent />
+		</Suspense>
 	);
 }

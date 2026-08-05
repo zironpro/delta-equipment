@@ -12,7 +12,7 @@ export function FleetHeroSection() {
 					fill
 					priority
 					quality={100}
-					src="/images/fleet-bg.webp"
+					src="/images/products-banner.webp"
 				/>
 			</div>
 		</section>

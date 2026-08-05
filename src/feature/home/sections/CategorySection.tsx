@@ -1,6 +1,8 @@
 "use client";
 
+import type { Route } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
@@ -62,17 +64,20 @@ export function CategorySection() {
 						</h2>
 					</div>
 
-					<Button className="cursor-pointer self-start border border-slate-900 bg-slate-950 font-bold font-sans text-white shadow-md transition-colors hover:border-slate-800 hover:bg-slate-800 md:self-auto">
-						<span>View Full Catalog</span>
-						<ArrowRight className="ml-2 h-4 w-4" />
-					</Button>
+					<Link href={"/fleet" as Route}>
+						<Button className="cursor-pointer self-start border border-slate-900 bg-slate-950 font-bold font-sans text-white shadow-md transition-colors hover:border-slate-800 hover:bg-slate-800 md:self-auto">
+							<span>View Full Catalog</span>
+							<ArrowRight className="ml-2 h-4 w-4" />
+						</Button>
+					</Link>
 				</div>
 
 				{/* Categories Grid - 4 Cards per Row in Portrait Aspect Ratio */}
 				<div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 					{MACHINERY_CATEGORIES.map((category) => (
-						<div
-							className="group hover:-translate-y-1.5 relative flex aspect-[3/4] h-[340px] w-full cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg border border-slate-200/90 bg-white p-6 shadow-soft-lg transition-all duration-300 hover:border-[#FFB800] hover:shadow-soft-xl"
+						<Link
+							className="group relative flex aspect-[3/4] h-[340px] w-full cursor-pointer flex-col items-center justify-between overflow-hidden rounded-lg border border-slate-200/90 bg-white p-6 shadow-soft-lg transition-all duration-300 hover:-translate-y-1.5 hover:border-[#FFB800] hover:shadow-soft-xl"
+							href={`/fleet?category=${category.id}#fleet-catalog` as Route}
 							key={category.id}
 						>
 							{/* Bold and Thick JCB Yellow Background Chevron (Top-Right -> Center -> Bottom-Right) */}
@@ -109,7 +114,7 @@ export function CategorySection() {
 									{category.title}
 								</h3>
 							</div>
-						</div>
+						</Link>
 					))}
 				</div>
 
@@ -130,9 +135,11 @@ export function CategorySection() {
 						</div>
 					</div>
 
-					<Button className="shrink-0 cursor-pointer bg-slate-950 font-bold font-sans text-white hover:bg-slate-800">
-						<span>Request Fleet Quote</span>
-					</Button>
+					<Link href={"/contact" as Route}>
+						<Button className="shrink-0 cursor-pointer bg-slate-950 font-bold font-sans text-white hover:bg-slate-800">
+							<span>Request Fleet Quote</span>
+						</Button>
+					</Link>
 				</div>
 			</div>
 		</section>
