@@ -18,6 +18,7 @@ export interface EquipmentItem {
 	category: string;
 	categoryName: string;
 	image: string;
+	detailImage?: string;
 	tagline: string;
 	operatingWeight: string;
 	enginePower: string;
@@ -84,6 +85,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/jcb-30plus.webp",
 		tagline: "Class leading lift capacity with Perkins power for maximum job site productivity.",
 		operatingWeight: "2,800 kg",
 		enginePower: "25 HP",
@@ -116,6 +118,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/catagory/escavator.webp",
 		tagline: "High fuel efficiency with superior digging force and 8-ton operating capacity.",
 		operatingWeight: "8,000 kg",
 		enginePower: "76 HP",
@@ -147,6 +150,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/jcb-130.webp",
 		tagline: "13-ton class tracked excavator built for enhanced productivity and AC cabin operator comfort.",
 		operatingWeight: "12,800 kg",
 		enginePower: "80 HP",
@@ -177,6 +181,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/140.webp",
 		tagline: "14-ton excavator with Cummins 100 HP engine, 10 working modes, and smart control display.",
 		operatingWeight: "14,320 kg",
 		enginePower: "100 HP",
@@ -207,6 +212,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/nxt-205.webp",
 		tagline: "20.5-ton excavator with 140 HP Cummins engine, Eco mode fuel saving, and Power+ mode productivity.",
 		operatingWeight: "20,500 kg",
 		enginePower: "140 HP",
@@ -237,6 +243,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/nxt-210LC.webp",
 		tagline: "21.2-ton Long Undercarriage excavator with 140 HP Cummins engine and heavy-duty 0.9m³ bucket.",
 		operatingWeight: "21,250 kg",
 		enginePower: "104 kW (140 HP)",
@@ -268,6 +275,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/nxt-215LC.webp",
 		tagline: "21.5-ton Long Undercarriage excavator with IntelliControl, Eco mode, and Power+ performance.",
 		operatingWeight: "21,500 kg",
 		enginePower: "140 HP",
@@ -299,6 +307,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/nxt-225lcm.webp",
 		tagline: "22.2-tonne excavator with 148 HP Cummins engine, Ecohydraulics, and reinforced dig-end.",
 		operatingWeight: "22,200 kg (22.2 Tonne)",
 		enginePower: "148 HP",
@@ -330,6 +339,7 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 		category: "excavators",
 		categoryName: "Excavators",
 		image: "/images/catagory/escavator.webp",
+		detailImage: "/images/product-details/345LC-HD.webp",
 		tagline: "34-ton heavy duty mining excavator powered by 221 HP JCB DIESELMAX 672 engine for quarrying.",
 		operatingWeight: "32,940 - 34,462 kg",
 		enginePower: "165 kW (221 HP)",
