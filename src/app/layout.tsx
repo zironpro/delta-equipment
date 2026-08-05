@@ -77,7 +77,7 @@ const manrope = Manrope({
 });
 
 const inter = Inter({
-	weight: ["400", "500", "600", "700"],
+	weight: ["300", "400", "500", "600", "700", "800", "900"],
 	subsets: ["latin"],
 	variable: "--font-inter",
 	display: "swap",
@@ -91,6 +91,7 @@ export const metadata: Metadata = {
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { ScrollAnimateProvider } from "@/components/layout/ScrollAnimateProvider";
 
 export default function RootLayout({
 	children,
@@ -104,7 +105,7 @@ export default function RootLayout({
 		>
 			<body className="flex min-h-full flex-col bg-white font-sans text-slate-900 selection:bg-[#FFB800] selection:text-slate-950">
 				<Navbar />
-				{children}
+				<ScrollAnimateProvider>{children}</ScrollAnimateProvider>
 				<Footer />
 			</body>
 		</html>
