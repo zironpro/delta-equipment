@@ -29,7 +29,7 @@ const ARTICLES_DATA: NewsArticle[] = [
 		category: "Fleet Expansion",
 		date: "July 18, 2026",
 		readTime: "4 min read",
-		image: "/images/info-1.png",
+		image: "/images/info-1.webp",
 		featured: true,
 	},
 	{
@@ -41,7 +41,7 @@ const ARTICLES_DATA: NewsArticle[] = [
 		category: "Telematics Tech",
 		date: "June 28, 2026",
 		readTime: "5 min read",
-		image: "/images/info-2.png",
+		image: "/images/info-2.webp",
 		featured: false,
 	},
 	{
@@ -53,7 +53,7 @@ const ARTICLES_DATA: NewsArticle[] = [
 		category: "Field Guide",
 		date: "May 14, 2026",
 		readTime: "6 min read",
-		image: "/images/escavator.png",
+		image: "/images/escavator.webp",
 		featured: false,
 	},
 	{
@@ -65,7 +65,7 @@ const ARTICLES_DATA: NewsArticle[] = [
 		category: "Dealership News",
 		date: "April 02, 2026",
 		readTime: "3 min read",
-		image: "/images/over-view image.png",
+		image: "/images/over-view image.webp",
 		featured: false,
 	},
 ];

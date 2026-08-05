@@ -32,7 +32,7 @@ const tabsData = [
 			"Genuine OEM Parts & Factory Warranties",
 			"Comprehensive Technical Support & Maintenance",
 		],
-		image: "/images/info-1.png",
+		image: "/images/info-1.webp",
 	},
 	{
 		id: "evolution",
@@ -56,7 +56,7 @@ const tabsData = [
 				icon: ShieldCheck,
 			},
 		],
-		image: "/images/info-2.png",
+		image: "/images/info-2.webp",
 	},
 	{
 		id: "sectors",
@@ -73,7 +73,7 @@ const tabsData = [
 			{ name: "Construction & Industrial", desc: "Heavy foundation work, manufacturing & power." },
 			{ name: "Government Initiatives", desc: "National public infrastructure development." },
 		],
-		image: "/images/over-view image.png",
+		image: "/images/over-view image.webp",
 	},
 	{
 		id: "presence",
@@ -90,7 +90,7 @@ const tabsData = [
 			"Abu Hamad (Northern Mining Zone Branch)",
 			"Gezira Scheme (Mashrou Al Jazira)",
 		],
-		image: "/images/escavator.png",
+		image: "/images/escavator.webp",
 	},
 ];
 

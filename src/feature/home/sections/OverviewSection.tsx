@@ -59,7 +59,7 @@ export function OverviewSection() {
 								alt="JCB Overview Machinery"
 								className="h-auto w-full rounded-lg object-cover transition-transform duration-500 hover:scale-105"
 								height={400}
-								src="/images/over-view image.png"
+								src="/images/over-view image.webp"
 								width={700}
 							/>
 						</div>

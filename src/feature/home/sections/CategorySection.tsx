@@ -15,43 +15,38 @@ interface CategoryCard {
 const MACHINERY_CATEGORIES: CategoryCard[] = [
 	{
 		id: "excavators",
-		title: "Tracked Excavators",
-		image: "/images/escavator.png",
+		title: "Excavators",
+		image: "/images/catagory/escavator.webp",
 	},
 	{
 		id: "telehandlers",
 		title: "Telescopic Handlers",
-		image: "/images/escavator.png",
+		image: "/images/catagory/telescopic-handlers.webp",
 	},
 	{
 		id: "wheel-loaders",
 		title: "Wheel Loaders",
-		image: "/images/escavator.png",
+		image: "/images/catagory/wheel-loaders.webp",
 	},
 	{
 		id: "backhoes",
 		title: "Backhoe Loaders",
-		image: "/images/escavator.png",
+		image: "/images/catagory/backheo-loaders.webp",
 	},
 	{
 		id: "compaction",
 		title: "Compaction Rollers",
-		image: "/images/escavator.png",
+		image: "/images/catagory/compactors.webp",
 	},
 	{
 		id: "skid-steer",
 		title: "Skid Steer Loaders",
-		image: "/images/escavator.png",
-	},
-	{
-		id: "dump-trucks",
-		title: "Site Dumpers",
-		image: "/images/escavator.png",
+		image: "/images/catagory/skid-steers-loaders.webp",
 	},
 	{
 		id: "power",
-		title: "Power Generators",
-		image: "/images/escavator.png",
+		title: "Generators",
+		image: "/images/catagory/generators.webp",
 	},
 ];
 

@@ -12,7 +12,7 @@ export function MiningIndustrialSection() {
 					<div className="lg:col-span-5 order-2 lg:order-1">
 						<div className="relative mx-auto aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl group">
 							<Image
-								src="/images/escavator.png"
+								src="/images/escavator.webp"
 								alt="JCB Mining Excavators in Sudan Desert"
 								fill
 								className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -300,7 +300,7 @@ export function Navbar() {
 													alt="JCB Delta Equipment Showcase"
 													className="object-cover transition-transform duration-500 group-hover:scale-105"
 													fill
-													src="/images/over-view image.png"
+													src="/images/over-view image.webp"
 												/>
 											</Link>
 										</div>

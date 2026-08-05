@@ -12,7 +12,7 @@ export function CtaSection() {
 					fill
 					priority
 					quality={100}
-					src="/images/cta-bg.png"
+					src="/images/cta-bg.webp"
 				/>
 			</div>
 		</section>

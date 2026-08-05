@@ -22,7 +22,7 @@ const branchesData = [
 			"National Power Generation Projects",
 			"Heavy Fleet Sales & Financing",
 		],
-		image: "/images/info-1.png",
+		image: "/images/info-1.webp",
 	},
 	{
 		id: "atbara",
@@ -37,7 +37,7 @@ const branchesData = [
 			"Railway & Transport Infrastructure",
 			"Industrial Plant Maintenance",
 		],
-		image: "/images/info-2.png",
+		image: "/images/info-2.webp",
 	},
 	{
 		id: "al-obeidia",
@@ -52,7 +52,7 @@ const branchesData = [
 			"Artisanal & Commercial Quarrying",
 			"24/7 Field Rapid Response",
 		],
-		image: "/images/escavator.png",
+		image: "/images/escavator.webp",
 	},
 	{
 		id: "abu-hamad",
@@ -67,7 +67,7 @@ const branchesData = [
 			"Remote Machinery Logistics",
 			"LiveLink Telematics Monitoring",
 		],
-		image: "/images/over-view image.png",
+		image: "/images/over-view image.webp",
 	},
 	{
 		id: "gezira",
@@ -82,7 +82,7 @@ const branchesData = [
 			"Agricultural Land Preparation",
 			"Government Agricultural Initiatives",
 		],
-		image: "/images/fleet-bg.png",
+		image: "/images/fleet-bg.webp",
 	},
 ];
 

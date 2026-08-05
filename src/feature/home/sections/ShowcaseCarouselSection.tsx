@@ -38,7 +38,7 @@ interface SlideData {
 const CAROUSEL_SLIDES: SlideData[] = [
 	{
 		id: "slide-1",
-		image: "/images/info-1.png",
+		image: "/images/info-1.webp",
 		title: "T65D Telescopic Handlers",
 		model: "T65D",
 		category: "TELESCOPIC HANDLERS",
@@ -78,7 +78,7 @@ const CAROUSEL_SLIDES: SlideData[] = [
 	},
 	{
 		id: "slide-2",
-		image: "/images/info-2.png",
+		image: "/images/info-2.webp",
 		title: "JS380 Heavy Excavator",
 		model: "JS380",
 		category: "HEAVY EXCAVATORS",
