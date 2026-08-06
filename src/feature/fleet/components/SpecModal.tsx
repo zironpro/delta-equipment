@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 
+import type { Route } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import {
 	ArrowUpRight,
@@ -180,22 +182,39 @@ export function SpecModal({ item, onClose }: SpecModalProps) {
 				{/* Modal Footer Actions */}
 				<div className="flex flex-col gap-3 border-slate-200 border-t bg-slate-50 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
 					<button
-						className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 font-medium text-slate-800 text-xs shadow-xs transition-colors hover:bg-slate-100"
-						onClick={() => alert(`Downloading brochure for ${item.name}...`)}
+						className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 font-medium text-slate-800 text-xs shadow-xs transition-colors hover:bg-slate-100"
+						onClick={() => {
+							const capacity = item.bucketCapacity || item.payloadCapacity;
+							const capacityLine = capacity ? `\n- Capacity: ${capacity}` : "";
+							const blob = new Blob(
+								[
+									`JCB ${item.name} Official Specification Sheet\n\nTagline: ${item.tagline}\nCategory: ${item.category}\n\nKey Specs:\n- Engine Power: ${item.enginePower}\n- Operating Weight: ${item.operatingWeight}${capacityLine}\n\nFor official sales & inquiries in Sudan, contact Delta Equipment (info@deltaequipment.sd)`,
+								],
+								{ type: "text/plain;charset=utf-8" }
+							);
+							const url = URL.createObjectURL(blob);
+							const a = document.createElement("a");
+							a.href = url;
+							a.download = `JCB-${item.name.replace(/\s+/g, "-")}-Specs.txt`;
+							document.body.appendChild(a);
+							a.click();
+							document.body.removeChild(a);
+							URL.revokeObjectURL(url);
+						}}
 						type="button"
 					>
 						<Download className="h-4 w-4 text-slate-600" />
 						<span>Download Product PDF Brochure</span>
 					</button>
 
-					<a
+					<Link
 						className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#FCAF20] px-6 py-2.5 font-bold text-slate-950 text-xs shadow-md transition-all hover:bg-amber-400 active:scale-[0.98]"
-						href="#contact"
+						href={"/contact" as Route}
 						onClick={onClose}
 					>
 						<span>Request Official Quote</span>
 						<ArrowUpRight className="h-4 w-4" />
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>

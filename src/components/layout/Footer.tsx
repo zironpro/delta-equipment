@@ -115,7 +115,7 @@ export function Footer() {
 								<li key={item}>
 									<Link
 										className="inline-flex items-center text-slate-400 transition-colors hover:text-[#FFB800]"
-										href={"#categories" as Route}
+										href={"/fleet" as Route}
 									>
 										<span>{item}</span>
 									</Link>
@@ -132,19 +132,33 @@ export function Footer() {
 							</h3>
 							<ul className="mt-4 space-y-2.5 font-sans text-sm">
 								{[
-									"24/7 Field Support",
-									"Factory Warranty",
-									"OEM Spare Parts",
-									"Equipment Rental",
-									"Operator Training",
-									"Preventive Maintenance",
+									{
+										label: "24/7 Field Support",
+										href: "/services/product-support",
+									},
+									{
+										label: "Factory Warranty",
+										href: "/services/product-support",
+									},
+									{
+										label: "OEM Spare Parts",
+										href: "/services/product-support",
+									},
+									{
+										label: "Annual Service Contract",
+										href: "/services/annual-service-contract",
+									},
+									{
+										label: "Preventive Maintenance",
+										href: "/services/annual-service-contract",
+									},
 								].map((item) => (
-									<li key={item}>
+									<li key={item.label}>
 										<Link
 											className="inline-flex items-center text-slate-400 transition-colors hover:text-[#FFB800]"
-											href={"#services" as Route}
+											href={item.href as Route}
 										>
-											<span>{item}</span>
+											<span>{item.label}</span>
 										</Link>
 									</li>
 								))}

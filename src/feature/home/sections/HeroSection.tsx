@@ -60,12 +60,12 @@ export function HeroSection() {
 							<ArrowUpRight className="group-hover:-translate-y-0.5 ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
 						</Link>
 
-						<a
+						<Link
 							className="inline-flex h-12 items-center justify-center rounded-lg border border-slate-300/80 bg-white/90 px-6 font-medium font-sans text-slate-900 text-sm shadow-xs backdrop-blur-sm transition-all hover:bg-white hover:text-slate-950 active:scale-[0.98]"
-							href="#contact"
+							href="/contact"
 						>
 							<span>Get Quote</span>
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

@@ -1,6 +1,8 @@
 "use client";
 
+import type { Route } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { ArrowUpRight, Calendar, Clock } from "lucide-react";
 
@@ -70,20 +72,21 @@ export function NewsSection() {
 						</p>
 					</div>
 
-					<a
+					<Link
 						className="group inline-flex items-center gap-2 font-medium font-sans text-slate-900 text-sm transition-colors hover:text-[#D49800]"
-						href="#news"
+						href={"/company/insights-and-news" as Route}
 					>
 						<span>View All Articles</span>
 						<ArrowUpRight className="group-hover:-translate-y-0.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-					</a>
+					</Link>
 				</div>
 
 				{/* News Articles Grid */}
 				<div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{NEWS_ARTICLES.map((article) => (
-						<article
-							className="group hover:-translate-y-1 flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5"
+						<Link
+							className="group hover:-translate-y-1 flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5"
+							href={"/company/insights-and-news" as Route}
 							key={article.id}
 						>
 							{/* Article Image Container */}
@@ -133,7 +136,7 @@ export function NewsSection() {
 									<ArrowUpRight className="group-hover:-translate-y-0.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
 								</div>
 							</div>
-						</article>
+						</Link>
 					))}
 				</div>
 			</div>

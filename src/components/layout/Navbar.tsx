@@ -474,11 +474,13 @@ export function Navbar() {
 				<div className="flex items-center gap-4">
 					<div className="hidden items-center gap-4 sm:flex">
 						<Button
+							asChild
 							className="group bg-slate-950 font-medium font-sans text-white hover:bg-slate-800"
 							size="sm"
 						>
-							<span>Get Instant Quote</span>
-							<ArrowUpRight className="group-hover:-translate-y-0.5 ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+							<Link href={"/contact" as Route}>
+								<span>Get Instant Quote</span>
+							</Link>
 						</Button>
 					</div>
 
@@ -618,9 +620,15 @@ export function Navbar() {
 						</Link>
 
 						<div className="border-slate-950/20 border-t pt-4">
-							<Button className="w-full justify-center bg-slate-950 font-medium font-sans text-white hover:bg-slate-800">
-								<span>Get Instant Quote</span>
-								<ArrowUpRight className="ml-1 h-4 w-4" />
+							<Button
+								asChild
+								className="w-full justify-center bg-slate-950 font-medium font-sans text-white hover:bg-slate-800"
+								onClick={() => setMobileMenuOpen(false)}
+							>
+								<Link href={"/contact" as Route}>
+									<span>Get Instant Quote</span>
+									<ArrowUpRight className="ml-1 h-4 w-4" />
+								</Link>
 							</Button>
 						</div>
 					</nav>

@@ -1,6 +1,8 @@
 "use client";
 
+import type { Route } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { ArrowUpRight, Download, Gauge, Weight } from "lucide-react";
 
@@ -44,19 +46,32 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 
 						{/* Right: Quick Action CTAs */}
 						<div className="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:justify-end">
-							<a
+							<Link
 								className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-slate-950 px-5 font-bold text-sm text-white shadow-md transition-all hover:bg-[#FCAF20] hover:text-slate-950 active:scale-[0.98]"
-								href="#contact"
+								href={"/contact" as Route}
 							>
 								<span>Get Quote</span>
 								<ArrowUpRight className="h-4 w-4" />
-							</a>
+							</Link>
 
 							<button
-								className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 font-semibold text-slate-800 text-sm shadow-xs transition-colors hover:bg-slate-50"
-								onClick={() =>
-									alert(`Downloading specification sheet for ${item.name}...`)
-								}
+								className="inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 font-semibold text-slate-800 text-sm shadow-xs transition-colors hover:bg-slate-50"
+								onClick={() => {
+									const blob = new Blob(
+										[
+											`JCB ${item.name} Specification Sheet\n\nTagline: ${item.tagline}\nCategory: ${item.category}\n\nFor official sales & inquiries in Sudan, contact Delta Equipment (info@deltaequipment.sd)`,
+										],
+										{ type: "text/plain;charset=utf-8" }
+									);
+									const url = URL.createObjectURL(blob);
+									const a = document.createElement("a");
+									a.href = url;
+									a.download = `JCB-${item.name.replace(/\s+/g, "-")}-Brochure.txt`;
+									document.body.appendChild(a);
+									a.click();
+									document.body.removeChild(a);
+									URL.revokeObjectURL(url);
+								}}
 								type="button"
 							>
 								<Download className="h-4 w-4 text-slate-600" />

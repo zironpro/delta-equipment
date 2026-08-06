@@ -108,7 +108,7 @@ export function IndustrialGrowthSection() {
 								</Button>
 							</Link>
 
-							<Link href={"#contact" as Route}>
+							<Link href={"/contact" as Route}>
 								<Button
 									className="h-11 w-full cursor-pointer justify-center border-slate-700 bg-slate-900 font-sans font-semibold text-sm text-white hover:bg-slate-800"
 									variant="outline"
