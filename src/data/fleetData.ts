@@ -643,6 +643,71 @@ export const FLEET_ITEMS: EquipmentItem[] = [
 			"Compaction System": "JCB IntelliCompaction System",
 		},
 	},
+	{
+		id: "jcb-vmt-330",
+		slug: "jcb-vmt-330",
+		name: "JCB VMT330 Vibratory Roller",
+		model: "VMT330",
+		category: "compaction",
+		categoryName: "Compaction Rollers",
+		image: "/images/catagory/mini-roller.webp",
+		detailImage: "/images/product-details/vmt-330.webp",
+		tagline:
+			"Compact 3.3-ton tandem vibratory roller with 45 HP Simpson engine and 1,250 mm drum width.",
+		operatingWeight: "3,300 kg",
+		enginePower: "45 HP",
+		availability: "In Stock",
+		badge: "Tandem Roller",
+		description:
+			"The JCB VMT330 tandem vibratory roller is powered by a reliable SIMPSON - SJ327 engine producing 45 HP. Designed for smooth compaction finishing with a 1,250 mm drum width, 3,300 kg operating weight, extended warranty, and easy parts availability.",
+		keyFeatures: [
+			"SIMPSON - SJ327 Fuel Efficient Engine (45 HP)",
+			"1,250 mm Precision Tandem Compaction Drum Width",
+			"Extended Warranty Coverage for Operational Peace of Mind",
+			"Best-in-Class Nationwide Service Network",
+			"Easy & Rapid Spare Parts Availability",
+		],
+		specifications: {
+			"Engine Model": "SIMPSON - SJ327",
+			"Engine Power": "45 HP",
+			"Operating Weight": "3,300 kg",
+			"Drum Width": "1,250 mm",
+			Support: "Extended Warranty & Nationwide Service",
+		},
+	},
+	{
+		id: "jcb-g275qs",
+		slug: "jcb-g275qs",
+		name: "JCB Canopy Set G275QS Generator",
+		model: "G275QS",
+		category: "power",
+		categoryName: "Generators",
+		image: "/images/catagory/generators.webp",
+		detailImage: "/images/product-details/canopy-set.webp",
+		tagline:
+			"Heavy-duty 250 kVA prime power canopy generator with DSE 4520 control panel and 50mm acoustic insulation.",
+		operatingWeight: "3,936 kg",
+		enginePower: "250 kVA Prime",
+		availability: "In Stock",
+		badge: "Canopy Set",
+		description:
+			"The JCB G275QS is a reliable and durable diesel generator designed for continuous and backup power. Delivering 250 kVA prime power with a 449L fuel tank, DSE 4520 auto-control panel, and 50mm Rock Wool acoustic insulation for ultra-quiet operation in demanding environments.",
+		keyFeatures: [
+			"250 kVA Prime Power Output for Continuous & Standby Duty",
+			"DSE 4520 Advanced Auto-Start Control Panel System",
+			"50mm Rock Wool Sound Acoustic Insulation for Low Noise",
+			"High-Capacity 449 Litre Fuel Tank for Extended Autonomy",
+			"Durable Weatherproof & Anti-Corrosion Canopy Design",
+		],
+		specifications: {
+			"Prime Power": "250 kVA",
+			"Control Panel": "DSE 4520",
+			"Acoustic Insulation": "50mm Rock Wool Sound",
+			"Fuel Tank Capacity": "449 L",
+			Dimensions: "3800 × 1400 × 2290 mm",
+			Weight: "3,936 kg",
+		},
+	},
 ];
 
 export function getEquipmentBySlug(slug: string): EquipmentItem | undefined {
