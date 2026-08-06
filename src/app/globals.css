@@ -237,3 +237,174 @@ section.is-visible,
 	}
 }
 
+/* ==========================================================================
+   Smooth Curved Bottom-to-Top Color Fill Hover Animation
+   ========================================================================== */
+
+.btn-curve,
+.btn-fill-curve {
+	position: relative !important;
+	overflow: hidden !important;
+	isolation: isolate !important;
+	z-index: 1 !important;
+	transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+	            border-color 0.4s ease,
+	            box-shadow 0.4s ease,
+	            transform 0.2s ease !important;
+}
+
+.btn-curve > *,
+.btn-fill-curve > * {
+	position: relative !important;
+	z-index: 2 !important;
+	transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+	            transform 0.3s ease !important;
+}
+
+.btn-curve::before,
+.btn-fill-curve::before {
+	content: "" !important;
+	position: absolute !important;
+	left: -20% !important;
+	width: 140% !important;
+	top: 105% !important;
+	height: 190% !important;
+	border-radius: 50% 50% 0 0 / 45% 45% 0 0 !important;
+	background-color: var(--btn-fill-bg, #0c0e12) !important;
+	transition: top 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+	            transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+	z-index: 0 !important;
+	pointer-events: none !important;
+}
+
+.btn-curve:hover::before,
+.btn-fill-curve:hover::before {
+	top: -30% !important;
+}
+
+/* Variant Presets */
+
+/* 1. Dark Buttons (bg-slate-950, bg-slate-900, bg-black, bg-industrial-black, .btn-curve-dark)
+   - When IDLE (not hovering): Text & icons MUST be 100% visible bright white (#ffffff)
+   - On HOVER: Curved fill is JCB Yellow (#FCAF20), Text & icons transition to dark slate (#0c0e12)
+*/
+.btn-curve-dark,
+.btn-fill-curve-dark,
+.btn-curve.bg-slate-950,
+.btn-curve.bg-slate-900,
+.btn-curve.bg-black,
+.btn-curve.bg-industrial-black,
+.btn-fill-curve.bg-slate-950,
+.btn-fill-curve.bg-slate-900,
+.btn-fill-curve.bg-black {
+	--btn-fill-bg: #FCAF20 !important;
+	color: #ffffff !important;
+}
+
+.btn-curve-dark *,
+.btn-fill-curve-dark *,
+.btn-curve.bg-slate-950 *,
+.btn-curve.bg-slate-900 *,
+.btn-curve.bg-black *,
+.btn-curve.bg-industrial-black *,
+.btn-fill-curve.bg-slate-950 *,
+.btn-fill-curve.bg-slate-900 *,
+.btn-fill-curve.bg-black * {
+	color: #ffffff !important;
+}
+
+.btn-curve-dark:hover,
+.btn-curve-dark:hover *,
+.btn-fill-curve-dark:hover,
+.btn-fill-curve-dark:hover *,
+.btn-curve.bg-slate-950:hover,
+.btn-curve.bg-slate-950:hover *,
+.btn-curve.bg-slate-900:hover,
+.btn-curve.bg-slate-900:hover *,
+.btn-curve.bg-black:hover,
+.btn-curve.bg-black:hover *,
+.btn-curve.bg-industrial-black:hover,
+.btn-curve.bg-industrial-black:hover *,
+.btn-fill-curve.bg-slate-950:hover,
+.btn-fill-curve.bg-slate-950:hover *,
+.btn-fill-curve.bg-slate-900:hover,
+.btn-fill-curve.bg-slate-900:hover *,
+.btn-fill-curve.bg-black:hover,
+.btn-fill-curve.bg-black:hover * {
+	color: #0c0e12 !important;
+}
+
+/* 2. JCB Yellow Button (e.g. bg-jcb / #FCAF20) -> Fills up with Dark Slate (#0c0e12) */
+.btn-curve-jcb,
+.btn-fill-curve-jcb {
+	--btn-fill-bg: #0c0e12 !important;
+	color: #0c0e12 !important;
+}
+.btn-curve-jcb *,
+.btn-fill-curve-jcb * {
+	color: #0c0e12 !important;
+}
+.btn-curve-jcb:hover,
+.btn-curve-jcb:hover *,
+.btn-fill-curve-jcb:hover,
+.btn-fill-curve-jcb:hover * {
+	color: #ffffff !important;
+}
+
+/* 3. Light / Outline Button (e.g. bg-white border-slate-300) -> Fills up with JCB Amber Yellow (#FCAF20) */
+.btn-curve-outline,
+.btn-fill-curve-outline {
+	--btn-fill-bg: #FCAF20 !important;
+	color: #0f172a !important;
+}
+.btn-curve-outline *,
+.btn-fill-curve-outline * {
+	color: #0f172a !important;
+}
+.btn-curve-outline:hover {
+	border-color: #FCAF20 !important;
+}
+.btn-curve-outline:hover,
+.btn-curve-outline:hover *,
+.btn-fill-curve-outline:hover,
+.btn-fill-curve-outline:hover * {
+	color: #0c0e12 !important;
+}
+
+/* 4. Secondary / Slate Button -> Fills up with JCB Amber Yellow */
+.btn-curve-secondary,
+.btn-fill-curve-secondary {
+	--btn-fill-bg: #FCAF20 !important;
+	color: #0f172a !important;
+}
+.btn-curve-secondary *,
+.btn-fill-curve-secondary * {
+	color: #0f172a !important;
+}
+.btn-curve-secondary:hover,
+.btn-curve-secondary:hover *,
+.btn-fill-curve-secondary:hover,
+.btn-fill-curve-secondary:hover * {
+	color: #0c0e12 !important;
+}
+
+/* 5. Destructive / Red Button -> Fills up with Dark Red */
+.btn-curve-destructive,
+.btn-fill-curve-destructive {
+	--btn-fill-bg: #991b1b !important;
+	color: #ffffff !important;
+}
+.btn-curve-destructive *,
+.btn-fill-curve-destructive * {
+	color: #ffffff !important;
+}
+.btn-curve-destructive:hover,
+.btn-curve-destructive:hover *,
+.btn-fill-curve-destructive:hover,
+.btn-fill-curve-destructive:hover * {
+	color: #ffffff !important;
+}
+
+
+
+

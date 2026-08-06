@@ -48,7 +48,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
 		category: "Field Guide",
 		date: "May 14, 2026",
 		readTime: "6 min read",
-		image: "/images/escavator.webp",
+		image: "/images/product-details/140.webp",
 	},
 ];
 
@@ -85,7 +85,7 @@ export function NewsSection() {
 				<div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{NEWS_ARTICLES.map((article) => (
 						<Link
-							className="group hover:-translate-y-1 flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5"
+							className="group hover:-translate-y-1 flex cursor-pointer flex-col overflow-hidden rounded-lg border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5"
 							href={"/company/insights-and-news" as Route}
 							key={article.id}
 						>

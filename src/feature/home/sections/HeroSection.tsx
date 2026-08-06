@@ -53,7 +53,7 @@ export function HeroSection() {
 					{/* Action Buttons at Bottom on Mobile */}
 					<div className="flex flex-wrap items-center gap-3 pt-4 sm:gap-4 md:pt-2">
 						<Link
-							className="group inline-flex h-12 items-center justify-center rounded-lg bg-slate-950 px-6 font-medium font-sans text-sm text-white shadow-md transition-all hover:bg-slate-800 active:scale-[0.98]"
+							className="group btn-curve btn-curve-dark inline-flex h-12 items-center justify-center rounded-lg bg-slate-950 px-6 font-medium font-sans text-sm text-white shadow-md transition-all active:scale-[0.98]"
 							href="/fleet"
 						>
 							<span>Explore Fleet</span>
@@ -61,7 +61,7 @@ export function HeroSection() {
 						</Link>
 
 						<Link
-							className="inline-flex h-12 items-center justify-center rounded-lg border border-slate-300/80 bg-white/90 px-6 font-medium font-sans text-slate-900 text-sm shadow-xs backdrop-blur-sm transition-all hover:bg-white hover:text-slate-950 active:scale-[0.98]"
+							className="btn-curve btn-curve-outline inline-flex h-12 items-center justify-center rounded-lg border border-slate-300/80 bg-white/90 px-6 font-medium font-sans text-slate-900 text-sm shadow-xs backdrop-blur-sm transition-all active:scale-[0.98]"
 							href="/contact"
 						>
 							<span>Get Quote</span>

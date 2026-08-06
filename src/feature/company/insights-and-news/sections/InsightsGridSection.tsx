@@ -56,7 +56,7 @@ const ARTICLES_DATA: NewsArticle[] = [
 		category: "Field Guide",
 		date: "May 14, 2026",
 		readTime: "6 min read",
-		image: "/images/escavator.webp",
+		image: "/images/product-details/140.webp",
 	},
 	{
 		id: "jcb-3cx-versatility",

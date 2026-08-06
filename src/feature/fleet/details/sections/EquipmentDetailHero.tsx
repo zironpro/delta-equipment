@@ -47,7 +47,7 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 						{/* Right: Quick Action CTAs */}
 						<div className="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:justify-end">
 							<Link
-								className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-slate-950 px-5 font-bold text-sm text-white shadow-md transition-all hover:bg-[#FCAF20] hover:text-slate-950 active:scale-[0.98]"
+								className="btn-curve btn-curve-dark inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-slate-950 px-5 font-bold text-sm text-white shadow-md transition-all active:scale-[0.98]"
 								href={"/contact" as Route}
 							>
 								<span>Get Quote</span>
@@ -55,7 +55,7 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 							</Link>
 
 							<button
-								className="inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 font-semibold text-slate-800 text-sm shadow-xs transition-colors hover:bg-slate-50"
+								className="btn-curve btn-curve-outline inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 font-semibold text-slate-800 text-sm shadow-xs transition-colors"
 								onClick={() => {
 									const blob = new Blob(
 										[

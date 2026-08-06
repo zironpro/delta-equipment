@@ -182,7 +182,7 @@ export function SpecModal({ item, onClose }: SpecModalProps) {
 				{/* Modal Footer Actions */}
 				<div className="flex flex-col gap-3 border-slate-200 border-t bg-slate-50 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
 					<button
-						className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 font-medium text-slate-800 text-xs shadow-xs transition-colors hover:bg-slate-100"
+						className="btn-curve btn-curve-outline inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 font-medium text-slate-800 text-xs shadow-xs transition-colors"
 						onClick={() => {
 							const capacity = item.bucketCapacity || item.payloadCapacity;
 							const capacityLine = capacity ? `\n- Capacity: ${capacity}` : "";
@@ -208,7 +208,7 @@ export function SpecModal({ item, onClose }: SpecModalProps) {
 					</button>
 
 					<Link
-						className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#FCAF20] px-6 py-2.5 font-bold text-slate-950 text-xs shadow-md transition-all hover:bg-amber-400 active:scale-[0.98]"
+						className="btn-curve btn-curve-jcb inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#FCAF20] px-6 py-2.5 font-bold text-slate-950 text-xs shadow-md transition-all active:scale-[0.98]"
 						href={"/contact" as Route}
 						onClick={onClose}
 					>

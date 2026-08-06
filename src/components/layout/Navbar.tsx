@@ -141,12 +141,19 @@ export function Navbar() {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
+	const navHoverClass =
+		isScrolled || mobileMenuOpen ? "hover:text-white" : "hover:text-[#EAA800]";
+	const navActiveClass =
+		isScrolled || mobileMenuOpen ? "text-white" : "text-[#EAA800]";
+
 	return (
 		<header
 			className={cn(
 				"fixed top-0 right-0 left-0 z-50 w-full transform transition-all duration-300",
 				isVisible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full",
-				"border-[#E59D18] border-b bg-[#FCAF20] shadow-md"
+				isScrolled || mobileMenuOpen
+					? "border-[#E59D18] border-b bg-[#FCAF20] shadow-md"
+					: "border-transparent border-b bg-transparent shadow-none"
 			)}
 		>
 			<div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -154,7 +161,7 @@ export function Navbar() {
 				<Link className="group flex items-center gap-2.5 sm:gap-3.5" href="/">
 					<Image
 						alt="JCB Official Logo"
-						className="h-9 w-auto object-contain sm:h-11"
+						className="h-9 w-auto rounded-lg object-contain sm:h-11"
 						height={48}
 						priority
 						src="/global/logo.svg"
@@ -167,7 +174,10 @@ export function Navbar() {
 				{/* Desktop Navigation Links */}
 				<nav className="hidden items-center gap-8 md:flex">
 					<Link
-						className="font-sans font-semibold text-slate-950 text-sm transition-colors hover:text-white"
+						className={cn(
+							"font-sans font-semibold text-slate-950 text-sm transition-colors",
+							navHoverClass
+						)}
 						href={"/" as Route}
 					>
 						Home
@@ -181,8 +191,9 @@ export function Navbar() {
 						<button
 							aria-expanded={productsDropdownOpen}
 							className={cn(
-								"flex cursor-pointer items-center gap-1.5 font-sans font-semibold text-slate-950 text-sm transition-colors hover:text-white focus:outline-none",
-								productsDropdownOpen && "text-white"
+								"flex cursor-pointer items-center gap-1.5 font-sans font-semibold text-slate-950 text-sm transition-colors focus:outline-none",
+								navHoverClass,
+								productsDropdownOpen && navActiveClass
 							)}
 							onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
 							type="button"
@@ -276,8 +287,9 @@ export function Navbar() {
 						<button
 							aria-expanded={companyDropdownOpen}
 							className={cn(
-								"flex cursor-pointer items-center gap-1.5 font-sans font-semibold text-slate-950 text-sm transition-colors hover:text-white focus:outline-none",
-								companyDropdownOpen && "text-white"
+								"flex cursor-pointer items-center gap-1.5 font-sans font-semibold text-slate-950 text-sm transition-colors focus:outline-none",
+								navHoverClass,
+								companyDropdownOpen && navActiveClass
 							)}
 							onClick={() => setCompanyDropdownOpen(!companyDropdownOpen)}
 							type="button"
@@ -377,8 +389,9 @@ export function Navbar() {
 						<button
 							aria-expanded={servicesDropdownOpen}
 							className={cn(
-								"flex cursor-pointer items-center gap-1.5 font-sans font-semibold text-slate-950 text-sm transition-colors hover:text-white focus:outline-none",
-								servicesDropdownOpen && "text-white"
+								"flex cursor-pointer items-center gap-1.5 font-sans font-semibold text-slate-950 text-sm transition-colors focus:outline-none",
+								navHoverClass,
+								servicesDropdownOpen && navActiveClass
 							)}
 							onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
 							type="button"
@@ -463,7 +476,10 @@ export function Navbar() {
 						)}
 					</div>
 					<Link
-						className="font-sans font-semibold text-slate-950 text-sm transition-colors hover:text-white"
+						className={cn(
+							"font-sans font-semibold text-slate-950 text-sm transition-colors",
+							navHoverClass
+						)}
 						href={"/contact" as Route}
 					>
 						Contact
@@ -475,8 +491,9 @@ export function Navbar() {
 					<div className="hidden items-center gap-4 sm:flex">
 						<Button
 							asChild
-							className="group bg-slate-950 font-medium font-sans text-white hover:bg-slate-800"
+							className="group font-medium font-sans"
 							size="sm"
+							variant="dark"
 						>
 							<Link href={"/contact" as Route}>
 								<span>Get Instant Quote</span>
