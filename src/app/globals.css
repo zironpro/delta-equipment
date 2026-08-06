@@ -193,9 +193,8 @@ section,
 [data-animate],
 .reveal-on-scroll {
 	opacity: 0;
-	transform: translateY(65px);
-	transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), transform 2s cubic-bezier(0.16, 1, 0.3, 1);
-	will-change: opacity, transform;
+	transform: translateY(24px);
+	transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Revealed state triggered by IntersectionObserver */
@@ -208,23 +207,23 @@ section.is-visible,
 
 /* Animation variants */
 [data-animate="scale"].is-visible {
-	animation: fadeInScale 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 [data-animate="left"].is-visible {
-	animation: fadeInLeft 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	animation: fadeInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 [data-animate="right"].is-visible {
-	animation: fadeInRight 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	animation: fadeInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Stagger delay classes for cards and grid items */
-.stagger-1 { transition-delay: 200ms; }
-.stagger-2 { transition-delay: 400ms; }
-.stagger-3 { transition-delay: 600ms; }
-.stagger-4 { transition-delay: 800ms; }
-.stagger-5 { transition-delay: 1000ms; }
+.stagger-1 { transition-delay: 80ms; }
+.stagger-2 { transition-delay: 160ms; }
+.stagger-3 { transition-delay: 240ms; }
+.stagger-4 { transition-delay: 320ms; }
+.stagger-5 { transition-delay: 400ms; }
 
 /* Accessibility support */
 @media (prefers-reduced-motion: reduce) {

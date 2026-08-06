@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+
 import { usePathname } from "next/navigation";
 
-export function ScrollAnimateProvider({ children }: { children: React.ReactNode }) {
+export function ScrollAnimateProvider({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	const pathname = usePathname();
 
 	useEffect(() => {
@@ -27,18 +32,16 @@ export function ScrollAnimateProvider({ children }: { children: React.ReactNode 
 				},
 				{
 					root: null,
-					rootMargin: "0px 0px -80px 0px",
-					threshold: 0.08,
+					rootMargin: "50px 0px 50px 0px",
+					threshold: 0.01,
 				}
 			);
 
 			elements.forEach((el) => {
 				const rect = el.getBoundingClientRect();
-				// For elements at the top of the page, trigger after 200ms so the user clearly sees the slow entrance animation
-				if (rect.top <= 150 && rect.bottom > 0) {
-					setTimeout(() => {
-						el.classList.add("is-visible");
-					}, 200);
+				// Immediately make elements in or near the active viewport visible without artificial delays
+				if (rect.top <= window.innerHeight + 100 && rect.bottom > 0) {
+					el.classList.add("is-visible");
 				} else {
 					observer?.observe(el);
 				}
