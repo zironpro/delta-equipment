@@ -1,5 +1,6 @@
 "use client";
 
+import type { ComponentType } from "react";
 import { useEffect, useState } from "react";
 
 import type { Route } from "next";
@@ -11,12 +12,10 @@ import {
 	Building2,
 	ChevronRight,
 	FileText,
-	Layers,
 	Menu,
 	Newspaper,
 	ShieldCheck,
 	Target,
-	Truck,
 	Wrench,
 	X,
 } from "lucide-react";
@@ -29,20 +28,24 @@ import { cn } from "@/lib/utils";
 
 import { DeltaLogo } from "./DeltaLogo";
 
-const productsNavItems = [
+interface ProductNavItem {
+	name: string;
+	href: Route;
+	bgImage?: string;
+	icon?: ComponentType<{ className?: string }>;
+	description?: string;
+}
+
+const productsNavItems: ProductNavItem[] = [
 	{
 		name: "Machines",
-		description:
-			"Heavy construction equipment including excavators, telehandlers, backhoes & wheel loaders.",
 		href: "/fleet" as Route,
-		icon: Truck,
+		bgImage: "/images/machines.webp",
 	},
 	{
 		name: "Attachments",
-		description:
-			"Genuine JCB buckets, hydraulic breakers, quick hitches & heavy work tool attachments.",
 		href: "/fleet" as Route,
-		icon: Layers,
+		bgImage: "/images/attachments.webp",
 	},
 ];
 
@@ -77,13 +80,22 @@ const companyNavItems = [
 	},
 ];
 
-const servicesNavItems = [
+interface ServiceNavItem {
+	name: string;
+	description?: string;
+	href: Route;
+	icon?: ComponentType<{ className?: string }>;
+	bgImage?: string;
+}
+
+const servicesNavItems: ServiceNavItem[] = [
 	{
 		name: "Product Support",
 		description:
 			"Complete technical diagnostics, mobile field engineering & genuine JCB spare parts.",
 		href: "/services/product-support" as Route,
 		icon: Wrench,
+		bgImage: "/images/product-support.webp",
 	},
 	{
 		name: "Annual Service Contract",
@@ -91,6 +103,7 @@ const servicesNavItems = [
 			"Customized preventive maintenance agreements & 24/7 technical field SLAs across Sudan.",
 		href: "/services/annual-service-contract" as Route,
 		icon: ShieldCheck,
+		bgImage: "/images/annual-contract.webp",
 	},
 ];
 
@@ -195,6 +208,30 @@ export function Navbar() {
 
 									<div className="grid grid-cols-2 gap-3">
 										{productsNavItems.map((item) => {
+											if (item.bgImage) {
+												return (
+													<Link
+														className="group relative flex min-h-[140px] flex-col justify-end overflow-hidden rounded-lg border border-slate-800 p-4 transition-all duration-300 hover:border-[#FCAF20]/60"
+														href={item.href}
+														key={item.name}
+														onClick={() => setProductsDropdownOpen(false)}
+													>
+														<Image
+															alt={item.name}
+															className="object-cover transition-transform duration-500 group-hover:scale-105"
+															fill
+															quality={95}
+															src={item.bgImage}
+														/>
+
+														<div className="relative z-10 flex items-center gap-1 font-bold text-base text-white transition-colors group-hover:text-[#FCAF20]">
+															<span>{item.name}</span>
+															<ChevronRight className="-translate-x-1 h-4 w-4 text-[#FCAF20] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
+														</div>
+													</Link>
+												);
+											}
+
 											const Icon = item.icon;
 											return (
 												<Link
@@ -204,18 +241,22 @@ export function Navbar() {
 													onClick={() => setProductsDropdownOpen(false)}
 												>
 													<div>
-														<div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-800 bg-slate-950 text-[#FCAF20] transition-colors group-hover:border-[#FCAF20]/40 group-hover:bg-[#FCAF20]/15">
-															<Icon className="h-5 w-5" />
-														</div>
+														{Icon && (
+															<div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-800 bg-slate-950 text-[#FCAF20] transition-colors group-hover:border-[#FCAF20]/40 group-hover:bg-[#FCAF20]/15">
+																<Icon className="h-5 w-5" />
+															</div>
+														)}
 
 														<div className="mt-3 flex items-center gap-1 font-semibold text-slate-100 text-sm transition-colors group-hover:text-[#FCAF20]">
 															<span>{item.name}</span>
 															<ChevronRight className="-translate-x-1 h-3.5 w-3.5 text-[#FCAF20] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
 														</div>
 
-														<p className="mt-1.5 line-clamp-3 text-slate-400 text-xs leading-relaxed">
-															{item.description}
-														</p>
+														{item.description && (
+															<p className="mt-1.5 line-clamp-3 text-slate-400 text-xs leading-relaxed">
+																{item.description}
+															</p>
+														)}
 													</div>
 												</Link>
 											);
@@ -363,6 +404,30 @@ export function Navbar() {
 
 									<div className="grid grid-cols-2 gap-3">
 										{servicesNavItems.map((item) => {
+											if (item.bgImage) {
+												return (
+													<Link
+														className="group relative flex min-h-[140px] flex-col justify-end overflow-hidden rounded-lg border border-slate-800 p-4 transition-all duration-300 hover:border-[#FCAF20]/60"
+														href={item.href}
+														key={item.name}
+														onClick={() => setServicesDropdownOpen(false)}
+													>
+														<Image
+															alt={item.name}
+															className="object-cover transition-transform duration-500 group-hover:scale-105"
+															fill
+															quality={95}
+															src={item.bgImage}
+														/>
+
+														<div className="relative z-10 flex items-center gap-1 font-bold text-base text-white transition-colors group-hover:text-[#FCAF20]">
+															<span>{item.name}</span>
+															<ChevronRight className="-translate-x-1 h-4 w-4 text-[#FCAF20] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
+														</div>
+													</Link>
+												);
+											}
+
 											const Icon = item.icon;
 											return (
 												<Link
@@ -372,18 +437,22 @@ export function Navbar() {
 													onClick={() => setServicesDropdownOpen(false)}
 												>
 													<div>
-														<div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-800 bg-slate-950 text-[#FCAF20] transition-colors group-hover:border-[#FCAF20]/40 group-hover:bg-[#FCAF20]/15">
-															<Icon className="h-5 w-5" />
-														</div>
+														{Icon && (
+															<div className="flex h-10 w-10 items-center justify-center rounded-lg border border-slate-800 bg-slate-950 text-[#FCAF20] transition-colors group-hover:border-[#FCAF20]/40 group-hover:bg-[#FCAF20]/15">
+																<Icon className="h-5 w-5" />
+															</div>
+														)}
 
 														<div className="mt-3 flex items-center gap-1 font-semibold text-slate-100 text-sm transition-colors group-hover:text-[#FCAF20]">
 															<span>{item.name}</span>
 															<ChevronRight className="-translate-x-1 h-3.5 w-3.5 text-[#FCAF20] opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
 														</div>
 
-														<p className="mt-1.5 line-clamp-3 text-slate-400 text-xs leading-relaxed">
-															{item.description}
-														</p>
+														{item.description && (
+															<p className="mt-1.5 line-clamp-3 text-slate-400 text-xs leading-relaxed">
+																{item.description}
+															</p>
+														)}
 													</div>
 												</Link>
 											);
