@@ -23,82 +23,17 @@ interface NewsArticle {
 	featured?: boolean;
 }
 
-const ARTICLES_DATA: NewsArticle[] = [
-	{
-		id: "telehandler-expansion",
-		title:
-			"Delta Equipment Expands JCB Telehandler Fleet Across Major Infrastructure Projects in Sudan",
-		excerpt:
-			"New shipment of JCB 540-170 Loadalls delivered to support high-rise construction and mining operations with 17m reach capabilities.",
-		category: "Fleet Expansion",
-		date: "July 18, 2026",
-		readTime: "4 min read",
-		image: "/images/info-1.webp",
-		featured: true,
-	},
-	{
-		id: "livelink-telematics-update",
-		title:
-			"JCB LiveLink 4.0: Real-Time Remote Diagnostics & Fuel Efficiency Optimization",
-		excerpt:
-			"How advanced satellite telematics are empowering equipment managers across Sudan to eliminate idle time and predict maintenance needs.",
-		category: "Telematics Tech",
-		date: "June 28, 2026",
-		readTime: "5 min read",
-		image: "/images/info-2.webp",
-	},
-	{
-		id: "desert-maintenance-guide",
-		title:
-			"Heavy Machinery Desert Guide: Optimizing Excavator Performance in High Temperatures",
-		excerpt:
-			"Essential OEM preventive maintenance practices for JCB tracked excavators operating under extreme heat and heavy dust conditions.",
-		category: "Field Guide",
-		date: "May 14, 2026",
-		readTime: "6 min read",
-		image: "/images/product-details/140.webp",
-	},
-	{
-		id: "jcb-3cx-versatility",
-		title:
-			"Why the JCB 3CX Backhoe Loader Remains Sudan's Gold Standard Construction Partner",
-		excerpt:
-			"Versatility, fuel economy, and exceptional resale value make the 3CX backhoe loader the preferred choice for contractors in Khartoum and Port Sudan.",
-		category: "Machinery Spotlight",
-		date: "April 02, 2026",
-		readTime: "4 min read",
-		image: "/images/machines.webp",
-	},
-	{
-		id: "atbara-depot-expansion",
-		title:
-			"Delta Equipment Upgrades Atbara Service Depot with Advanced Hydraulic Diagnostic Benches",
-		excerpt:
-			"New high-pressure hydraulic testing facilities ensure faster turnaround times for JCB excavator pumps and cylinder rebuilds.",
-		category: "Dealer Network",
-		date: "March 19, 2026",
-		readTime: "3 min read",
-		image: "/images/attachments.webp",
-	},
-];
+interface InsightsGridSectionProps {
+	blogs?: NewsArticle[];
+}
 
-const CATEGORIES = [
-	"All Topics",
-	"Fleet Expansion",
-	"Telematics Tech",
-	"Field Guide",
-	"Machinery Spotlight",
-	"Dealer Network",
-];
-
-export function InsightsGridSection() {
+export function InsightsGridSection({ blogs = [] }: InsightsGridSectionProps) {
 	const [activeCategory, setActiveCategory] = useState("All Topics");
 	const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(
 		null
 	);
 
-
-	const filteredArticles = ARTICLES_DATA.filter((a) => {
+	const filteredArticles = blogs.filter((a) => {
 		if (activeCategory === "All Topics") return true;
 		return a.category === activeCategory;
 	});
@@ -118,7 +53,8 @@ export function InsightsGridSection() {
 					</div>
 
 					<div className="flex flex-wrap gap-2">
-						{CATEGORIES.map((cat) => (
+						{/* Extract unique categories dynamically, with "All Topics" always first */}
+						{["All Topics", ...Array.from(new Set(blogs.map(b => b.category)))].map((cat) => (
 							<button
 								className={cn(
 									"cursor-pointer rounded-lg border px-4 py-2 font-bold text-xs transition-all",

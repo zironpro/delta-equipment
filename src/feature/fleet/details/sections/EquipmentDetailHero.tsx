@@ -10,9 +10,10 @@ import type { EquipmentItem } from "@/data/fleetData";
 
 interface EquipmentDetailHeroProps {
 	item: EquipmentItem;
+	uiData: any;
 }
 
-export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
+export function EquipmentDetailHero({ item, uiData }: EquipmentDetailHeroProps) {
 	return (
 		<div className="w-full bg-white pt-16 font-sans">
 			{/* Full Width & Screen Height Product Showcase Hero Banner */}
@@ -50,16 +51,17 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 								className="btn-curve btn-curve-dark inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-slate-950 px-5 font-bold text-sm text-white shadow-md transition-all active:scale-[0.98]"
 								href={"/contact" as Route}
 							>
-								<span>Get Quote</span>
+								<span>{uiData?.getQuote || "Get Quote"}</span>
 								<ArrowUpRight className="h-4 w-4" />
 							</Link>
 
 							<button
 								className="btn-curve btn-curve-outline inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 font-semibold text-slate-800 text-sm shadow-xs transition-colors"
 								onClick={() => {
+									const suffix = uiData?.brochureSuffix || "Specification Sheet\n\nFor official sales & inquiries in Sudan, contact Delta Equipment (info@deltaequipment.sd)";
 									const blob = new Blob(
 										[
-											`JCB ${item.name} Specification Sheet\n\nTagline: ${item.tagline}\nCategory: ${item.category}\n\nFor official sales & inquiries in Sudan, contact Delta Equipment (info@deltaequipment.sd)`,
+											`JCB ${item.name} ${suffix}\n\nTagline: ${item.tagline}\nCategory: ${item.category}`,
 										],
 										{ type: "text/plain;charset=utf-8" }
 									);
@@ -75,7 +77,7 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 								type="button"
 							>
 								<Download className="h-4 w-4 text-slate-600" />
-								<span>Download Brochure</span>
+								<span>{uiData?.downloadBrochure || "Download Brochure"}</span>
 							</button>
 						</div>
 					</div>
@@ -86,7 +88,7 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 							<div className="flex items-center gap-2 text-slate-500">
 								<Weight className="h-4 w-4 text-[#d69110]" />
 								<span className="font-semibold text-slate-500 text-xs uppercase">
-									Operating Weight
+									{uiData?.operatingWeight || "Operating Weight"}
 								</span>
 							</div>
 							<p className="mt-1 font-bold font-heading text-lg text-slate-950">
@@ -98,7 +100,7 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 							<div className="flex items-center gap-2 text-slate-500">
 								<Gauge className="h-4 w-4 text-[#d69110]" />
 								<span className="font-semibold text-slate-500 text-xs uppercase">
-									Engine Power
+									{uiData?.enginePower || "Engine Power"}
 								</span>
 							</div>
 							<p className="mt-1 font-bold font-heading text-lg text-slate-950">
@@ -110,7 +112,7 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 							<div className="rounded-lg border border-slate-200/80 bg-white p-4 shadow-xs">
 								<div className="flex items-center gap-2 text-slate-500">
 									<span className="font-semibold text-slate-500 text-xs uppercase">
-										Bucket Capacity
+										{uiData?.bucketCapacity || "Bucket Capacity"}
 									</span>
 								</div>
 								<p className="mt-1 font-bold font-heading text-lg text-slate-950">

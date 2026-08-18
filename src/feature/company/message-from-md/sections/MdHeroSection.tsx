@@ -1,6 +1,10 @@
 "use client";
 
-export function MdHeroSection() {
+export function MdHeroSection({ content }: { content?: any }) {
+	const title = content?.title || "MESSAGE FROM THE MANAGING DIRECTOR";
+	const subtitle = content?.subtitle || "Leadership Statement";
+	const description = content?.description || "Our commitment to Sudan's economic growth, engineering excellence, and enduring customer partnerships.";
+
 	return (
 		<section className="relative flex min-h-[45vh] flex-col justify-center overflow-hidden bg-[#FAF6F0] pt-28 pb-16 text-slate-950 font-sans border-b border-slate-200/80">
 			{/* Geometric line pattern background */}
@@ -26,18 +30,18 @@ export function MdHeroSection() {
 				{/* Subtitle Label */}
 				<div className="inline-block">
 					<span className="font-bold text-[#EAA800] text-sm uppercase tracking-widest sm:text-base">
-						Leadership Statement
+						{subtitle}
 					</span>
 				</div>
 
 				{/* Main Centered Headline */}
 				<h1 className="mx-auto mt-3 max-w-4xl font-manrope font-normal text-3xl text-slate-950 uppercase leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-					MESSAGE FROM THE MANAGING DIRECTOR
+					{title}
 				</h1>
 
 				{/* Subdescription */}
 				<p className="mx-auto mt-6 max-w-2xl text-center font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
-					Our commitment to Sudan&apos;s economic growth, engineering excellence, and enduring customer partnerships.
+					{description}
 				</p>
 			</div>
 		</section>

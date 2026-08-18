@@ -6,14 +6,14 @@ import { MiningIndustrialSection } from "./sections/MiningIndustrialSection";
 import { NationwidePresenceSection } from "./sections/NationwidePresenceSection";
 import { IndustrialGrowthSection } from "./sections/IndustrialGrowthSection";
 
-export default function AboutUsPage() {
+export default function AboutUsPage({ mdxData }: { mdxData?: any }) {
 	return (
 		<main className="min-h-screen bg-[#FAF6F0] font-sans text-slate-900 selection:bg-[#FCAF20] selection:text-slate-950">
-			<AboutHeroSection />
-			<WhoWeAreInteractiveSection />
-			<MiningIndustrialSection />
-			<NationwidePresenceSection />
-			<IndustrialGrowthSection />
+			<AboutHeroSection content={mdxData?.heroData} />
+			<WhoWeAreInteractiveSection content={mdxData?.whoWeAreData} />
+			<MiningIndustrialSection content={mdxData?.miningData} />
+			<NationwidePresenceSection content={mdxData?.presenceData} />
+			<IndustrialGrowthSection content={mdxData?.growthData} />
 		</main>
 	);
 }

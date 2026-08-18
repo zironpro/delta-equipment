@@ -15,45 +15,8 @@ interface FaqItem {
 	category: string;
 }
 
-const FAQ_ITEMS: FaqItem[] = [
-	{
-		id: "faq-1",
-		category: "Equipment & Machinery",
-		question: "What heavy machinery lines are available through Delta Equipment in Sudan?",
-		answer:
-			"As Sudan's authorized JCB dealer, we supply the full official lineup of heavy machinery including Excavators, Backhoe Loaders, Wheel Loaders, Telescopic Handlers (Telehandlers), Compaction Rollers, and High-Output Diesel Generators engineered specifically for tropicalized extreme environments.",
-	},
-	{
-		id: "faq-2",
-		category: "Spare Parts & Warranty",
-		question: "Do you supply 100% genuine OEM JCB spare parts and warranty coverage?",
-		answer:
-			"Yes, 100% of our spare parts inventory consists of authentic factory-certified OEM JCB components. Every new JCB machine purchase comes backed by full manufacturer warranty, local technical inspection, and genuine part replacements.",
-	},
-	{
-		id: "faq-3",
-		category: "Field Support & Maintenance",
-		question: "How quickly can mobile technical support deploy to remote mining or construction job sites?",
-		answer:
-			"Our 24/7 mobile field support units are strategically stationed across Sudan's key mining and industrial hubs (including River Nile, Northern, and Red Sea states). Certified field engineers equipped with diagnostic units and replacement parts can deploy directly to your job site within hours.",
-	},
-	{
-		id: "faq-4",
-		category: "Customization & Leasing",
-		question: "Can Delta Equipment customize machinery specs or offer flexible fleet leasing packages?",
-		answer:
-			"Yes. We offer turnkey fleet sizing assessments, operational leasing agreements, heavy-duty rock attachments, reinforced cooling packages for high ambient temperatures, and certified operator training tailored to your project requirements.",
-	},
-	{
-		id: "faq-5",
-		category: "Quotations & Inquiries",
-		question: "How can I schedule a machine demonstration or request an official quotation?",
-		answer:
-			"You can request an official price quotation through our online contact form, speak directly with our sales engineering team via hotline, or visit our central showroom in Khartoum for live equipment walkarounds and technical consultations.",
-	},
-];
-
-export function FaqSection() {
+export function FaqSection({ content }: { content?: any }) {
+	const data = content;
 	const [openId, setOpenId] = useState<string | null>("faq-1");
 
 	const toggleFaq = (id: string) => {
@@ -71,7 +34,7 @@ export function FaqSection() {
 							className="reveal-on-scroll text-reveal-up font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-5xl"
 							data-animate="fast-up"
 						>
-							Everything You Need to Know About Delta & JCB Operations
+							{data?.title}
 						</h2>
 					</div>
 
@@ -80,14 +43,14 @@ export function FaqSection() {
 							className="reveal-on-scroll text-reveal-up font-sans text-base text-slate-600 leading-relaxed sm:text-lg"
 							data-animate="fast-up"
 						>
-							Find answers to common questions regarding machinery procurement, genuine JCB spare parts, field support, and custom fleet solutions.
+							{data?.desc}
 						</p>
 					</div>
 				</div>
 
 				{/* Interactive FAQ Accordion Grid */}
 				<div className="mt-12 space-y-4">
-					{FAQ_ITEMS.map((item, idx) => {
+					{data?.faqItems?.map((item: any, idx: number) => {
 						const isOpen = openId === item.id;
 						return (
 							<div
@@ -155,17 +118,17 @@ export function FaqSection() {
 						</div>
 						<div>
 							<h4 className="font-manrope font-normal text-lg text-slate-950 tracking-tight">
-								Have a Specific Machinery Requirement?
+								{data?.supportTitle}
 							</h4>
 							<p className="font-sans text-slate-600 text-xs sm:text-sm">
-								Our sales engineers are ready to assist with custom specs & quotations.
+								{data?.supportDesc}
 							</p>
 						</div>
 					</div>
 
 					<Link href={"/contact" as Route}>
 						<Button className="h-10 cursor-pointer bg-[#FCAF20] px-5 font-bold font-sans text-slate-950 text-xs shadow-xs transition-colors hover:bg-amber-400">
-							<span>Speak to Specialist</span>
+							<span>{data?.supportButton}</span>
 						</Button>
 					</Link>
 				</div>

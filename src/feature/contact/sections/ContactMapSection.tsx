@@ -102,7 +102,8 @@ const MAP_PROVIDERS = [
 	},
 ];
 
-export function ContactMapSection() {
+export function ContactMapSection({ content }: { content?: any }) {
+	const data = content;
 	const [primaryUrl, setPrimaryUrl] = useState(MAP_PROVIDERS[0].url);
 	const [isOpen, setIsOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement>(null);
@@ -142,7 +143,7 @@ export function ContactMapSection() {
 							target="_blank"
 						>
 							<Navigation className="h-4 w-4 fill-black text-black" />
-							<span>Get Directions</span>
+							<span>{data?.getDirectionsText || "Get Directions"}</span>
 						</a>
 						<button
 							aria-label="Select Map Provider"
@@ -161,7 +162,7 @@ export function ContactMapSection() {
 					{isOpen && (
 						<div className="absolute top-full left-0 z-20 mt-2 w-52 rounded-lg border border-slate-800 bg-slate-950 py-1 shadow-2xl backdrop-blur-md">
 							<div className="border-slate-800/80 border-b px-3 py-1.5 font-semibold text-[10px] text-slate-400 uppercase tracking-wider">
-								Choose Map App
+								{data?.chooseMapAppText || "Choose Map App"}
 							</div>
 							{MAP_PROVIDERS.map((provider) => (
 								<a
@@ -194,7 +195,7 @@ export function ContactMapSection() {
 					<Marker anchor="bottom" latitude={LAT} longitude={LNG}>
 						<div className="flex flex-col items-center gap-1">
 							<span className="mb-1 whitespace-nowrap font-medium text-sm text-white drop-shadow-md">
-								{LOCATION_TITLE}
+								{data?.locationTitle || LOCATION_TITLE}
 							</span>
 							<svg
 								className="drop-shadow-lg"

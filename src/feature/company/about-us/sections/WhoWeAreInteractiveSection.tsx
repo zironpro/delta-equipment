@@ -122,10 +122,21 @@ const sectionsData = [
 	},
 ];
 
-export function WhoWeAreInteractiveSection() {
+export function WhoWeAreInteractiveSection({ content }: { content?: any }) {
+	const data = content;
 	const [activeId, setActiveId] = useState("overview");
+
+	const sectionsList = data?.sectionsData || sectionsData;
 	const activeSection =
-		sectionsData.find((s) => s.id === activeId) || sectionsData[0];
+		sectionsList.find((s: any) => s.id === activeId) || sectionsList[0];
+
+	const SECTION_ICONS: Record<string, any> = {
+		overview: Building2,
+		evolution: History,
+		sectors: Layers,
+		presence: MapPin,
+	};
+	const TIMELINE_ICONS = [Zap, ShieldCheck];
 
 	return (
 		<section
@@ -136,11 +147,10 @@ export function WhoWeAreInteractiveSection() {
 				{/* Section Header */}
 				<div className="mx-auto max-w-3xl text-center">
 					<h2 className="mt-3 font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-4xl lg:text-5xl">
-						Who We Are
+						{data?.title || "Who We Are"}
 					</h2>
 					<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
-						Discover our evolution, sole dealership status, and multi-sector
-						support across Sudan.
+						{data?.desc || "Discover our evolution, sole dealership status, and multi-sector support across Sudan."}
 					</p>
 				</div>
 
@@ -148,8 +158,8 @@ export function WhoWeAreInteractiveSection() {
 				<div className="mt-14 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
 					{/* Left Vertical Menu Column */}
 					<div className="flex flex-col gap-3 lg:sticky lg:top-28 lg:col-span-4">
-						{sectionsData.map((section) => {
-							const Icon = section.icon;
+						{sectionsList.map((section: any) => {
+							const Icon = SECTION_ICONS[section.id] || Building2;
 							const isActive = section.id === activeId;
 							return (
 								<button
@@ -227,7 +237,7 @@ export function WhoWeAreInteractiveSection() {
 										{activeSection.title}
 									</h3>
 									<div className="mt-3 space-y-2.5">
-										{activeSection.content.map((paragraph, idx) => (
+										{activeSection.content.map((paragraph: string, idx: number) => (
 											<p
 												className="text-slate-700 text-sm leading-relaxed sm:text-base"
 												key={idx}
@@ -241,7 +251,7 @@ export function WhoWeAreInteractiveSection() {
 								{/* Dynamic Highlights / Lists */}
 								{activeSection.highlights && (
 									<div className="grid grid-cols-1 gap-3 border-slate-200 border-t pt-4 sm:grid-cols-2">
-										{activeSection.highlights.map((item, idx) => (
+										{activeSection.highlights.map((item: string, idx: number) => (
 											<div className="flex items-center gap-2.5" key={idx}>
 												<CheckCircle2 className="h-4.5 w-4.5 shrink-0 text-[#EAA800]" />
 												<span className="font-semibold text-slate-900 text-xs">
@@ -254,8 +264,8 @@ export function WhoWeAreInteractiveSection() {
 
 								{activeSection.timelineSteps && (
 									<div className="space-y-3 border-slate-200 border-t pt-4">
-										{activeSection.timelineSteps.map((step) => {
-											const StepIcon = step.icon;
+										{activeSection.timelineSteps.map((step: any, idx: number) => {
+											const StepIcon = TIMELINE_ICONS[idx % TIMELINE_ICONS.length] || Zap;
 											return (
 												<div
 													className="flex items-start gap-4 rounded-lg border border-slate-200 bg-white p-3.5 shadow-sm"
@@ -285,7 +295,7 @@ export function WhoWeAreInteractiveSection() {
 
 								{activeSection.sectorsList && (
 									<div className="grid grid-cols-1 gap-2.5 border-slate-200 border-t pt-4 sm:grid-cols-2">
-										{activeSection.sectorsList.map((sec) => (
+										{activeSection.sectorsList.map((sec: any) => (
 											<div
 												className="rounded-lg border border-slate-200 bg-white p-2.5 shadow-sm"
 												key={sec.name}
@@ -303,7 +313,7 @@ export function WhoWeAreInteractiveSection() {
 
 								{activeSection.regionsList && (
 									<div className="grid grid-cols-1 gap-3 border-slate-200 border-t pt-4 sm:grid-cols-2">
-										{activeSection.regionsList.map((region, idx) => (
+										{activeSection.regionsList.map((region: any, idx: number) => (
 											<div
 												className="flex items-center gap-3 rounded-lg border border-slate-200 bg-white p-3 shadow-xs transition-all hover:border-[#FCAF20]"
 												key={idx}

@@ -8,12 +8,17 @@ import Link from "next/link";
 import { ChevronDown, Clock, Mail, MapPin, PhoneCall } from "lucide-react";
 
 import { DeltaLogo } from "./DeltaLogo";
-import { cn } from "@/lib/utils";
+import { cn, getLocalizedHref } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
-export function Footer() {
+export function Footer({ data }: { data?: any }) {
 	const [equipmentOpen, setEquipmentOpen] = useState(false);
 	const [servicesOpen, setServicesOpen] = useState(false);
 	const [hqOpen, setHqOpen] = useState(false);
+
+	const pathname = usePathname();
+	const isArabic = pathname?.startsWith("/ar");
+	const currentLocale = isArabic ? "ar" : "en";
 
 	return (
 		<footer className="border-zinc-900 border-t bg-black font-sans text-slate-300">
@@ -23,7 +28,7 @@ export function Footer() {
 					{/* Brand Column (4 cols) */}
 					<div className="lg:col-span-4 lg:mb-0 mb-6">
 						<div className="flex items-center gap-4">
-							<Link className="inline-block" href={"/" as Route}>
+							<Link className="inline-block" href={getLocalizedHref(currentLocale, "/")}>
 								<DeltaLogo className="h-9 w-auto text-white" />
 							</Link>
 							<div className="h-7 w-[1px] bg-zinc-800" />
@@ -39,9 +44,7 @@ export function Footer() {
 						</div>
 
 						<p className="mt-5 max-w-sm font-sans text-slate-400 text-sm leading-relaxed">
-							Sudan&apos;s official authorized dealer for JCB heavy industrial
-							machinery, high-payload excavators, Loadall telehandlers, and
-							power generation solutions.
+							{data?.companyDescription || "Sudan's official authorized dealer for JCB heavy industrial machinery, high-payload excavators, Loadall telehandlers, and power generation solutions."}
 						</p>
 
 						{/* Social Media Links (Rounded LG SVG Icons) */}
@@ -110,7 +113,7 @@ export function Footer() {
 							onClick={() => setEquipmentOpen(!equipmentOpen)}
 							type="button"
 						>
-							<span>Equipment Spectrum</span>
+							<span>{data?.equipmentTitle || "Equipment Spectrum"}</span>
 							<ChevronDown
 								className={cn(
 									"h-4 w-4 transition-transform duration-200 lg:hidden",
@@ -124,21 +127,21 @@ export function Footer() {
 								!equipmentOpen && "hidden"
 							)}
 						>
-							{[
-								"Tracked Excavators",
-								"Telescopic Handlers",
-								"Wheel Loaders",
-								"Backhoe Loaders",
-								"Compaction Rollers",
-								"Site Dumpers",
-								"Power Generators",
-							].map((item) => (
-								<li key={item}>
+							{(data?.equipmentLinks || [
+								{ label: "Tracked Excavators", href: "/fleet?category=excavators" },
+								{ label: "Telescopic Handlers", href: "/fleet?category=telehandlers" },
+								{ label: "Wheel Loaders", href: "/fleet?category=wheel-loaders" },
+								{ label: "Backhoe Loaders", href: "/fleet?category=backhoes" },
+								{ label: "Compaction Rollers", href: "/fleet?category=compaction" },
+								{ label: "Site Dumpers", href: "/fleet?category=dumpers" },
+								{ label: "Power Generators", href: "/fleet?category=power" },
+							]).map((item: any) => (
+								<li key={item.label}>
 									<Link
 										className="inline-flex items-center text-slate-400 transition-colors hover:text-[#FFB800]"
-										href={"/fleet" as Route}
+										href={getLocalizedHref(currentLocale, item.href as Route)}
 									>
-										<span>{item}</span>
+										<span>{item.label}</span>
 									</Link>
 								</li>
 							))}
@@ -152,7 +155,7 @@ export function Footer() {
 							onClick={() => setServicesOpen(!servicesOpen)}
 							type="button"
 						>
-							<span>Services</span>
+							<span>{data?.servicesTitle || "Services"}</span>
 							<ChevronDown
 								className={cn(
 									"h-4 w-4 transition-transform duration-200 lg:hidden",
@@ -166,7 +169,7 @@ export function Footer() {
 								!servicesOpen && "hidden"
 							)}
 						>
-							{[
+							{(data?.servicesLinks || [
 								{
 									label: "24/7 Field Support",
 									href: "/services/product-support",
@@ -187,11 +190,11 @@ export function Footer() {
 									label: "Preventive Maintenance",
 									href: "/services/annual-service-contract",
 								},
-							].map((item) => (
+							]).map((item: any) => (
 								<li key={item.label}>
 									<Link
 										className="inline-flex items-center text-slate-400 transition-colors hover:text-[#FFB800]"
-										href={item.href as Route}
+										href={getLocalizedHref(currentLocale, item.href as Route)}
 									>
 										<span>{item.label}</span>
 									</Link>
@@ -207,7 +210,7 @@ export function Footer() {
 							onClick={() => setHqOpen(!hqOpen)}
 							type="button"
 						>
-							<span>Sudan Headquarters</span>
+							<span>{data?.hqTitle || "Sudan Headquarters"}</span>
 							<ChevronDown
 								className={cn(
 									"h-4 w-4 transition-transform duration-200 lg:hidden",
@@ -224,30 +227,30 @@ export function Footer() {
 							<li className="flex items-start gap-3">
 								<MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#FFB800]" />
 								<span>
-									Khartoum Industrial Zone, Al Amarat, Khartoum, Sudan
+									{data?.hqAddress || "Khartoum Industrial Zone, Al Amarat, Khartoum, Sudan"}
 								</span>
 							</li>
 							<li className="flex items-center gap-3">
 								<PhoneCall className="h-4 w-4 shrink-0 text-[#FFB800]" />
 								<a
 									className="font-mono transition-colors hover:text-[#FFB800]"
-									href="tel:+249183456789"
+									href={`tel:${data?.hqPhone?.replace(/\s/g, '') || "+249183456789"}`}
 								>
-									+249 183 456 789
+									{data?.hqPhone || "+249 183 456 789"}
 								</a>
 							</li>
 							<li className="flex items-center gap-3">
 								<Mail className="h-4 w-4 shrink-0 text-[#FFB800]" />
 								<a
 									className="transition-colors hover:text-[#FFB800]"
-									href="mailto:info@deltaequipment.sd"
+									href={`mailto:${data?.hqEmail || "info@deltaequipment.sd"}`}
 								>
-									info@deltaequipment.sd
+									{data?.hqEmail || "info@deltaequipment.sd"}
 								</a>
 							</li>
 							<li className="flex items-center gap-3">
 								<Clock className="h-4 w-4 shrink-0 text-[#FFB800]" />
-								<span>Mon – Sat: 8:00 AM – 5:00 PM</span>
+								<span>{data?.hqHours || "Mon – Sat: 8:00 AM – 5:00 PM"}</span>
 							</li>
 						</ul>
 					</div>
@@ -256,12 +259,11 @@ export function Footer() {
 				{/* Bottom Sub-footer */}
 				<div className="mt-14 flex flex-col items-center justify-between gap-4 border-zinc-900 border-t pt-8 font-sans text-slate-500 text-xs sm:flex-row">
 					<p>
-						© 2026 DELTA EQUIPMENT. Official JCB Dealer in Sudan. All rights
-						reserved.
+						{data?.copyright || "© 2026 DELTA EQUIPMENT. Official JCB Dealer in Sudan. All rights reserved."}
 					</p>
 
 					<p className="text-slate-400">
-						Designed &amp; Developed by{" "}
+						{data?.developerCredit || "Designed & Developed by"}{" "}
 						<a
 							className="font-medium text-white transition-colors hover:text-[#FFB800] hover:underline"
 							href="https://zironpro.com"

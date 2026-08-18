@@ -16,51 +16,8 @@ import {
 	CarouselItem,
 } from "@/components/ui/carousel";
 
-interface CategoryCard {
-	id: string;
-	title: string;
-	image: string;
-}
-
-const MACHINERY_CATEGORIES: CategoryCard[] = [
-	{
-		id: "excavators",
-		title: "Excavators",
-		image: "/images/catagory/escavator.webp",
-	},
-	{
-		id: "telehandlers",
-		title: "Telescopic Handlers",
-		image: "/images/catagory/telescopic-handlers.webp",
-	},
-	{
-		id: "wheel-loaders",
-		title: "Wheel Loaders",
-		image: "/images/catagory/wheel-loaders.webp",
-	},
-	{
-		id: "backhoes",
-		title: "Backhoe Loaders",
-		image: "/images/catagory/backheo-loaders.webp",
-	},
-	{
-		id: "compaction",
-		title: "Compaction Rollers",
-		image: "/images/catagory/compactors.webp",
-	},
-	{
-		id: "skid-steer",
-		title: "Skid Steer Loaders",
-		image: "/images/catagory/skid-steers-loaders.webp",
-	},
-	{
-		id: "power",
-		title: "Generators",
-		image: "/images/catagory/generators.webp",
-	},
-];
-
-export function CategorySection() {
+export function CategorySection({ content }: { content?: any }) {
+	const data = content;
 	const plugin = React.useRef(
 		Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
 	);
@@ -72,14 +29,14 @@ export function CategorySection() {
 				<div className="flex flex-col justify-between gap-6 border-slate-200/80 border-b pb-5 md:flex-row md:items-end">
 					<div className="max-w-2xl">
 						<h2 className="font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-5xl">
-							Select your product
+							{data?.title}
 						</h2>
 					</div>
 
 					<div className="flex items-center gap-3 self-start md:self-auto">
 						<Link href={"/fleet" as Route}>
 							<Button className="cursor-pointer border border-slate-900 bg-slate-950 font-bold font-sans text-white shadow-md transition-colors hover:border-slate-800 hover:bg-slate-800">
-								<span>View Full Catalog</span>
+								<span>{data?.button1}</span>
 								<ArrowRight className="ml-2 h-4 w-4" />
 							</Button>
 						</Link>
@@ -97,7 +54,7 @@ export function CategorySection() {
 						plugins={[plugin.current]}
 					>
 						<CarouselContent className="-ml-6 pt-16 pb-6">
-							{MACHINERY_CATEGORIES.map((category) => (
+							{data?.categories?.map((category: any) => (
 								<CarouselItem
 									className="basis-full pl-6 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
 									key={category.id}
@@ -140,18 +97,17 @@ export function CategorySection() {
 						</div>
 						<div>
 							<h4 className="font-manrope font-semibold text-slate-950 text-xl">
-								Official JCB Warranty & Genuine Parts Guaranteed
+								{data?.dealerTitle}
 							</h4>
 							<p className="mt-0.5 font-sans text-slate-600 text-sm">
-								Every machine comes with factory-backed JCB warranty, OEM spare
-								parts support, and 24/7 field service across Sudan.
+								{data?.dealerDesc}
 							</p>
 						</div>
 					</div>
 
 					<Link href={"/contact" as Route}>
 						<Button className="shrink-0 cursor-pointer bg-slate-950 font-bold font-sans text-white hover:bg-slate-800">
-							<span>Request Fleet Quote</span>
+							<span>{data?.button2}</span>
 						</Button>
 					</Link>
 				</div>

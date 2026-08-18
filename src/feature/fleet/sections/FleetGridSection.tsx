@@ -8,14 +8,14 @@ import { SearchX, Sparkles } from "lucide-react";
 import {
 	type EquipmentItem,
 	FLEET_CATEGORIES,
-	FLEET_ITEMS,
 } from "@/data/fleetData";
 
 import { EquipmentCard } from "../components/EquipmentCard";
 import { EquipmentFilter } from "../components/EquipmentFilter";
 import { SpecModal } from "../components/SpecModal";
 
-function FleetGridContent() {
+function FleetGridContent({ content, fleetItems, locale }: { content?: any; fleetItems: EquipmentItem[]; locale: string }) {
+	const data = content;
 	const searchParams = useSearchParams();
 	const [selectedCategory, setSelectedCategory] = useState<string>("all");
 	const [searchQuery, setSearchQuery] = useState<string>("");
@@ -34,18 +34,18 @@ function FleetGridContent() {
 	const categoryListWithCounts = useMemo(() => {
 		return FLEET_CATEGORIES.map((cat) => {
 			if (cat.id === "all") {
-				return { ...cat, count: FLEET_ITEMS.length };
+				return { ...cat, count: fleetItems.length };
 			}
-			const count = FLEET_ITEMS.filter(
+			const count = fleetItems.filter(
 				(item) => item.category === cat.id
 			).length;
 			return { ...cat, count };
 		});
-	}, []);
+	}, [fleetItems]);
 
 	// Filter and sort items dynamically
 	const filteredItems = useMemo(() => {
-		let result = [...FLEET_ITEMS];
+		let result = [...fleetItems];
 
 		// Category filter
 		if (selectedCategory !== "all") {
@@ -73,7 +73,7 @@ function FleetGridContent() {
 		}
 
 		return result;
-	}, [selectedCategory, searchQuery, sortBy]);
+	}, [selectedCategory, searchQuery, sortBy, fleetItems]);
 
 	return (
 		<section
@@ -85,7 +85,7 @@ function FleetGridContent() {
 				{/* Header */}
 				<div className="flex flex-col space-y-2 border-slate-200/80 border-b pb-6">
 					<h2 className="font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-5xl">
-						Heavy Duty Machinery
+						{data?.title || "Heavy Duty Machinery"}
 					</h2>
 				</div>
 
@@ -109,6 +109,7 @@ function FleetGridContent() {
 							<EquipmentCard
 								item={item}
 								key={item.id}
+								locale={locale}
 								onViewSpecs={(selected) => setSelectedSpecItem(selected)}
 							/>
 						))}
@@ -119,11 +120,10 @@ function FleetGridContent() {
 							<SearchX className="h-8 w-8" />
 						</div>
 						<h3 className="font-bold font-heading text-slate-950 text-xl">
-							No Equipment Found
+							{data?.noResultsTitle || "No Equipment Found"}
 						</h3>
 						<p className="mt-2 max-w-md text-slate-600 text-sm">
-							We couldn&apos;t find any machines matching &quot;{searchQuery}
-							&quot;. Try clearing filters or searching for another keyword.
+							{data?.noResultsDesc || `We couldn't find any machines matching "${searchQuery}". Try clearing filters or searching for another keyword.`}
 						</p>
 						<button
 							className="mt-6 inline-flex items-center gap-2 rounded-lg bg-slate-950 px-5 py-2.5 font-bold text-white text-xs transition-all hover:bg-slate-800"
@@ -134,7 +134,7 @@ function FleetGridContent() {
 							type="button"
 						>
 							<Sparkles className="h-4 w-4 text-[#FCAF20]" />
-							<span>Reset All Filters</span>
+							<span>{data?.resetFiltersText || "Reset All Filters"}</span>
 						</button>
 					</div>
 				)}
@@ -149,10 +149,10 @@ function FleetGridContent() {
 	);
 }
 
-export function FleetGridSection() {
+export function FleetGridSection({ content, fleetItems, locale }: { content?: any; fleetItems: EquipmentItem[]; locale: string }) {
 	return (
 		<Suspense fallback={null}>
-			<FleetGridContent />
+			<FleetGridContent content={content} fleetItems={fleetItems} locale={locale} />
 		</Suspense>
 	);
 }

@@ -4,11 +4,28 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
 import { ArrowUpRight, Quote } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 import { Button } from "@/components/ui/button";
 import { DeltaLogo } from "@/components/layout/DeltaLogo";
 
-export function MdLetterSection() {
+export function MdLetterSection({ content }: { content?: any }) {
+	const data = {
+		companyName: content?.companyName || "DELTA EQUIPMENT CO. LTD.",
+		companySubtitle: content?.companySubtitle || "Sole Authorized Dealer for JCB in Sudan",
+		locations: content?.locations || "Khartoum • Atbara • Al-Obeidia • Abu Hamad",
+		salutation: content?.salutation || "Dear Valued Customers & Partners,",
+		paragraph1: content?.paragraph1 || "Welcome to **Delta Equipment**, the sole authorized JCB dealer in Sudan. It is my privilege to introduce our company and the comprehensive range of heavy equipment, power solutions, and technical services we provide to support Sudan's growing industrial and infrastructure sectors.",
+		paragraph2: content?.paragraph2 || "Since beginning our journey in 2018 with JCB diesel generators, we have grown to become the official sole representative for JCB machinery in Sudan. Today, we serve the mining, construction, agriculture, and infrastructure sectors with genuine JCB equipment, spare parts, and responsive technical support backed by over 15 years of industry experience.",
+		quote: content?.quote || '"Our team is committed to providing reliable solutions that keep your operations running efficiently, even in the most demanding conditions. From the gold mining regions of the Nile River State to infrastructure projects across Khartoum and beyond, Delta Equipment stands with you every step of the way."',
+		paragraph3: content?.paragraph3 || "We take great pride in supporting Sudan's development and building long-term partnerships with our customers. Thank you for choosing Delta Equipment as your trusted JCB partner.",
+		signOff: content?.signOff || "Sincerely,",
+		title: content?.title || "Managing Director",
+		signOffCompany: content?.signOffCompany || "Delta Equipment • Official JCB Dealer Sudan",
+		btnExplore: content?.btnExplore || "Explore Machinery Catalog",
+		btnAbout: content?.btnAbout || "About Delta"
+	};
+
 	return (
 		<section className="bg-[#FAF6F0] py-16 sm:py-24 font-sans text-slate-900">
 			<div className="container">
@@ -35,69 +52,69 @@ export function MdLetterSection() {
 
 							{/* Right Letterhead Details */}
 							<div className="text-left sm:text-right font-sans text-xs text-slate-700 leading-tight space-y-1">
-								<p className="font-bold text-slate-950 text-xs">DELTA EQUIPMENT CO. LTD.</p>
-								<p className="text-[11px] text-slate-600">Sole Authorized Dealer for JCB in Sudan</p>
-								<p className="text-[11px] text-slate-500 font-medium">Khartoum • Atbara • Al-Obeidia • Abu Hamad</p>
+								<p className="font-bold text-slate-950 text-xs">{data.companyName}</p>
+								<p className="text-[11px] text-slate-600">{data.companySubtitle}</p>
+								<p className="text-[11px] text-slate-500 font-medium">{data.locations}</p>
 							</div>
 						</div>
 
 						{/* Header Salutation */}
 						<div className="pt-8">
 							<span className="font-extrabold text-lg text-slate-950 sm:text-xl">
-								Dear Valued Customers & Partners,
+								{data.salutation}
 							</span>
 						</div>
 
 						{/* Message Body */}
 						<div className="mt-6 space-y-6 font-medium text-lg text-slate-800 leading-relaxed">
-							<p>
-								Welcome to <strong>Delta Equipment</strong>, the sole authorized JCB dealer in Sudan. It is my privilege to introduce our company and the comprehensive range of heavy equipment, power solutions, and technical services we provide to support Sudan&apos;s growing industrial and infrastructure sectors.
-							</p>
+							<div className="prose prose-slate max-w-none text-slate-800 font-medium text-lg prose-strong:font-bold prose-strong:text-slate-950">
+								<ReactMarkdown>{data.paragraph1}</ReactMarkdown>
+							</div>
 
-							<p>
-								Since beginning our journey in 2018 with JCB diesel generators, we have grown to become the official sole representative for JCB machinery in Sudan. Today, we serve the mining, construction, agriculture, and infrastructure sectors with genuine JCB equipment, spare parts, and responsive technical support backed by over 15 years of industry experience.
-							</p>
+							<div className="prose prose-slate max-w-none text-slate-800 font-medium text-lg">
+								<ReactMarkdown>{data.paragraph2}</ReactMarkdown>
+							</div>
 
 							{/* Highlight Quote Box */}
 							<div className="my-8 rounded-lg border border-amber-200 bg-amber-50/60 p-6 sm:p-8">
 								<div className="flex gap-4">
 									<Quote className="h-8 w-8 text-[#EAA800] shrink-0" />
 									<p className="font-medium text-slate-950 text-base sm:text-lg italic leading-relaxed">
-										&ldquo;Our team is committed to providing reliable solutions that keep your operations running efficiently, even in the most demanding conditions. From the gold mining regions of the Nile River State to infrastructure projects across Khartoum and beyond, Delta Equipment stands with you every step of the way.&rdquo;
+										{data.quote}
 									</p>
 								</div>
 							</div>
 
-							<p>
-								We take great pride in supporting Sudan&apos;s development and building long-term partnerships with our customers. Thank you for choosing Delta Equipment as your trusted JCB partner.
-							</p>
+							<div className="prose prose-slate max-w-none text-slate-800 font-medium text-lg">
+								<ReactMarkdown>{data.paragraph3}</ReactMarkdown>
+							</div>
 						</div>
 
 						{/* Sign-off & Signature Block */}
 						<div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
 							<div>
 								<p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-									Sincerely,
+									{data.signOff}
 								</p>
 								<h3 className="mt-2 font-extrabold text-slate-950 text-lg">
-									Managing Director
+									{data.title}
 								</h3>
 								<p className="text-sm font-bold text-[#EAA800]">
-									Delta Equipment • Official JCB Dealer Sudan
+									{data.signOffCompany}
 								</p>
 							</div>
 
 							<div className="flex items-center gap-3">
 								<Link href={"/fleet" as Route}>
 									<Button className="bg-slate-950 font-bold font-sans text-white hover:bg-slate-800 text-xs h-10 px-5">
-										<span>Explore Machinery Catalog</span>
+										<span>{data.btnExplore}</span>
 										<ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
 									</Button>
 								</Link>
 
 								<Link href={"/about" as Route}>
 									<Button variant="outline" className="border-slate-300 bg-white font-semibold font-sans text-slate-900 hover:bg-slate-50 text-xs h-10 px-5">
-										<span>About Delta</span>
+										<span>{data.btnAbout}</span>
 									</Button>
 								</Link>
 							</div>

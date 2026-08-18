@@ -84,7 +84,8 @@ const socialChannels = [
 	},
 ];
 
-export function ContactFormSection() {
+export function ContactFormSection({ content }: { content?: any }) {
+	const data = content;
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const [formData, setFormData] = useState({
 		fullName: "",
@@ -108,14 +109,13 @@ export function ContactFormSection() {
 					<div className="lg:col-span-7">
 						<div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm sm:p-12">
 							<span className="font-semibold text-[#D69110] text-xs uppercase tracking-wider">
-								Official Inquiry Form
+								{data?.formTag || "Official Inquiry Form"}
 							</span>
 							<h2 className="mt-2 font-manrope font-normal text-2xl text-slate-950 tracking-tight sm:text-3xl">
-								Send Us a Message
+								{data?.formTitle || "Send Us a Message"}
 							</h2>
 							<p className="mt-2 font-sans text-base text-slate-600 leading-relaxed">
-								Fill out the form below and our JCB equipment specialists will
-								get back to you within 24 business hours.
+								{data?.formDesc || "Fill out the form below and our JCB equipment specialists will get back to you within 24 business hours."}
 							</p>
 
 							{formSubmitted ? (
@@ -124,11 +124,10 @@ export function ContactFormSection() {
 										<CheckCircle2 className="h-6 w-6 shrink-0 text-emerald-600" />
 										<div>
 											<h4 className="font-extrabold text-sm">
-												Inquiry Received Successfully!
+												{data?.successTitle || "Inquiry Received Successfully!"}
 											</h4>
 											<p className="mt-1 text-emerald-700 text-xs">
-												Thank you for contacting Delta Equipment. Our team in
-												Atbara will review your request and reach out shortly.
+												{data?.successDesc || "Thank you for contacting Delta Equipment. Our team in Atbara will review your request and reach out shortly."}
 											</p>
 										</div>
 									</div>
@@ -136,7 +135,7 @@ export function ContactFormSection() {
 										className="mt-4 h-9 cursor-pointer bg-emerald-800 px-4 text-white text-xs hover:bg-emerald-900"
 										onClick={() => setFormSubmitted(false)}
 									>
-										Send Another Inquiry
+										{data?.successBtn || "Send Another Inquiry"}
 									</Button>
 								</div>
 							) : (
@@ -144,14 +143,14 @@ export function ContactFormSection() {
 									<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 										<div>
 											<label className="mb-1.5 block font-bold text-slate-950 text-xs">
-												Full Name *
+												{data?.labelFullName || "Full Name *"}
 											</label>
 											<input
 												className="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-xs focus:border-[#EAA800] focus:outline-none"
 												onChange={(e) =>
 													setFormData({ ...formData, fullName: e.target.value })
 												}
-												placeholder="e.g., Mohamed Ahmed"
+												placeholder={data?.placeholderFullName || "e.g., Mohamed Ahmed"}
 												required
 												type="text"
 												value={formData.fullName}
@@ -160,7 +159,7 @@ export function ContactFormSection() {
 
 										<div>
 											<label className="mb-1.5 block font-bold text-slate-950 text-xs">
-												Company / Organization
+												{data?.labelCompany || "Company / Organization"}
 											</label>
 											<input
 												className="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-xs focus:border-[#EAA800] focus:outline-none"
@@ -170,7 +169,7 @@ export function ContactFormSection() {
 														companyName: e.target.value,
 													})
 												}
-												placeholder="e.g., Sudan Mining Co."
+												placeholder={data?.placeholderCompany || "e.g., Sudan Mining Co."}
 												type="text"
 												value={formData.companyName}
 											/>
@@ -180,14 +179,14 @@ export function ContactFormSection() {
 									<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 										<div>
 											<label className="mb-1.5 block font-bold text-slate-950 text-xs">
-												Phone Number *
+												{data?.labelPhone || "Phone Number *"}
 											</label>
 											<input
 												className="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-xs focus:border-[#EAA800] focus:outline-none"
 												onChange={(e) =>
 													setFormData({ ...formData, phone: e.target.value })
 												}
-												placeholder="+249 912 370 248"
+												placeholder={data?.placeholderPhone || "+249 912 370 248"}
 												required
 												type="tel"
 												value={formData.phone}
@@ -196,14 +195,14 @@ export function ContactFormSection() {
 
 										<div>
 											<label className="mb-1.5 block font-bold text-slate-950 text-xs">
-												Email Address *
+												{data?.labelEmail || "Email Address *"}
 											</label>
 											<input
 												className="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-xs focus:border-[#EAA800] focus:outline-none"
 												onChange={(e) =>
 													setFormData({ ...formData, email: e.target.value })
 												}
-												placeholder="info@deltaequip.net"
+												placeholder={data?.placeholderEmail || "info@deltaequip.net"}
 												required
 												type="email"
 												value={formData.email}
@@ -213,7 +212,7 @@ export function ContactFormSection() {
 
 									<div>
 										<label className="mb-1.5 block font-bold text-slate-950 text-xs">
-											Equipment or Service Line of Interest
+											{data?.labelInterest || "Equipment or Service Line of Interest"}
 										</label>
 										<select
 											className="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-xs focus:border-[#EAA800] focus:outline-none"
@@ -222,40 +221,30 @@ export function ContactFormSection() {
 											}
 											value={formData.interest}
 										>
-											<option value="Backhoe Loaders">
-												JCB Backhoe Loaders (3CX / 4CX)
-											</option>
-											<option value="Tracked Excavators">
-												Heavy Tracked Excavators
-											</option>
-											<option value="Wheel Loaders">
-												Wheel Loaders & Telehandlers
-											</option>
-											<option value="Diesel Generators">
-												JCB Diesel Generators (Power Solutions)
-											</option>
-											<option value="Genuine Spare Parts">
-												Genuine OEM Spare Parts
-											</option>
-											<option value="Annual Service Contract">
-												Annual Service Contract
-											</option>
-											<option value="Field Support">
-												On-Site Field Technical Support
-											</option>
+											{(data?.optionsInterest || [
+												"JCB Backhoe Loaders (3CX / 4CX)",
+												"Heavy Tracked Excavators",
+												"Wheel Loaders & Telehandlers",
+												"JCB Diesel Generators (Power Solutions)",
+												"Genuine OEM Spare Parts",
+												"Annual Service Contract",
+												"On-Site Field Technical Support"
+											]).map((option: string) => (
+												<option key={option} value={option}>{option}</option>
+											))}
 										</select>
 									</div>
 
 									<div>
 										<label className="mb-1.5 block font-bold text-slate-950 text-xs">
-											Your Message or Inquiry Details *
+											{data?.labelMessage || "Your Message or Inquiry Details *"}
 										</label>
 										<textarea
 											className="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-xs focus:border-[#EAA800] focus:outline-none"
 											onChange={(e) =>
 												setFormData({ ...formData, message: e.target.value })
 											}
-											placeholder="Please specify machinery model, quantity, project location, or specific spare parts requirements..."
+											placeholder={data?.placeholderMessage || "Please specify machinery model, quantity, project location, or specific spare parts requirements..."}
 											required
 											rows={4}
 											value={formData.message}
@@ -266,20 +255,20 @@ export function ContactFormSection() {
 										className="h-11 w-full cursor-pointer justify-center bg-slate-950 font-bold font-sans text-white text-xs hover:bg-slate-800"
 										type="submit"
 									>
-										<span>Submit Inquiry to Delta Equipment</span>
+										<span>{data?.submitBtn || "Submit Inquiry to Delta Equipment"}</span>
 										<Send className="ml-2 h-4 w-4 text-[#FCAF20]" />
 									</Button>
 
 									{/* Call Booking Prompt */}
 									<div className="mt-5 flex items-center justify-between gap-4 border-slate-100 border-t pt-4">
 										<span className="font-medium text-slate-600 text-xs">
-											Prefer to hop on a call?
+											{data?.callPromptTitle || "Prefer to hop on a call?"}
 										</span>
 										<a
 											className="inline-flex items-center gap-1.5 font-bold text-[#EAA800] text-xs hover:underline"
 											href="tel:+249912370248"
 										>
-											<span>Book a call instead</span>
+											<span>{data?.callPromptLink || "Book a call instead"}</span>
 											<ArrowUpRight className="h-3.5 w-3.5" />
 										</a>
 									</div>
@@ -293,10 +282,10 @@ export function ContactFormSection() {
 						{/* Official Location Info Card */}
 						<div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
 							<span className="font-extrabold text-[#EAA800] text-xs uppercase tracking-wider">
-								Official Head Office & Support
+								{data?.officialLocationTitle || "Official Head Office & Support"}
 							</span>
 							<h3 className="mt-2 font-extrabold text-slate-950 text-xl">
-								{officialLocation.city} Office
+								{data?.officialLocationCity || `${officialLocation.city} Office`}
 							</h3>
 
 							<div className="mt-6 space-y-4 text-slate-700 text-xs">
@@ -305,7 +294,7 @@ export function ContactFormSection() {
 									<div>
 										<span className="font-bold text-slate-950">Address:</span>
 										<p className="mt-0.5 text-slate-600 leading-relaxed">
-											{officialLocation.address}
+											{data?.officialLocationAddress || officialLocation.address}
 										</p>
 									</div>
 								</div>
@@ -335,19 +324,18 @@ export function ContactFormSection() {
 						{/* Official Social Media Channels Card */}
 						<div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
 							<span className="font-extrabold text-[#EAA800] text-xs uppercase tracking-wider">
-								Follow & Connect
+								{data?.socialTitle || "Follow & Connect"}
 							</span>
 							<h3 className="mt-1.5 font-extrabold text-slate-950 text-xl">
-								Official Social Channels
+								{data?.socialSubtitle || "Official Social Channels"}
 							</h3>
 							<p className="mt-1 text-slate-600 text-xs">
-								Stay connected with Delta Equipment across our official
-								platforms.
+								{data?.socialDesc || "Stay connected with Delta Equipment across our official platforms."}
 							</p>
 
 							<div className="mt-5 space-y-2.5">
-								{socialChannels.map((item) => {
-									const Icon = item.icon;
+								{(data?.socialChannels || socialChannels).map((item: any) => {
+									const Icon = socialChannels.find(s => s.name === item.name)?.icon || LinkedinIcon;
 									return (
 										<a
 											className="group flex items-center justify-between rounded-lg border border-slate-200 bg-[#FAF6F0] p-3 shadow-2xs transition-all hover:border-[#FCAF20] hover:bg-white"

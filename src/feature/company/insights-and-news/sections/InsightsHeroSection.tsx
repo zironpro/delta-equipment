@@ -1,6 +1,10 @@
 "use client";
 
-export function InsightsHeroSection() {
+export function InsightsHeroSection({ content }: { content?: any }) {
+	const title = content?.title || "LATEST NEWS & INSIGHTS";
+	const subtitle = content?.subtitle || "Stay Informed";
+	const description = content?.description || "Stay updated on JCB heavy machinery releases, fleet expansion announcements, satellite telematics technology, and field guides across Sudan.";
+
 	return (
 		<section className="relative flex min-h-[45vh] flex-col justify-center overflow-hidden bg-[#FAF6F0] pt-28 pb-16 text-slate-950 font-sans border-b border-slate-200/80">
 			{/* Geometric background pattern */}
@@ -26,18 +30,18 @@ export function InsightsHeroSection() {
 				{/* Top Subtitle Label */}
 				<div className="inline-block">
 					<span className="font-bold text-[#EAA800] text-sm uppercase tracking-widest sm:text-base">
-						Insights & News
+						{subtitle}
 					</span>
 				</div>
 
 				{/* Single Centered Main Heading */}
 				<h1 className="mx-auto mt-3 max-w-4xl font-manrope font-normal text-3xl text-slate-950 uppercase leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-					LATEST NEWS, FLEET EXPANSION & FIELD INSIGHTS
+					{title}
 				</h1>
 
 				{/* Sub-description */}
 				<p className="mx-auto mt-6 max-w-2xl text-center font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
-					Stay informed on JCB heavy machinery releases, LiveLink satellite telematics, desert maintenance guides, and major project developments in Sudan.
+					{description}
 				</p>
 			</div>
 		</section>

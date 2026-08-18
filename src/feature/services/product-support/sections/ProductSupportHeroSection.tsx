@@ -1,6 +1,7 @@
 "use client";
 
-export function ProductSupportHeroSection() {
+export function ProductSupportHeroSection({ content }: { content?: any }) {
+	const data = content;
 	return (
 		<section className="relative flex min-h-[45vh] flex-col justify-center overflow-hidden bg-[#FAF6F0] pt-28 pb-16 text-slate-950 font-sans border-b border-slate-200/80">
 			{/* Geometric background pattern */}
@@ -26,18 +27,18 @@ export function ProductSupportHeroSection() {
 				{/* Top Subtitle Label */}
 				<div className="inline-block">
 					<span className="font-bold text-[#EAA800] text-sm uppercase tracking-widest sm:text-base">
-						Services & Support
+						{data?.tag || "Services & Support"}
 					</span>
 				</div>
 
 				{/* Single Centered Main Heading */}
 				<h1 className="mx-auto mt-3 max-w-4xl font-manrope font-normal text-3xl text-slate-950 uppercase leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-					GENUINE JCB SPARE PARTS & TECHNICAL FIELD SUPPORT
+					{data?.title || "GENUINE JCB SPARE PARTS & TECHNICAL FIELD SUPPORT"}
 				</h1>
 
 				{/* Sub-description */}
 				<p className="mx-auto mt-6 max-w-2xl text-center font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
-					Ensuring your JCB machinery operates at peak performance with authentic spare parts inventory and rapid diagnostic field response across Sudan.
+					{data?.desc || "Ensuring your JCB machinery operates at peak performance with authentic spare parts inventory and rapid diagnostic field response across Sudan."}
 				</p>
 			</div>
 		</section>

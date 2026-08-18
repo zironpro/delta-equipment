@@ -9,15 +9,16 @@ import type { EquipmentItem } from "@/data/fleetData";
 
 interface EquipmentCardProps {
 	item: EquipmentItem;
+	locale: string;
 	onViewSpecs?: (item: EquipmentItem) => void;
 }
 
-export function EquipmentCard({ item }: EquipmentCardProps) {
+export function EquipmentCard({ item, locale }: EquipmentCardProps) {
 	return (
 		<Link
 			aria-label={`View detail page for ${item.name}`}
 			className="group relative flex aspect-square flex-col justify-between overflow-hidden rounded-xl border border-slate-200/90 bg-white p-5 text-slate-950 shadow-xs transition-all duration-500 hover:border-[#FCAF20] hover:shadow-2xl focus:outline-hidden"
-			href={`/fleet/${item.slug}`}
+			href={`/${locale}/fleet/${item.slug}`}
 		>
 			{/* Dynamic Diagonal Slash -> Expands smoothly to 100% Full Background Fill on Hover */}
 			<div className="pointer-events-none absolute inset-0 bg-gradient-to-bl from-[#FFD56B] via-[#FCAF20] to-[#F39C12]/80 opacity-90 transition-all duration-500 ease-in-out [clip-path:polygon(42%_0,100%_0,100%_100%,72%_100%)] group-hover:opacity-100 group-hover:[clip-path:polygon(0%_0,100%_0,100%_100%,0%_100%)]" />

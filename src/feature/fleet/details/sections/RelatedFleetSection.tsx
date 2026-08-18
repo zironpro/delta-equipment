@@ -2,23 +2,20 @@
 
 import { useState } from "react";
 
-import { type EquipmentItem, getRelatedEquipment } from "@/data/fleetData";
+import type { EquipmentItem } from "@/data/fleetData";
 
 import { EquipmentCard } from "../../components/EquipmentCard";
 import { SpecModal } from "../../components/SpecModal";
 
 interface RelatedFleetSectionProps {
-	currentItem: EquipmentItem;
+	relatedItems: EquipmentItem[];
+	locale: string;
+	uiData: any;
 }
 
-export function RelatedFleetSection({ currentItem }: RelatedFleetSectionProps) {
+export function RelatedFleetSection({ relatedItems, locale, uiData }: RelatedFleetSectionProps) {
 	const [selectedSpecItem, setSelectedSpecItem] =
 		useState<EquipmentItem | null>(null);
-	const relatedItems = getRelatedEquipment(
-		currentItem.id,
-		currentItem.category,
-		3
-	);
 
 	if (relatedItems.length === 0) return null;
 
@@ -27,10 +24,10 @@ export function RelatedFleetSection({ currentItem }: RelatedFleetSectionProps) {
 			<div className="container space-y-8">
 				<div className="flex flex-col space-y-2">
 					<span className="font-semibold text-[#d69110] text-xs uppercase tracking-wider">
-						Recommendations
+						{uiData?.recommendations || "Recommendations"}
 					</span>
 					<h2 className="font-bold font-heading text-2xl text-slate-950 sm:text-3xl">
-						Similar Heavy Equipment
+						{uiData?.similarEquipment || "Similar Heavy Equipment"}
 					</h2>
 				</div>
 
@@ -39,6 +36,7 @@ export function RelatedFleetSection({ currentItem }: RelatedFleetSectionProps) {
 						<EquipmentCard
 							item={item}
 							key={item.id}
+							locale={locale}
 							onViewSpecs={(selected) => setSelectedSpecItem(selected)}
 						/>
 					))}

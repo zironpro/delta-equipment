@@ -148,7 +148,7 @@ function FeatureHotspotMarker({ hotspot }: { hotspot: FeatureHotspot }) {
 				}`}
 			>
 				<span className="font-semibold text-[#D69110] text-[10px] uppercase tracking-wider">
-					Engineering Feature
+					{hotspot.tag || "Engineering Feature"}
 				</span>
 				<h4 className="mt-0.5 font-manrope font-normal text-base text-slate-950 tracking-tight">
 					{hotspot.title}
@@ -161,9 +161,10 @@ function FeatureHotspotMarker({ hotspot }: { hotspot: FeatureHotspot }) {
 	);
 }
 
-export function FeaturesShowcaseSection() {
+export function FeaturesShowcaseSection({ content }: { content?: any }) {
+	const data = content;
 	return (
-		<section className="border-slate-200/80 border-t bg-[#F6F1EA] py-16 font-sans text-slate-900 sm:py-20 lg:py-24">
+		<section className="hidden border-slate-200/80 border-t bg-[#F6F1EA] py-16 font-sans text-slate-900 sm:py-20 md:block lg:py-24">
 			<div className="container">
 				{/* Section Header */}
 				<div className="flex flex-col items-center text-center">
@@ -172,7 +173,7 @@ export function FeaturesShowcaseSection() {
 							className="reveal-on-scroll font-manrope font-normal text-3xl text-reveal-up text-slate-950 tracking-tight sm:text-5xl"
 							data-animate="fast-up"
 						>
-							Advanced Heavy Machinery Engineering & Features
+							{data?.title}
 						</h2>
 					</div>
 
@@ -181,8 +182,7 @@ export function FeaturesShowcaseSection() {
 							className="reveal-on-scroll font-sans text-base text-reveal-up text-slate-600 leading-relaxed sm:text-lg"
 							data-animate="fast-up"
 						>
-							Built with precision British engineering to deliver uncompromised
-							productivity, fuel efficiency, and operator safety across Sudan.
+							{data?.desc}
 						</p>
 					</div>
 				</div>
@@ -212,55 +212,30 @@ export function FeaturesShowcaseSection() {
 							<div className="flex items-center justify-between gap-2 border-slate-100 border-b pb-2.5">
 								<div>
 									<span className="font-semibold text-[#D69110] text-[10px] uppercase tracking-wider">
-										Featured Machinery
+										{data?.featuredTag}
 									</span>
 									<h3 className="font-manrope font-normal text-lg text-slate-950 tracking-tight sm:text-xl">
-										JCB 225LCM Heavy Excavator
+										{data?.machineTitle}
 									</h3>
 								</div>
 								<span className="inline-block shrink-0 rounded-md border border-amber-200 bg-amber-50 px-2 py-0.5 font-bold text-[#D69110] text-xs">
-									22.5 Ton
+									{data?.machineWeight}
 								</span>
 							</div>
 
 							{/* Key Feature Specs Checklist */}
 							<div className="mt-3 space-y-2">
-								<div className="flex items-center justify-between text-xs">
-									<span className="font-medium text-slate-500">
-										Operating Weight
-									</span>
-									<span className="font-bold text-slate-950">22,500 kg</span>
-								</div>
-								<div className="flex items-center justify-between text-xs">
-									<span className="font-medium text-slate-500">
-										Engine Power
-									</span>
-									<span className="font-bold text-slate-950">
-										173 HP (129 kW)
-									</span>
-								</div>
-								<div className="flex items-center justify-between text-xs">
-									<span className="font-medium text-slate-500">
-										Bucket Capacity
-									</span>
-									<span className="font-bold text-slate-950">
-										1.02 m³ Heavy Duty
-									</span>
-								</div>
-								<div className="flex items-center justify-between text-xs">
-									<span className="font-medium text-slate-500">
-										Max Dig Depth
-									</span>
-									<span className="font-bold text-slate-950">6.70 Metres</span>
-								</div>
-								<div className="flex items-center justify-between text-xs">
-									<span className="font-medium text-slate-500">
-										Hydraulic System
-									</span>
-									<span className="font-bold text-slate-950">
-										448 L/min High-Flow
-									</span>
-								</div>
+								{data?.specs?.map((spec: any, idx: number) => (
+									<div
+										className="flex items-center justify-between text-xs"
+										key={idx}
+									>
+										<span className="font-medium text-slate-500">
+											{spec.label}
+										</span>
+										<span className="font-bold text-slate-950">{spec.value}</span>
+									</div>
+								))}
 							</div>
 						</div>
 
@@ -270,13 +245,16 @@ export function FeaturesShowcaseSection() {
 							height={900}
 							priority
 							quality={100}
-							src="/images/features-img.webp"
+							src={data?.mainImage || "/images/features-img.webp"}
 							width={1600}
 						/>
 
 						{/* Interactive Feature Hotspots with Hover Lines */}
-						{FEATURE_HOTSPOTS.map((hotspot) => (
-							<FeatureHotspotMarker hotspot={hotspot} key={hotspot.id} />
+						{data?.hotspots?.map((hotspot: any) => (
+							<FeatureHotspotMarker
+								hotspot={{ ...hotspot, tag: data?.hotspotTag }}
+								key={hotspot.id}
+							/>
 						))}
 					</div>
 				</div>

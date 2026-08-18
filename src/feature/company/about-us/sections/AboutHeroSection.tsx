@@ -1,6 +1,7 @@
 "use client";
 
-export function AboutHeroSection() {
+export function AboutHeroSection({ content }: { content?: any }) {
+	const data = content;
 	const scrollToSection = (id: string) => {
 		const el = document.getElementById(id);
 		if (el) {
@@ -33,20 +34,18 @@ export function AboutHeroSection() {
 				{/* Top Subtitle Label */}
 				<div className="inline-block">
 					<span className="font-bold text-[#EAA800] text-sm uppercase tracking-widest sm:text-base">
-						About Us
+						{data?.tag || "About Us"}
 					</span>
 				</div>
 
 				{/* Single Large Centered Main Heading */}
 				<h1 className="mx-auto mt-3 max-w-5xl font-manrope font-normal text-3xl text-slate-950 uppercase leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl">
-					POWERING SUDAN&apos;S HEAVY MACHINERY & INFRASTRUCTURE
+					{data?.title || "POWERING SUDAN'S HEAVY MACHINERY & INFRASTRUCTURE"}
 				</h1>
 
 				{/* Sub-description */}
 				<p className="mx-auto mt-6 max-w-2xl text-center font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
-					Delta Equipment is the sole authorized JCB dealer in Sudan, supplying
-					heavy earthmovers, diesel generators, genuine OEM spare parts, and
-					24/7 technical support nationwide.
+					{data?.desc || "Delta Equipment is the sole authorized JCB dealer in Sudan, supplying heavy earthmovers, diesel generators, genuine OEM spare parts, and 24/7 technical support nationwide."}
 				</p>
 			</div>
 		</section>

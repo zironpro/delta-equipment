@@ -1,23 +1,25 @@
 "use client";
 
 import Link from "next/link";
-
 import { ArrowLeft, SearchX } from "lucide-react";
-
-import { getEquipmentBySlug } from "@/data/fleetData";
-
+import type { EquipmentItem } from "@/data/fleetData";
 import { EquipmentDetailHero } from "./sections/EquipmentDetailHero";
 import { EquipmentSpecsSection } from "./sections/EquipmentSpecsSection";
 import { RelatedFleetSection } from "./sections/RelatedFleetSection";
 
 interface EquipmentDetailPageProps {
-	slug: string;
+	item: EquipmentItem | undefined;
+	relatedItems: EquipmentItem[];
+	locale: string;
+	uiData: any;
 }
 
 export default function EquipmentDetailPage({
-	slug,
+	item,
+	relatedItems,
+	locale,
+	uiData,
 }: EquipmentDetailPageProps) {
-	const item = getEquipmentBySlug(slug);
 
 	if (!item) {
 		return (
@@ -27,18 +29,17 @@ export default function EquipmentDetailPage({
 						<SearchX className="h-8 w-8" />
 					</div>
 					<h1 className="font-bold font-heading text-2xl text-slate-950">
-						Machine Not Found
+						{uiData?.machineNotFound || "Machine Not Found"}
 					</h1>
 					<p className="mt-2 text-slate-600 text-sm">
-						The requested machinery model &quot;{slug}&quot; does not exist or
-						has been updated in our catalog.
+						{uiData?.machineNotFoundDesc || "The requested machinery model does not exist or has been updated in our catalog."}
 					</p>
 					<Link
 						className="mt-6 inline-flex items-center gap-2 rounded-xl bg-slate-950 px-6 py-2.5 font-bold text-white text-xs transition-colors hover:bg-slate-800"
-						href="/fleet"
+						href={`/${locale}/fleet`}
 					>
 						<ArrowLeft className="h-4 w-4" />
-						<span>Return to Fleet Catalog</span>
+						<span>{uiData?.returnToCatalog || "Return to Fleet Catalog"}</span>
 					</Link>
 				</div>
 			</div>
@@ -47,9 +48,9 @@ export default function EquipmentDetailPage({
 
 	return (
 		<div className="min-h-screen bg-white font-sans text-slate-900">
-			<EquipmentDetailHero item={item} />
-			<EquipmentSpecsSection item={item} />
-			<RelatedFleetSection currentItem={item} />
+			<EquipmentDetailHero item={item} uiData={uiData} />
+			<EquipmentSpecsSection item={item} uiData={uiData} />
+			<RelatedFleetSection relatedItems={relatedItems} locale={locale} uiData={uiData} />
 		</div>
 	);
 }

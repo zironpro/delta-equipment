@@ -6,19 +6,20 @@ import type { EquipmentItem } from "@/data/fleetData";
 
 interface EquipmentSpecsSectionProps {
 	item: EquipmentItem;
+	uiData: any;
 }
 
-export function EquipmentSpecsSection({ item }: EquipmentSpecsSectionProps) {
+export function EquipmentSpecsSection({ item, uiData }: EquipmentSpecsSectionProps) {
 	return (
 		<section className="bg-white py-12 sm:py-16 lg:py-20">
 			<div className="container space-y-12">
 				{/* Machine Overview & Description */}
 				<div className="max-w-4xl space-y-4">
 					<span className="font-semibold text-[#d69110] text-xs uppercase tracking-wider">
-						Product Overview
+						{uiData?.productOverview || "Product Overview"}
 					</span>
 					<h2 className="font-bold font-heading text-2xl text-slate-950 sm:text-3xl">
-						Engineering & Performance Details
+						{uiData?.engineeringDetails || "Engineering & Performance Details"}
 					</h2>
 					<p className="font-sans text-base text-slate-700 leading-relaxed sm:text-lg">
 						{item.description}
@@ -29,7 +30,7 @@ export function EquipmentSpecsSection({ item }: EquipmentSpecsSectionProps) {
 				<div className="rounded-2xl border border-slate-200 bg-slate-50/60 p-6 sm:p-8">
 					<h3 className="mb-6 flex items-center gap-2 font-bold font-heading text-slate-950 text-xl">
 						<Wrench className="h-5 w-5 text-[#d69110]" />
-						<span>Key Features & Operator Benefits</span>
+						<span>{uiData?.keyFeaturesTitle || "Key Features & Operator Benefits"}</span>
 					</h3>
 
 					<ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -50,7 +51,7 @@ export function EquipmentSpecsSection({ item }: EquipmentSpecsSectionProps) {
 					<div className="flex items-center gap-2 border-slate-200 border-b pb-4">
 						<FileText className="h-5 w-5 text-[#d69110]" />
 						<h3 className="font-bold font-heading text-slate-950 text-xl">
-							Technical Specifications Matrix
+							{uiData?.specificationsMatrix || "Technical Specifications Matrix"}
 						</h3>
 					</div>
 

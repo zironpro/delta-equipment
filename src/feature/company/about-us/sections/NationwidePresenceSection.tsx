@@ -87,7 +87,10 @@ const branchesData = [
 	},
 ];
 
-export function NationwidePresenceSection() {
+export function NationwidePresenceSection({ content }: { content?: any }) {
+	const data = content;
+	const branchesList = data?.branchesData || branchesData;
+
 	return (
 		<section
 			className="scroll-mt-24 border-slate-200 border-t bg-white py-20 font-sans text-slate-900 lg:py-28"
@@ -97,18 +100,16 @@ export function NationwidePresenceSection() {
 				{/* Section Header */}
 				<div className="mx-auto max-w-3xl text-center">
 					<h2 className="mt-3 font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-4xl lg:text-5xl">
-						Nationwide Presence & Strategic Hubs
+						{data?.title || "Nationwide Presence & Strategic Hubs"}
 					</h2>
 					<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
-						Delta Equipment operates strategic hubs positioned across Sudan —
-						ensuring rapid spare parts delivery, expert technical support, and
-						heavy equipment field service nationwide.
+						{data?.desc || "Delta Equipment operates strategic hubs positioned across Sudan — ensuring rapid spare parts delivery, expert technical support, and heavy equipment field service nationwide."}
 					</p>
 				</div>
 
 				{/* Borderless Alternating Regional Story Rows Layout */}
 				<div className="mt-20 space-y-20">
-					{branchesData.map((branch, index) => {
+					{branchesList.map((branch: any, index: number) => {
 						const isEven = index % 2 === 0;
 						return (
 							<div
@@ -146,8 +147,8 @@ export function NationwidePresenceSection() {
 								>
 									<div className="space-y-4">
 										<div className="flex items-center gap-3">
-											<span className="font-extrabold font-mono text-[#d69110] text-sm">
-												LOCATION {branch.number}
+											<span className="font-extrabold font-mono text-[#d69110] text-sm uppercase">
+												{data?.locationLabel || "LOCATION"} {branch.number}
 											</span>
 											<span className="h-px w-10 bg-[#d69110]/40" />
 										</div>
@@ -167,10 +168,10 @@ export function NationwidePresenceSection() {
 										{/* Key Initiatives Bullets */}
 										<div className="border-slate-200 border-t pt-4">
 											<h4 className="font-bold text-slate-950 text-xs uppercase tracking-wider">
-												Key Regional Initiatives:
+												{data?.keyInitiativesLabel || "Key Regional Initiatives:"}
 											</h4>
 											<div className="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-												{branch.projects.map((proj, idx) => (
+												{branch.projects.map((proj: string, idx: number) => (
 													<div
 														className="flex items-center gap-2 text-slate-800 text-xs"
 														key={idx}

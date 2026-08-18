@@ -1,6 +1,7 @@
 "use client";
 
-export function ContactHeroSection() {
+export function ContactHeroSection({ content }: { content?: any }) {
+	const data = content;
 	return (
 		<section className="relative flex min-h-[45vh] flex-col justify-center overflow-hidden border-slate-200/80 border-b bg-[#FAF6F0] pt-28 pb-16 font-sans text-slate-950">
 			{/* Geometric background pattern */}
@@ -26,19 +27,18 @@ export function ContactHeroSection() {
 				{/* Top Subtitle Label */}
 				<div className="inline-block">
 					<span className="font-bold text-[#EAA800] text-sm uppercase tracking-widest sm:text-base">
-						Get In Touch
+						{data?.tag || "Get In Touch"}
 					</span>
 				</div>
 
 				{/* Single Centered Main Heading */}
 				<h1 className="mx-auto mt-3 max-w-4xl font-manrope font-normal text-3xl text-slate-950 uppercase leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-					CONTACT DELTA EQUIPMENT - AUTHORIZED JCB DEALER IN SUDAN
+					{data?.title || "CONTACT DELTA EQUIPMENT - AUTHORIZED JCB DEALER IN SUDAN"}
 				</h1>
 
 				{/* Sub-description */}
 				<p className="mx-auto mt-6 max-w-2xl text-center font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
-					Connect with our heavy machinery sales experts, genuine spare parts
-					inventory team, or 24/7 technical field engineers across Sudan.
+					{data?.desc || "Connect with our heavy machinery sales experts, genuine spare parts inventory team, or 24/7 technical field engineers across Sudan."}
 				</p>
 			</div>
 		</section>
