@@ -35,7 +35,7 @@ export function EquipmentDetailHero({ item }: EquipmentDetailHeroProps) {
 					<div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end">
 						{/* Left: Model Name & Description */}
 						<div className="space-y-4 lg:col-span-8">
-							<h1 className="font-bold font-heading text-3xl text-slate-950 tracking-tight sm:text-5xl lg:text-6xl">
+							<h1 className="font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-5xl lg:text-6xl">
 								{item.name}
 							</h1>
 

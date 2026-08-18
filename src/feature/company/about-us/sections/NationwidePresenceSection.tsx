@@ -93,13 +93,13 @@ export function NationwidePresenceSection() {
 			className="scroll-mt-24 border-slate-200 border-t bg-white py-20 font-sans text-slate-900 lg:py-28"
 			id="nationwide-presence"
 		>
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				{/* Section Header */}
 				<div className="mx-auto max-w-3xl text-center">
-					<h2 className="mt-3 font-extrabold text-3xl text-slate-950 tracking-tight sm:text-4xl lg:text-5xl">
+					<h2 className="mt-3 font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-4xl lg:text-5xl">
 						Nationwide Presence & Strategic Hubs
 					</h2>
-					<p className="mt-4 text-base text-slate-600 leading-relaxed">
+					<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 						Delta Equipment operates strategic hubs positioned across Sudan —
 						ensuring rapid spare parts delivery, expert technical support, and
 						heavy equipment field service nationwide.

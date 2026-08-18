@@ -58,14 +58,14 @@ export function NewsSection() {
 			className="relative bg-[#FAF6F0] pt-6 pb-20 text-slate-900 sm:pt-8 sm:pb-24 lg:pt-10 lg:pb-28"
 			id="news"
 		>
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				{/* Section Header */}
 				<div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
 					<div className="max-w-2xl">
-						<h2 className="mt-4 font-bold font-heading text-3xl text-slate-950 tracking-tight sm:text-5xl">
+						<h2 className="mt-4 font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-5xl">
 							News &amp; Equipment Insights
 						</h2>
-						<p className="mt-4 font-normal font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
+						<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 							Stay informed with fleet expansions, technological breakthroughs,
 							and expert heavy machinery maintenance practices from Delta
 							Equipment.

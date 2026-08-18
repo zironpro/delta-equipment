@@ -132,13 +132,13 @@ export function WhoWeAreInteractiveSection() {
 			className="scroll-mt-24 border-slate-200 border-t bg-white py-20 font-sans text-slate-900 lg:py-28"
 			id="who-we-are"
 		>
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				{/* Section Header */}
 				<div className="mx-auto max-w-3xl text-center">
-					<h2 className="mt-3 font-extrabold text-3xl text-slate-950 tracking-tight sm:text-4xl lg:text-5xl">
+					<h2 className="mt-3 font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-4xl lg:text-5xl">
 						Who We Are
 					</h2>
-					<p className="mt-4 text-base text-slate-600">
+					<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 						Discover our evolution, sole dealership status, and multi-sector
 						support across Sudan.
 					</p>
@@ -261,7 +261,7 @@ export function WhoWeAreInteractiveSection() {
 													className="flex items-start gap-4 rounded-lg border border-slate-200 bg-white p-3.5 shadow-sm"
 													key={step.year}
 												>
-													<div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-950 font-bold text-[#FCAF20]">
+													<div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
 														<StepIcon className="h-4.5 w-4.5" />
 													</div>
 													<div>

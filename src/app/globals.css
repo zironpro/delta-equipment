@@ -2,10 +2,13 @@
 
 @theme {
 	--font-inter: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-	--font-heading: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-heading: var(--font-manrope), "Manrope", sans-serif;
+	--font-manrope: var(--font-manrope), "Manrope", sans-serif;
 	--font-futura: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 	--font-oswald: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 	--font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-michroma: var(--font-michroma), "Michroma", sans-serif;
+	--font-josefin-sans: var(--font-josefin-sans), "Josefin Sans", sans-serif;
 
 	--color-jcb: rgb(252, 175, 32);
 	--color-jcb-hover: #e59d18;
@@ -19,6 +22,37 @@
 	--color-industrial-gray: #64748b;
 	--color-industrial-light: #f8fafc;
 	--color-industrial-border: #e2e8f0;
+}
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 1.5rem;
+
+	@media (width >= 64rem /* 1024px */) {
+		padding-inline: 0.5rem;
+		max-width: 68rem;
+	}
+
+	@media (width >= 80rem /* 1280px */) {
+		padding-inline: 3.5rem;
+		max-width: 82rem;
+	}
+	@media (width >= 96rem /* 1536px */) {
+		padding-inline: 6rem;
+		max-width: 98rem;
+	}
+}
+
+.font-michroma {
+	font-family: var(--font-michroma), "Michroma", sans-serif;
+}
+
+.font-josefin-sans {
+	font-family: var(--font-josefin-sans), "Josefin Sans", sans-serif;
+}
+
+.font-manrope {
+	font-family: var(--font-manrope), "Manrope", sans-serif;
 }
 
 :root {
@@ -38,11 +72,13 @@ button, [role="button"] {
 	cursor: pointer;
 }
 
-h1, h2, h3, h4, h5, h6, .font-heading, .font-futura, .font-oswald, .font-sans, .font-inter {
-	font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+h1, h2, h3, h4, h5, h6, .font-heading, .font-manrope {
+	font-family: var(--font-manrope), "Manrope", sans-serif;
+	font-weight: 400;
+	letter-spacing: -0.025em;
 }
 
-.font-heading, .font-futura, .font-oswald, .font-sans, .font-inter {
+.font-futura, .font-oswald, .font-sans, .font-inter {
 	font-family: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -188,8 +224,7 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-futura, .font-oswald, .font-sans, .
 	}
 }
 
-/* Default state for all sections and animated elements */
-section,
+/* Default state for all animated elements */
 [data-animate],
 .reveal-on-scroll {
 	opacity: 0;
@@ -197,15 +232,44 @@ section,
 	transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Revealed state triggered by IntersectionObserver */
-section.is-visible,
+/* Revealed state triggered by IntersectionObserver on element or parent */
 [data-animate].is-visible,
 .reveal-on-scroll.is-visible {
 	opacity: 1;
 	transform: translateY(0);
 }
 
-/* Animation variants */
+@keyframes textRevealUp {
+	from {
+		opacity: 0;
+		transform: translateY(100%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.text-reveal-wrapper {
+	overflow: hidden;
+	display: block;
+}
+
+[data-animate="fast-up"],
+.text-reveal-up {
+	display: block;
+	opacity: 0;
+	transform: translateY(100%);
+}
+
+/* Triggers when element itself or any parent card/section becomes is-visible */
+.is-visible [data-animate="fast-up"],
+.is-visible .text-reveal-up,
+[data-animate="fast-up"].is-visible,
+.text-reveal-up.is-visible {
+	animation: textRevealUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 [data-animate="scale"].is-visible {
 	animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

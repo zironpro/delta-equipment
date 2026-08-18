@@ -35,13 +35,13 @@ const growthPillars = [
 export function IndustrialGrowthSection() {
 	return (
 		<section className="border-slate-200 border-t bg-[#FAF6F0] py-20 font-sans text-slate-900 lg:py-28">
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				{/* Main Narrative Card */}
 				<div className="mx-auto max-w-3xl text-center">
-					<h2 className="font-extrabold text-3xl text-slate-950 leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+					<h2 className="font-manrope font-normal text-3xl text-slate-950 leading-tight tracking-tight sm:text-4xl lg:text-5xl">
 						Commitment to Sudan&apos;s Industrial Growth
 					</h2>
-					<p className="mt-5 text-base text-slate-700 leading-relaxed sm:text-lg">
+					<p className="mt-5 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 						Through continuous technical development, participation in
 						international JCB programs and exhibitions, and close collaboration
 						with key industrial sectors, Delta Equipment remains committed to
@@ -61,13 +61,13 @@ export function IndustrialGrowthSection() {
 								className="hover:-translate-y-1 rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-[#FCAF20]"
 								key={p.title}
 							>
-								<div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-950 text-[#FCAF20]">
+								<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
 									<Icon className="h-6 w-6" />
 								</div>
-								<h3 className="mt-5 font-bold text-base text-slate-950">
+								<h3 className="mt-5 font-manrope font-normal text-lg text-slate-950 tracking-tight">
 									{p.title}
 								</h3>
-								<p className="mt-2 text-slate-600 text-xs leading-relaxed">
+								<p className="mt-2 font-sans text-slate-600 text-xs leading-relaxed">
 									{p.desc}
 								</p>
 							</div>

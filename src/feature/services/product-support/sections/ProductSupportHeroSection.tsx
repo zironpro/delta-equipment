@@ -22,7 +22,7 @@ export function ProductSupportHeroSection() {
 				</svg>
 			</div>
 
-			<div className="relative z-10 mx-auto w-full max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+			<div className="relative z-10 container text-center">
 				{/* Top Subtitle Label */}
 				<div className="inline-block">
 					<span className="font-bold text-[#EAA800] text-sm uppercase tracking-widest sm:text-base">
@@ -31,12 +31,12 @@ export function ProductSupportHeroSection() {
 				</div>
 
 				{/* Single Centered Main Heading */}
-				<h1 className="mx-auto mt-3 max-w-4xl font-extrabold font-heading text-3xl text-slate-950 uppercase leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+				<h1 className="mx-auto mt-3 max-w-4xl font-manrope font-normal text-3xl text-slate-950 uppercase leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
 					GENUINE JCB SPARE PARTS & TECHNICAL FIELD SUPPORT
 				</h1>
 
 				{/* Sub-description */}
-				<p className="mx-auto mt-6 max-w-2xl text-center text-base text-slate-700 leading-relaxed sm:text-lg">
+				<p className="mx-auto mt-6 max-w-2xl text-center font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 					Ensuring your JCB machinery operates at peak performance with authentic spare parts inventory and rapid diagnostic field response across Sudan.
 				</p>
 			</div>

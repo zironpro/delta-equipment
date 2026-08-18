@@ -47,16 +47,16 @@ const supportedEquipmentList = [
 export function ProductSupportContentSection() {
 	return (
 		<section className="bg-[#FAF6F0] py-16 font-sans text-slate-900 sm:py-24">
-			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				{/* Main Overview Narrative Card */}
 				<div className="overflow-hidden rounded-lg border border-slate-200 bg-white p-8 shadow-sm sm:p-12">
-					<span className="font-extrabold text-[#EAA800] text-xs uppercase tracking-wider">
+					<span className="font-semibold text-[#D69110] text-xs uppercase tracking-wider">
 						Official After-Sales & Engineering Support
 					</span>
-					<h2 className="mt-2 font-extrabold text-2xl text-slate-950 leading-tight sm:text-4xl">
+					<h2 className="mt-2 font-manrope font-normal text-2xl text-slate-950 tracking-tight sm:text-4xl">
 						Trusted Sole Supplier of Genuine JCB Parts & Support in Sudan
 					</h2>
-					<p className="mt-4 text-base text-slate-700 leading-relaxed sm:text-lg">
+					<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 						Delta Equipment is a trusted sole supplier of genuine JCB spare
 						parts in Sudan, ensuring machinery operates at peak performance and
 						long-term reliability. Our after-sales support includes genuine
@@ -91,15 +91,15 @@ export function ProductSupportContentSection() {
 					{/* Genuine Spare Parts Supply Card */}
 					<div className="flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-all hover:border-[#FCAF20]">
 						<div>
-							<div className="flex h-12 w-12 items-center justify-center rounded-lg border border-amber-200 bg-amber-50 text-[#EAA800]">
+							<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
 								<Package className="h-6 w-6" />
 							</div>
 
-							<h3 className="mt-6 font-extrabold text-2xl text-slate-950">
+							<h3 className="mt-6 font-manrope font-normal text-2xl text-slate-950 tracking-tight">
 								Genuine Spare Parts Supply
 							</h3>
 
-							<p className="mt-4 text-slate-700 text-sm leading-relaxed sm:text-base">
+							<p className="mt-4 font-sans text-slate-600 text-sm leading-relaxed sm:text-base">
 								We provide genuine JCB spare parts to ensure your machinery
 								operates at peak performance with long-term reliability. Our
 								extensive inventory covers a wide range of JCB equipment,
@@ -109,7 +109,7 @@ export function ProductSupportContentSection() {
 
 							{/* Covered Equipment Checklist */}
 							<div className="mt-6 space-y-2 border-slate-100 border-t pt-4">
-								<span className="mb-2 block font-bold text-slate-950 text-xs uppercase tracking-wider">
+								<span className="mb-2 block font-semibold text-slate-950 text-xs uppercase tracking-wider">
 									Covered JCB Equipment Lines:
 								</span>
 								{supportedEquipmentList.map((item) => (
@@ -117,7 +117,7 @@ export function ProductSupportContentSection() {
 										className="flex items-center gap-2 font-semibold text-slate-800 text-xs"
 										key={item}
 									>
-										<CheckCircle2 className="h-4 w-4 shrink-0 text-[#EAA800]" />
+										<CheckCircle2 className="h-4 w-4 shrink-0 text-[#D69110]" />
 										<span>{item}</span>
 									</div>
 								))}
@@ -128,11 +128,11 @@ export function ProductSupportContentSection() {
 					{/* Technical Support Network Card */}
 					<div className="flex flex-col justify-between rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-all hover:border-[#FCAF20]">
 						<div>
-							<div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-950 text-[#FCAF20]">
+							<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
 								<MapPin className="h-6 w-6" />
 							</div>
 
-							<h3 className="mt-6 font-extrabold text-2xl text-slate-950">
+							<h3 className="mt-6 font-manrope font-normal text-2xl text-slate-950 tracking-tight">
 								Technical Support Network
 							</h3>
 

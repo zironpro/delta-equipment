@@ -141,22 +141,17 @@ export function Navbar() {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
 
-	const navHoverClass =
-		isScrolled || mobileMenuOpen ? "hover:text-white" : "hover:text-[#EAA800]";
-	const navActiveClass =
-		isScrolled || mobileMenuOpen ? "text-white" : "text-[#EAA800]";
+	const navHoverClass = "hover:text-white";
+	const navActiveClass = "text-white";
 
 	return (
 		<header
 			className={cn(
-				"fixed top-0 right-0 left-0 z-50 w-full transform transition-all duration-300",
-				isVisible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full",
-				isScrolled || mobileMenuOpen
-					? "border-[#E59D18] border-b bg-[#FCAF20] shadow-md"
-					: "border-transparent border-b bg-transparent shadow-none"
+				"fixed top-0 right-0 left-0 z-50 w-full transform transition-all duration-300 border-[#E59D18] border-b bg-[#FCAF20] shadow-md",
+				isVisible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
 			)}
 		>
-			<div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+			<div className="container flex h-20 items-center justify-between">
 				{/* Left Logo: JCB & Delta (mobile only) */}
 				<Link className="group flex items-center gap-2.5 sm:gap-3.5" href="/">
 					<Image

@@ -11,7 +11,7 @@ import { DeltaLogo } from "@/components/layout/DeltaLogo";
 export function MdLetterSection() {
 	return (
 		<section className="bg-[#FAF6F0] py-16 sm:py-24 font-sans text-slate-900">
-			<div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				{/* Letterhead Paper Container */}
 				<div className="relative overflow-hidden rounded-lg border border-slate-300 bg-white shadow-md">
 					{/* Top Gold Accent Bar */}
@@ -49,7 +49,7 @@ export function MdLetterSection() {
 						</div>
 
 						{/* Message Body */}
-						<div className="mt-6 space-y-6 text-base text-slate-700 leading-relaxed">
+						<div className="mt-6 space-y-6 font-medium text-lg text-slate-800 leading-relaxed">
 							<p>
 								Welcome to <strong>Delta Equipment</strong>, the sole authorized JCB dealer in Sudan. It is my privilege to introduce our company and the comprehensive range of heavy equipment, power solutions, and technical services we provide to support Sudan&apos;s growing industrial and infrastructure sectors.
 							</p>

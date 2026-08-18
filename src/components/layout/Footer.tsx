@@ -1,21 +1,27 @@
 "use client";
 
+import { useState } from "react";
 import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Clock, Mail, MapPin, PhoneCall } from "lucide-react";
+import { ChevronDown, Clock, Mail, MapPin, PhoneCall } from "lucide-react";
 
 import { DeltaLogo } from "./DeltaLogo";
+import { cn } from "@/lib/utils";
 
 export function Footer() {
+	const [equipmentOpen, setEquipmentOpen] = useState(false);
+	const [servicesOpen, setServicesOpen] = useState(false);
+	const [hqOpen, setHqOpen] = useState(false);
+
 	return (
 		<footer className="border-zinc-900 border-t bg-black font-sans text-slate-300">
 			{/* Main Footer Container */}
-			<div className="mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 lg:px-8 lg:pt-20">
-				<div className="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-12 lg:gap-16">
+			<div className="container pt-16 pb-12 lg:pt-20">
+				<div className="grid grid-cols-1 gap-y-6 lg:grid-cols-12 lg:gap-16">
 					{/* Brand Column (4 cols) */}
-					<div className="col-span-2 lg:col-span-4">
+					<div className="lg:col-span-4 lg:mb-0 mb-6">
 						<div className="flex items-center gap-4">
 							<Link className="inline-block" href={"/" as Route}>
 								<DeltaLogo className="h-9 w-auto text-white" />
@@ -98,11 +104,26 @@ export function Footer() {
 					</div>
 
 					{/* Links Column 1: Machinery Spectrum (3 cols) */}
-					<div className="col-span-1 lg:col-span-3">
-						<h3 className="font-bold font-heading text-lg text-white uppercase tracking-wider">
-							Equipment Spectrum
-						</h3>
-						<ul className="mt-4 space-y-2.5 font-sans text-sm">
+					<div className="lg:col-span-3 border-zinc-900 border-t lg:border-none pt-4 lg:pt-0">
+						<button
+							className="flex w-full cursor-pointer items-center justify-between font-bold font-heading text-lg text-white uppercase tracking-wider focus:outline-none lg:cursor-auto"
+							onClick={() => setEquipmentOpen(!equipmentOpen)}
+							type="button"
+						>
+							<span>Equipment Spectrum</span>
+							<ChevronDown
+								className={cn(
+									"h-4 w-4 transition-transform duration-200 lg:hidden",
+									equipmentOpen && "rotate-180"
+								)}
+							/>
+						</button>
+						<ul
+							className={cn(
+								"mt-4 space-y-2.5 font-sans text-sm lg:block",
+								!equipmentOpen && "hidden"
+							)}
+						>
 							{[
 								"Tracked Excavators",
 								"Telescopic Handlers",
@@ -125,53 +146,81 @@ export function Footer() {
 					</div>
 
 					{/* Links Column 2: Service & Legal (2 cols) */}
-					<div className="col-span-1 lg:col-span-2">
-						<div>
-							<h3 className="font-bold font-heading text-lg text-white uppercase tracking-wider">
-								Services
-							</h3>
-							<ul className="mt-4 space-y-2.5 font-sans text-sm">
-								{[
-									{
-										label: "24/7 Field Support",
-										href: "/services/product-support",
-									},
-									{
-										label: "Factory Warranty",
-										href: "/services/product-support",
-									},
-									{
-										label: "OEM Spare Parts",
-										href: "/services/product-support",
-									},
-									{
-										label: "Annual Service Contract",
-										href: "/services/annual-service-contract",
-									},
-									{
-										label: "Preventive Maintenance",
-										href: "/services/annual-service-contract",
-									},
-								].map((item) => (
-									<li key={item.label}>
-										<Link
-											className="inline-flex items-center text-slate-400 transition-colors hover:text-[#FFB800]"
-											href={item.href as Route}
-										>
-											<span>{item.label}</span>
-										</Link>
-									</li>
-								))}
-							</ul>
-						</div>
+					<div className="lg:col-span-2 border-zinc-900 border-t lg:border-none pt-4 lg:pt-0">
+						<button
+							className="flex w-full cursor-pointer items-center justify-between font-bold font-heading text-lg text-white uppercase tracking-wider focus:outline-none lg:cursor-auto"
+							onClick={() => setServicesOpen(!servicesOpen)}
+							type="button"
+						>
+							<span>Services</span>
+							<ChevronDown
+								className={cn(
+									"h-4 w-4 transition-transform duration-200 lg:hidden",
+									servicesOpen && "rotate-180"
+								)}
+							/>
+						</button>
+						<ul
+							className={cn(
+								"mt-4 space-y-2.5 font-sans text-sm lg:block",
+								!servicesOpen && "hidden"
+							)}
+						>
+							{[
+								{
+									label: "24/7 Field Support",
+									href: "/services/product-support",
+								},
+								{
+									label: "Factory Warranty",
+									href: "/services/product-support",
+								},
+								{
+									label: "OEM Spare Parts",
+									href: "/services/product-support",
+								},
+								{
+									label: "Annual Service Contract",
+									href: "/services/annual-service-contract",
+								},
+								{
+									label: "Preventive Maintenance",
+									href: "/services/annual-service-contract",
+								},
+							].map((item) => (
+								<li key={item.label}>
+									<Link
+										className="inline-flex items-center text-slate-400 transition-colors hover:text-[#FFB800]"
+										href={item.href as Route}
+									>
+										<span>{item.label}</span>
+									</Link>
+								</li>
+							))}
+						</ul>
 					</div>
 
 					{/* Links Column 3: Contact & Sudan HQ (3 cols) */}
-					<div className="col-span-2 lg:col-span-3">
-						<h3 className="font-bold font-heading text-lg text-white uppercase tracking-wider">
-							Sudan Headquarters
-						</h3>
-						<ul className="mt-4 space-y-3.5 font-sans text-slate-400 text-sm">
+					<div className="lg:col-span-3 border-zinc-900 border-t lg:border-none pt-4 lg:pt-0">
+						<button
+							className="flex w-full cursor-pointer items-center justify-between font-bold font-heading text-lg text-white uppercase tracking-wider focus:outline-none lg:cursor-auto"
+							onClick={() => setHqOpen(!hqOpen)}
+							type="button"
+						>
+							<span>Sudan Headquarters</span>
+							<ChevronDown
+								className={cn(
+									"h-4 w-4 transition-transform duration-200 lg:hidden",
+									hqOpen && "rotate-180"
+								)}
+							/>
+						</button>
+						<ul
+							className={cn(
+								"mt-4 space-y-3.5 font-sans text-slate-400 text-sm lg:block",
+								!hqOpen && "hidden"
+							)}
+						>
 							<li className="flex items-start gap-3">
 								<MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#FFB800]" />
 								<span>

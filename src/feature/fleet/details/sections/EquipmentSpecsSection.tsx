@@ -11,7 +11,7 @@ interface EquipmentSpecsSectionProps {
 export function EquipmentSpecsSection({ item }: EquipmentSpecsSectionProps) {
 	return (
 		<section className="bg-white py-12 sm:py-16 lg:py-20">
-			<div className="mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
+			<div className="container space-y-12">
 				{/* Machine Overview & Description */}
 				<div className="max-w-4xl space-y-4">
 					<span className="font-semibold text-[#d69110] text-xs uppercase tracking-wider">

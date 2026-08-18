@@ -102,18 +102,18 @@ export function ContactFormSection() {
 
 	return (
 		<section className="bg-[#FAF6F0] py-16 font-sans text-slate-900 sm:py-24">
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
 					{/* Left Column: Interactive Contact Form */}
 					<div className="lg:col-span-7">
 						<div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm sm:p-12">
-							<span className="font-extrabold text-[#EAA800] text-xs uppercase tracking-wider">
+							<span className="font-semibold text-[#D69110] text-xs uppercase tracking-wider">
 								Official Inquiry Form
 							</span>
-							<h2 className="mt-2 font-extrabold text-2xl text-slate-950 sm:text-3xl">
+							<h2 className="mt-2 font-manrope font-normal text-2xl text-slate-950 tracking-tight sm:text-3xl">
 								Send Us a Message
 							</h2>
-							<p className="mt-2 text-slate-600 text-sm">
+							<p className="mt-2 font-sans text-base text-slate-600 leading-relaxed">
 								Fill out the form below and our JCB equipment specialists will
 								get back to you within 24 business hours.
 							</p>
@@ -357,7 +357,7 @@ export function ContactFormSection() {
 											target="_blank"
 										>
 											<div className="flex items-center gap-3">
-												<div className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-950 text-[#FCAF20] transition-colors group-hover:bg-[#EAA800] group-hover:text-slate-950">
+												<div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
 													<Icon className="h-4.5 w-4.5" />
 												</div>
 												<div>

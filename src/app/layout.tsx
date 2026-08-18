@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Inter, Manrope, Oswald } from "next/font/google";
+import { Barlow_Condensed, Inter, Manrope, Oswald, Michroma, Josefin_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -83,6 +83,20 @@ const inter = Inter({
 	display: "swap",
 });
 
+const michroma = Michroma({
+	weight: "400",
+	subsets: ["latin"],
+	variable: "--font-michroma",
+	display: "swap",
+});
+
+const josefinSans = Josefin_Sans({
+	weight: ["100", "300", "400", "600", "700"],
+	subsets: ["latin"],
+	variable: "--font-josefin-sans",
+	display: "swap",
+});
+
 export const metadata: Metadata = {
 	title: "DELTA EQUIPMENT | Premium Heavy Industrial Machinery & Fleet Rental",
 	description:
@@ -100,7 +114,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html
-			className={`${futura.variable} ${barlowCondensed.variable} ${oswald.variable} ${manrope.variable} ${inter.variable} h-full scroll-smooth antialiased`}
+			className={`${futura.variable} ${barlowCondensed.variable} ${oswald.variable} ${manrope.variable} ${inter.variable} ${michroma.variable} ${josefinSans.variable} h-full scroll-smooth antialiased`}
 			lang="en"
 		>
 			<body className="flex min-h-full flex-col bg-white font-sans text-slate-900 selection:bg-[#FFB800] selection:text-slate-950">

@@ -6,7 +6,6 @@ import { ArrowLeft, SearchX } from "lucide-react";
 
 import { getEquipmentBySlug } from "@/data/fleetData";
 
-import { FleetCtaSection } from "../sections/FleetCtaSection";
 import { EquipmentDetailHero } from "./sections/EquipmentDetailHero";
 import { EquipmentSpecsSection } from "./sections/EquipmentSpecsSection";
 import { RelatedFleetSection } from "./sections/RelatedFleetSection";
@@ -51,7 +50,6 @@ export default function EquipmentDetailPage({
 			<EquipmentDetailHero item={item} />
 			<EquipmentSpecsSection item={item} />
 			<RelatedFleetSection currentItem={item} />
-			<FleetCtaSection />
 		</div>
 	);
 }

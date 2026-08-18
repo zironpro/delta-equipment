@@ -32,15 +32,15 @@ export function FleetHighlightsSection() {
 
 	return (
 		<section className="border-slate-200/80 border-t bg-white py-16 sm:py-20 lg:py-24">
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				<div className="mx-auto max-w-3xl space-y-3 text-center">
 					<span className="font-semibold text-[#d69110] text-xs uppercase tracking-wider">
 						Delta Value Guarantee
 					</span>
-					<h2 className="font-bold font-heading text-3xl text-slate-950 sm:text-4xl">
+					<h2 className="font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-4xl">
 						Why Contractors Choose Delta Machinery
 					</h2>
-					<p className="text-base text-slate-600">
+					<p className="font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 						Every machine in our fleet comes standard with full official OEM
 						backing and lifetime technical care.
 					</p>

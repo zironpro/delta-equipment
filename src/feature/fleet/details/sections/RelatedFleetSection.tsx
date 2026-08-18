@@ -24,7 +24,7 @@ export function RelatedFleetSection({ currentItem }: RelatedFleetSectionProps) {
 
 	return (
 		<section className="border-slate-200 border-t bg-[#FAF6F0] py-12 sm:py-16 lg:py-20">
-			<div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+			<div className="container space-y-8">
 				<div className="flex flex-col space-y-2">
 					<span className="font-semibold text-[#d69110] text-xs uppercase tracking-wider">
 						Recommendations

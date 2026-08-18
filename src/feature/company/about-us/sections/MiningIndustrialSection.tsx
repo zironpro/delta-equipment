@@ -10,7 +10,7 @@ export function MiningIndustrialSection() {
 			className="scroll-mt-24 border-slate-200 border-t bg-[#FAF6F0] py-20 font-sans text-slate-900 lg:py-28"
 			id="mining-development"
 		>
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
 					{/* Left Visual Column */}
 					<div className="order-2 lg:order-1 lg:col-span-5">
@@ -26,7 +26,7 @@ export function MiningIndustrialSection() {
 
 							<div className="absolute right-4 bottom-4 left-4 rounded-lg border border-slate-800 bg-slate-950/90 p-4 backdrop-blur-md">
 								<div className="flex items-center gap-3">
-									<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#FCAF20] text-slate-950">
+									<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
 										<Pickaxe className="h-5 w-5" />
 									</div>
 									<div>
@@ -44,11 +44,11 @@ export function MiningIndustrialSection() {
 
 					{/* Right Content Column */}
 					<div className="order-1 lg:order-2 lg:col-span-7">
-						<h2 className="font-extrabold text-3xl text-slate-950 leading-tight tracking-tight sm:text-4xl">
+						<h2 className="font-manrope font-normal text-3xl text-slate-950 leading-tight tracking-tight sm:text-4xl">
 							Supporting Sudan&apos;s Mining and Industrial Development
 						</h2>
 
-						<p className="mt-5 text-base text-slate-700 leading-relaxed">
+						<p className="mt-5 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 							Mining remains one of Sudan&apos;s most important economic
 							sectors, particularly gold mining, quarrying, mineral extraction,
 							and associated earthmoving activities across resource-rich regions

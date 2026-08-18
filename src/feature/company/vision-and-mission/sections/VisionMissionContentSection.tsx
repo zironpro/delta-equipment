@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 export function VisionMissionContentSection() {
 	return (
 		<section className="bg-[#FAF6F0] py-16 font-sans text-slate-900 sm:py-24">
-			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+			<div className="container">
 				{/* Intro Commitment Banner */}
 				<div className="rounded-lg border border-slate-200 bg-white p-8 text-center shadow-sm sm:p-12">
 					<span className="font-extrabold text-[#EAA800] text-xs uppercase tracking-wider">
@@ -35,18 +35,18 @@ export function VisionMissionContentSection() {
 					{/* Our Vision Card */}
 					<div className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-all hover:border-[#FCAF20] hover:shadow-md sm:p-10">
 						<div>
-							<div className="flex h-12 w-12 items-center justify-center rounded-lg border border-amber-200 bg-amber-50 text-[#EAA800]">
+							<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
 								<Compass className="h-6 w-6" />
 							</div>
 
-							<span className="mt-6 block font-extrabold text-[#EAA800] text-xs uppercase tracking-widest">
+							<span className="mt-6 block font-semibold text-[#D69110] text-xs uppercase tracking-wider">
 								Strategic Direction
 							</span>
-							<h2 className="mt-2 font-extrabold text-2xl text-slate-950 sm:text-3xl">
+							<h2 className="mt-2 font-manrope font-normal text-2xl text-slate-950 tracking-tight sm:text-3xl">
 								Our Vision
 							</h2>
 
-							<p className="mt-4 text-base text-slate-700 leading-relaxed">
+							<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 								Our vision is to drive Sudan&apos;s industrial growth by
 								delivering world-class machinery and unmatched after-sales
 								support that empowers businesses across mining, construction,
@@ -65,18 +65,18 @@ export function VisionMissionContentSection() {
 					{/* Our Mission Card */}
 					<div className="group relative flex flex-col justify-between overflow-hidden rounded-lg border border-slate-200 bg-white p-8 shadow-sm transition-all hover:border-[#FCAF20] hover:shadow-md sm:p-10">
 						<div>
-							<div className="flex h-12 w-12 items-center justify-center rounded-lg bg-slate-950 text-[#FCAF20]">
+							<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
 								<Target className="h-6 w-6" />
 							</div>
 
-							<span className="mt-6 block font-extrabold text-[#EAA800] text-xs uppercase tracking-widest">
+							<span className="mt-6 block font-semibold text-[#D69110] text-xs uppercase tracking-wider">
 								Operational Purpose
 							</span>
-							<h2 className="mt-2 font-extrabold text-2xl text-slate-950 sm:text-3xl">
+							<h2 className="mt-2 font-manrope font-normal text-2xl text-slate-950 tracking-tight sm:text-3xl">
 								Our Mission
 							</h2>
 
-							<p className="mt-4 text-base text-slate-700 leading-relaxed">
+							<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 								Our mission is to combine international equipment standards with
 								local technical expertise, ensuring every customer receives
 								reliable solutions tailored to the demanding conditions of the

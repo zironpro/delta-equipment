@@ -187,10 +187,10 @@ export function ShowcaseCarouselSection() {
 			<div className="mx-auto max-w-7xl">
 				{/* Section Header */}
 				<div className="mb-8 max-w-3xl">
-					<h2 className="mt-3 font-bold font-heading text-3xl text-slate-950 tracking-tight sm:text-5xl">
+					<h2 className="mt-3 font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-5xl">
 						World-Class Machinery in Action
 					</h2>
-					<p className="mt-3 font-normal font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
+					<p className="mt-3 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 						Explore our flagship JCB excavators and heavy telescopic handlers
 						built for high-payload reliability across Sudan.
 					</p>

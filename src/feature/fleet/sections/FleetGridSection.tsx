@@ -79,12 +79,13 @@ function FleetGridContent() {
 		<section
 			className="bg-[#FAF6F0] py-12 text-slate-900 sm:py-16 lg:py-20"
 			id="fleet-catalog"
+			suppressHydrationWarning
 		>
-			<div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+			<div className="container space-y-8">
 				{/* Header */}
 				<div className="flex flex-col space-y-2 border-slate-200/80 border-b pb-6">
-					<h2 className="font-bold font-heading text-3xl text-slate-950 tracking-tight sm:text-5xl">
-						Heavy Duty <span className="text-[#d69110]">Machinery</span>
+					<h2 className="font-manrope font-normal text-3xl text-slate-950 tracking-tight sm:text-5xl">
+						Heavy Duty Machinery
 					</h2>
 				</div>
 

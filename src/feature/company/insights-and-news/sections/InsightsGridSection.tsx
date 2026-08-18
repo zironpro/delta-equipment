@@ -97,8 +97,7 @@ export function InsightsGridSection() {
 		null
 	);
 
-	const featuredArticle =
-		ARTICLES_DATA.find((a) => a.featured) || ARTICLES_DATA[0];
+
 	const filteredArticles = ARTICLES_DATA.filter((a) => {
 		if (activeCategory === "All Topics") return true;
 		return a.category === activeCategory;
@@ -106,60 +105,8 @@ export function InsightsGridSection() {
 
 	return (
 		<section className="bg-[#FAF6F0] pb-24 font-sans text-slate-900">
-			<div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-				{/* Featured Headline Article Card */}
-				<div
-					className="group mb-12 cursor-pointer overflow-hidden rounded-lg border border-slate-200 bg-white p-6 shadow-sm transition-all hover:border-[#FCAF20] hover:shadow-md sm:p-10"
-					onClick={() => setSelectedArticle(featuredArticle)}
-				>
-					<div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
-						<div className="lg:col-span-7">
-							<div className="flex items-center gap-2">
-								<span className="rounded-md bg-[#EAA800] px-3 py-1 font-extrabold text-[11px] text-slate-950 uppercase tracking-wider">
-									Featured Insight
-								</span>
-								<span className="text-slate-500 text-xs">
-									• {featuredArticle.category}
-								</span>
-							</div>
+			<div className="container">
 
-							<h2 className="mt-4 font-extrabold text-2xl text-slate-950 leading-tight transition-colors group-hover:text-[#EAA800] sm:text-3xl">
-								{featuredArticle.title}
-							</h2>
-
-							<p className="mt-4 text-slate-700 text-sm leading-relaxed sm:text-base">
-								{featuredArticle.excerpt}
-							</p>
-
-							<div className="mt-6 flex flex-wrap items-center gap-4 font-semibold text-slate-500 text-xs">
-								<div className="flex items-center gap-1.5">
-									<Calendar className="h-4 w-4 text-[#EAA800]" />
-									<span>{featuredArticle.date}</span>
-								</div>
-								<span>•</span>
-								<div className="flex items-center gap-1.5">
-									<Clock className="h-4 w-4 text-[#EAA800]" />
-									<span>{featuredArticle.readTime}</span>
-								</div>
-								<div className="ml-auto inline-flex items-center gap-1 font-bold text-slate-950 group-hover:text-[#EAA800]">
-									<span>Read Full Article</span>
-									<ArrowUpRight className="h-4 w-4 text-[#EAA800]" />
-								</div>
-							</div>
-						</div>
-
-						<div className="lg:col-span-5">
-							<div className="relative aspect-[16/10] w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-100">
-								<Image
-									alt={featuredArticle.title}
-									className="object-cover transition-transform duration-500 group-hover:scale-105"
-									fill
-									src={featuredArticle.image}
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
 
 				{/* Category Filter Tabs */}
 				<div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-slate-200 border-b pb-4">
