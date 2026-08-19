@@ -1,11 +1,11 @@
-import { getAllMdxContent } from "@/lib/mdx";
 import type { EquipmentItem } from "@/data/fleetData";
+import { getAllMdxContent } from "@/lib/mdx";
 
 export function getLocalizedFleet(locale: string): EquipmentItem[] {
 	const mdxData = getAllMdxContent("fleet/machines", locale);
-	
+
 	return mdxData.map((item) => {
-		const f = item.frontmatter;
+		const f = item.frontmatter as Record<string, any>;
 		return {
 			id: f.id,
 			slug: f.slug,
@@ -15,6 +15,7 @@ export function getLocalizedFleet(locale: string): EquipmentItem[] {
 			categoryName: f.categoryName,
 			image: f.image,
 			detailImage: f.detailImage,
+			brochure: f.brochure,
 			tagline: f.tagline,
 			operatingWeight: f.operatingWeight,
 			enginePower: f.enginePower,
@@ -31,7 +32,10 @@ export function getLocalizedFleet(locale: string): EquipmentItem[] {
 	});
 }
 
-export function getEquipmentBySlug(slug: string, locale: string): EquipmentItem | undefined {
+export function getEquipmentBySlug(
+	slug: string,
+	locale: string
+): EquipmentItem | undefined {
 	const fleet = getLocalizedFleet(locale);
 	return fleet.find((item) => item.slug === slug || item.id === slug);
 }

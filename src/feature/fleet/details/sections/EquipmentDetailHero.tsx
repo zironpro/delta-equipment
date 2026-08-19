@@ -55,30 +55,17 @@ export function EquipmentDetailHero({ item, uiData }: EquipmentDetailHeroProps) 
 								<ArrowUpRight className="h-4 w-4" />
 							</Link>
 
-							<button
-								className="btn-curve btn-curve-outline inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 font-semibold text-slate-800 text-sm shadow-xs transition-colors"
-								onClick={() => {
-									const suffix = uiData?.brochureSuffix || "Specification Sheet\n\nFor official sales & inquiries in Sudan, contact Delta Equipment (info@deltaequipment.sd)";
-									const blob = new Blob(
-										[
-											`JCB ${item.name} ${suffix}\n\nTagline: ${item.tagline}\nCategory: ${item.category}`,
-										],
-										{ type: "text/plain;charset=utf-8" }
-									);
-									const url = URL.createObjectURL(blob);
-									const a = document.createElement("a");
-									a.href = url;
-									a.download = `JCB-${item.name.replace(/\s+/g, "-")}-Brochure.txt`;
-									document.body.appendChild(a);
-									a.click();
-									document.body.removeChild(a);
-									URL.revokeObjectURL(url);
-								}}
-								type="button"
-							>
-								<Download className="h-4 w-4 text-slate-600" />
-								<span>{uiData?.downloadBrochure || "Download Brochure"}</span>
-							</button>
+							{item.brochure && (
+								<a
+									className="btn-curve btn-curve-outline inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 font-semibold text-slate-800 text-sm shadow-xs transition-colors"
+									href={item.brochure}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<Download className="h-4 w-4 text-slate-600" />
+									<span>{uiData?.downloadBrochure || "Download Brochure"}</span>
+								</a>
+							)}
 						</div>
 					</div>
 

@@ -19,6 +19,7 @@ export interface EquipmentItem {
 	categoryName: string;
 	image: string;
 	detailImage?: string;
+	brochure?: string;
 	tagline: string;
 	operatingWeight: string;
 	enginePower: string;
