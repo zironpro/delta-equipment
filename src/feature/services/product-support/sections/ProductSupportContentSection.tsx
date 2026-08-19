@@ -38,7 +38,7 @@ const afterSalesPillars = [
 ];
 
 const supportedEquipmentList = [
-	"JCB 3CX & 4CX Backhoe Loaders",
+
 	"Heavy Tracked & Wheeled Excavators",
 	"Wheel Loaders & Telehandlers",
 	"JCB Diesel Generators (Power Solutions)",
@@ -58,7 +58,7 @@ export function ProductSupportContentSection({ content }: { content?: any }) {
 						{data?.tag || "Official After-Sales & Engineering Support"}
 					</span>
 					<h2 className="mt-2 font-manrope font-normal text-2xl text-slate-950 tracking-tight sm:text-4xl">
-						{data?.title || "Trusted Sole Supplier of Genuine JCB Parts & Support in Sudan"}
+						{data?.title || "Product Support"}
 					</h2>
 					<p className="mt-4 font-sans text-base text-slate-600 leading-relaxed sm:text-lg">
 						{data?.desc || "Delta Equipment is a trusted sole supplier of genuine JCB spare parts in Sudan, ensuring machinery operates at peak performance and long-term reliability. Our after-sales support includes genuine spare parts supply, preventive maintenance programs, technical diagnostics and troubleshooting, and on-site field service support."}

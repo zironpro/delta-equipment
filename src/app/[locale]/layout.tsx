@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Inter, Manrope, Oswald, Michroma, Josefin_Sans } from "next/font/google";
+import {
+	Barlow_Condensed,
+	Inter,
+	Josefin_Sans,
+	Manrope,
+	Michroma,
+	Oswald,
+} from "next/font/google";
 import localFont from "next/font/local";
 import "../globals.css";
 
@@ -98,7 +105,7 @@ const josefinSans = Josefin_Sans({
 });
 
 export const metadata: Metadata = {
-	title: "DELTA EQUIPMENT | Premium Heavy Industrial Machinery & Fleet Rental",
+	title: "DELTA EQUIPMENT | Premium Heavy Industrial Machinery",
 	description:
 		"High-performance excavators, wheel loaders, backhoes, and telehandlers engineered for maximum productivity, reliability, and precision.",
 };
@@ -106,6 +113,7 @@ export const metadata: Metadata = {
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollAnimateProvider } from "@/components/layout/ScrollAnimateProvider";
+
 import { getMdxContent } from "@/lib/mdx";
 
 export default async function RootLayout({
