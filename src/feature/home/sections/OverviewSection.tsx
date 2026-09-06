@@ -3,6 +3,8 @@
 import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { getLocalizedHref } from "@/lib/utils";
+import { useParams } from "next/navigation";
 
 import {
 	ArrowRight,
@@ -110,6 +112,8 @@ const DRAWINGS: Record<string, React.ReactNode> = {
 };
 
 export function OverviewSection({ content }: { content?: any }) {
+	const params = useParams<{ locale: string }>();
+	const currentLocale = params?.locale || "en";
 	const data = content;
 	return (
 		<section className="border-slate-200/80 border-t bg-[#FAF6F0] py-16 font-sans text-slate-900 sm:py-20 lg:py-24">
@@ -273,13 +277,13 @@ export function OverviewSection({ content }: { content?: any }) {
 							</div>
 						</div>
 						<div className="flex w-full flex-wrap items-center gap-3.5 sm:w-auto">
-							<Link className="w-full sm:w-auto" href={"/contact" as Route}>
+							<Link className="w-full sm:w-auto" href={getLocalizedHref(currentLocale, "/contact") as Route}>
 								<Button className="h-11 w-full cursor-pointer bg-[#FCAF20] px-6 font-bold font-sans text-slate-950 text-sm shadow-xs transition-colors hover:bg-amber-400 sm:w-auto">
 									<span>{data?.ctaButton1}</span>
 									<ArrowRight className="ml-2 h-4 w-4" />
 								</Button>
 							</Link>
-							<Link className="w-full sm:w-auto" href={"/fleet" as Route}>
+							<Link className="w-full sm:w-auto" href={getLocalizedHref(currentLocale, "/fleet") as Route}>
 								<Button
 									className="h-11 w-full cursor-pointer border border-amber-300 bg-white px-6 font-sans font-semibold text-slate-950 text-sm shadow-xs transition-colors hover:bg-amber-50 sm:w-auto"
 									variant="outline"

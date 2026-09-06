@@ -3,6 +3,8 @@
 import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { getLocalizedHref } from "@/lib/utils";
+import { useParams } from "next/navigation";
 
 import { ArrowUpRight, Calendar, Clock } from "lucide-react";
 
@@ -17,6 +19,8 @@ interface NewsArticle {
 }
 
 export function NewsSection({ content }: { content?: any }) {
+	const params = useParams<{ locale: string }>();
+	const currentLocale = params?.locale || "en";
 	const data = content;
 	return (
 		<section
@@ -37,7 +41,7 @@ export function NewsSection({ content }: { content?: any }) {
 
 					<Link
 						className="group inline-flex items-center gap-2 font-medium font-sans text-slate-900 text-sm transition-colors hover:text-[#D49800]"
-						href={"/company/insights-and-news" as Route}
+						href={getLocalizedHref(currentLocale, "/company/insights-and-news") as Route}
 					>
 						<span>{data?.viewAllText}</span>
 						<ArrowUpRight className="group-hover:-translate-y-0.5 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -49,7 +53,7 @@ export function NewsSection({ content }: { content?: any }) {
 					{data?.articles?.map((article: any) => (
 						<Link
 							className="group hover:-translate-y-1 flex cursor-pointer flex-col overflow-hidden rounded-lg border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5"
-							href={"/company/insights-and-news" as Route}
+							href={getLocalizedHref(currentLocale, "/company/insights-and-news") as Route}
 							key={article.id}
 						>
 							{/* Article Image Container */}

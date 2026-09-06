@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { getLocalizedHref } from "@/lib/utils";
+import { useParams } from "next/navigation";
 import type { Route } from "next";
 
 import { ChevronDown, HelpCircle, PhoneCall } from "lucide-react";
@@ -16,6 +18,8 @@ interface FaqItem {
 }
 
 export function FaqSection({ content }: { content?: any }) {
+	const params = useParams<{ locale: string }>();
+	const currentLocale = params?.locale || "en";
 	const data = content;
 	const [openId, setOpenId] = useState<string | null>("faq-1");
 
@@ -126,7 +130,7 @@ export function FaqSection({ content }: { content?: any }) {
 						</div>
 					</div>
 
-					<Link href={"/contact" as Route}>
+					<Link href={getLocalizedHref(currentLocale, "/contact") as Route}>
 						<Button className="h-10 cursor-pointer bg-[#FCAF20] px-5 font-bold font-sans text-slate-950 text-xs shadow-xs transition-colors hover:bg-amber-400">
 							<span>{data?.supportButton}</span>
 						</Button>

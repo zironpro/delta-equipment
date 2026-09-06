@@ -5,6 +5,8 @@ import * as React from "react";
 import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { getLocalizedHref } from "@/lib/utils";
 
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight, ShieldCheck } from "lucide-react";
@@ -18,6 +20,8 @@ import {
 
 export function CategorySection({ content }: { content?: any }) {
 	const data = content;
+	const params = useParams<{ locale: string }>();
+	const currentLocale = params?.locale || "en";
 	const plugin = React.useRef(
 		Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
 	);
@@ -34,7 +38,7 @@ export function CategorySection({ content }: { content?: any }) {
 					</div>
 
 					<div className="flex items-center gap-3 self-start md:self-auto">
-						<Link href={"/fleet" as Route}>
+						<Link href={getLocalizedHref(currentLocale, "/fleet") as Route}>
 							<Button className="cursor-pointer border border-slate-900 bg-slate-950 font-bold font-sans text-white shadow-md transition-colors hover:border-slate-800 hover:bg-slate-800">
 								<span>{data?.button1}</span>
 								<ArrowRight className="ml-2 h-4 w-4" />
@@ -61,9 +65,7 @@ export function CategorySection({ content }: { content?: any }) {
 								>
 									<Link
 										className="group hover:-translate-y-2 relative flex h-full w-full flex-col items-center justify-end rounded-lg border border-amber-200/80 bg-gradient-to-b from-[#FFFBF2] to-[#FFF3D6] p-6 text-center shadow-soft-lg transition-all duration-300 hover:border-[#FCAF20] hover:shadow-soft-xl"
-										href={
-											`/fleet?category=${category.id}#fleet-catalog` as Route
-										}
+										href={getLocalizedHref(currentLocale, `/fleet?category=${category.id}#fleet-catalog`) as Route}
 									>
 										{/* Top Pop-Out Machinery Image breaking out of card top edge */}
 										<div className="-mt-16 group-hover:-translate-y-2 relative flex h-40 w-full items-center justify-center transition-transform duration-300 group-hover:scale-105">
@@ -105,7 +107,7 @@ export function CategorySection({ content }: { content?: any }) {
 						</div>
 					</div>
 
-					<Link href={"/contact" as Route}>
+					<Link href={getLocalizedHref(currentLocale, "/contact") as Route}>
 						<Button className="shrink-0 cursor-pointer bg-slate-950 font-bold font-sans text-white hover:bg-slate-800">
 							<span>{data?.button2}</span>
 						</Button>
