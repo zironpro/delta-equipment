@@ -54,6 +54,7 @@ export function CategorySection({ content }: { content?: any }) {
 						opts={{
 							align: "start",
 							loop: true,
+							direction: currentLocale === "ar" ? "rtl" : "ltr",
 						}}
 						plugins={[plugin.current]}
 					>
