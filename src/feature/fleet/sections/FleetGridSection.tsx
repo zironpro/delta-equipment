@@ -99,6 +99,7 @@ function FleetGridContent({ content, fleetItems, locale }: { content?: any; flee
 					selectedCategory={selectedCategory}
 					sortBy={sortBy}
 					totalItemsCount={filteredItems.length}
+					locale={locale}
 				/>
 
 				{/* Cards Grid */}

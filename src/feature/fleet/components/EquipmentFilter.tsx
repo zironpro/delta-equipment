@@ -3,6 +3,17 @@
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import type { EquipmentCategory } from "@/data/fleetData";
 
+const CATEGORY_TRANSLATIONS: Record<string, string> = {
+	"all": "جميع المعدات",
+	"excavators": "الحفارات",
+	"telehandlers": "الرافعات التلسكوبية",
+	"wheel-loaders": "اللوادر ذات العجلات",
+	"backhoes": "حفارات باكهو لودر",
+	"compaction": "مدحلات الدك",
+	"skid-steer": "اللوادر الانزلاقية",
+	"power": "المولدات",
+};
+
 interface EquipmentFilterProps {
 	categories: EquipmentCategory[];
 	selectedCategory: string;
@@ -12,6 +23,7 @@ interface EquipmentFilterProps {
 	sortBy: string;
 	onSortChange: (sort: string) => void;
 	totalItemsCount: number;
+	locale?: string;
 }
 
 export function EquipmentFilter({
@@ -23,7 +35,10 @@ export function EquipmentFilter({
 	sortBy,
 	onSortChange,
 	totalItemsCount,
+	locale = "en",
 }: EquipmentFilterProps) {
+	const isAr = locale === "ar";
+
 	return (
 		<div className="flex flex-col space-y-6">
 			{/* Top Bar: Search & Sort Selector */}
@@ -34,7 +49,7 @@ export function EquipmentFilter({
 					<input
 						className="w-full rounded-lg border border-slate-300/90 bg-white py-2.5 pr-10 pl-10 text-slate-900 text-sm placeholder-slate-400 shadow-xs transition-all focus:border-[#FCAF20] focus:ring-2 focus:ring-[#FCAF20]/20 focus:outline-hidden"
 						onChange={(e) => onSearchChange(e.target.value)}
-						placeholder="Search by model, capacity, or keyword..."
+						placeholder={isAr ? "ابحث بالطراز أو السعة أو كلمة مفتاحية..." : "Search by model, capacity, or keyword..."}
 						type="text"
 						value={searchQuery}
 					/>
@@ -53,7 +68,11 @@ export function EquipmentFilter({
 				{/* Right Side: Total items counter & Sort Dropdown */}
 				<div className="flex items-center justify-between gap-3 sm:justify-end">
 					<span className="font-sans text-slate-600 text-xs">
-						Showing <strong className="text-slate-950 font-bold">{totalItemsCount}</strong> machines
+						{isAr ? (
+							<>عرض <strong className="text-slate-950 font-bold">{totalItemsCount}</strong> آلية</>
+						) : (
+							<>Showing <strong className="text-slate-950 font-bold">{totalItemsCount}</strong> machines</>
+						)}
 					</span>
 
 					<div className="flex items-center gap-2">
@@ -63,9 +82,9 @@ export function EquipmentFilter({
 							onChange={(e) => onSortChange(e.target.value)}
 							value={sortBy}
 						>
-							<option value="featured">Featured Order</option>
-							<option value="model-asc">Model Name (A-Z)</option>
-							<option value="category">Category</option>
+							<option value="featured">{isAr ? "الترتيب المميز" : "Featured Order"}</option>
+							<option value="model-asc">{isAr ? "اسم الطراز (أ-ي)" : "Model Name (A-Z)"}</option>
+							<option value="category">{isAr ? "الفئة" : "Category"}</option>
 						</select>
 					</div>
 				</div>
@@ -86,7 +105,7 @@ export function EquipmentFilter({
 							onClick={() => onSelectCategory(cat.id)}
 							type="button"
 						>
-							<span>{cat.name}</span>
+							<span>{isAr && CATEGORY_TRANSLATIONS[cat.id] ? CATEGORY_TRANSLATIONS[cat.id] : cat.name}</span>
 							{cat.count !== undefined && (
 								<span
 									className={`rounded-full px-2 py-0.5 text-[10px] ${
