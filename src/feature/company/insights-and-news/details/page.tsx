@@ -1,29 +1,50 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, ChevronRight, Clock, Home } from "lucide-react";
-import ReactMarkdown from "react-markdown";
 
-export default function InsightsDetailPage({ blog }: { blog: any }) {
+import { Calendar, ChevronDown, ChevronRight, Clock, Home } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
+
+export default function InsightsDetailPage({
+	blog,
+	locale = "en",
+}: {
+	blog: any;
+	locale?: string;
+}) {
+	const isAr = locale === "ar";
+	const homeLabel = isAr ? "الرئيسية" : "Home";
+	const insightsLabel = isAr ? "الرؤى والأخبار" : "Insights & News";
+
 	return (
-		<main className="min-h-screen bg-[#FAF6F0] pb-24 pt-32 font-sans text-slate-900 selection:bg-[#FCAF20] selection:text-slate-950">
-			<div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-				<nav className="mb-8 flex items-center space-x-2 text-xs font-medium text-slate-500 sm:text-sm">
+		<main className="min-h-screen bg-[#FAF6F0] pt-32 pb-24 font-sans text-slate-900 selection:bg-[#FCAF20] selection:text-slate-950">
+			<div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+				<nav className="mb-8 flex items-center space-x-2 font-medium text-slate-500 text-xs sm:text-sm">
 					<Link
-						href="/"
-						className="flex items-center hover:text-[#EAA800] transition-colors"
+						className="flex items-center transition-colors hover:text-[#EAA800]"
+						href={isAr ? "/ar" : "/en"}
 					>
-						<Home className="mr-1 h-3.5 w-3.5" />
-						Home
+						<Home className={`h-3.5 w-3.5 ${isAr ? "ml-1" : "mr-1"}`} />
+						{homeLabel}
 					</Link>
-					<ChevronRight className="h-3.5 w-3.5 text-slate-400" />
+					<ChevronRight
+						className={`h-3.5 w-3.5 text-slate-400 ${isAr ? "rotate-180" : ""}`}
+					/>
 					<Link
-						href="/company/insights-and-news"
-						className="hover:text-[#EAA800] transition-colors"
+						className="transition-colors hover:text-[#EAA800]"
+						href={
+							isAr
+								? "/ar/company/insights-and-news"
+								: "/en/company/insights-and-news"
+						}
 					>
-						Insights & News
+						{insightsLabel}
 					</Link>
-					<ChevronRight className="h-3.5 w-3.5 text-slate-400" />
-					<span className="text-slate-900 truncate max-w-[150px] sm:max-w-xs md:max-w-sm lg:max-w-md">
+					<ChevronRight
+						className={`h-3.5 w-3.5 text-slate-400 ${isAr ? "rotate-180" : ""}`}
+					/>
+					<span className="max-w-[150px] truncate text-slate-900 sm:max-w-xs md:max-w-sm lg:max-w-md">
 						{blog.title}
 					</span>
 				</nav>
@@ -66,8 +87,96 @@ export default function InsightsDetailPage({ blog }: { blog: any }) {
 						</div>
 					)}
 
-					<div className="prose prose-slate prose-lg mt-12 max-w-none prose-headings:font-extrabold prose-headings:text-slate-950 prose-a:text-[#EAA800] prose-a:font-semibold hover:prose-a:text-[#C58E00] prose-img:rounded-xl">
-						<ReactMarkdown>{blog.content}</ReactMarkdown>
+					<div className="mt-12 max-w-none">
+						<ReactMarkdown
+							components={{
+								h2: ({ node, ...props }) => (
+									<h2
+										className="mt-12 mb-6 inline-block border-[#EAA800] border-b-2 pb-3 font-extrabold text-2xl text-slate-900 sm:text-3xl"
+										{...props}
+									/>
+								),
+								h3: ({ node, ...props }) => (
+									<h3
+										className="mt-10 mb-4 font-bold text-slate-800 text-xl sm:text-2xl"
+										{...props}
+									/>
+								),
+								p: ({ node, ...props }) => (
+									<p
+										className="mb-6 text-[17px] text-slate-600 leading-loose sm:text-lg"
+										{...props}
+									/>
+								),
+								ul: ({ node, ...props }) => (
+									<ul className="mb-8 list-none space-y-4 pl-2" {...props} />
+								),
+								li: ({ node, ...props }) => (
+									<li
+										className="relative pl-7 text-[17px] text-slate-600 before:absolute before:top-2.5 before:left-1 before:h-2 before:w-2 before:rounded-full before:bg-[#EAA800] before:content-[''] sm:text-lg"
+										{...props}
+									/>
+								),
+								table: ({ node, ...props }) => (
+									<div className="my-10 overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+										<table
+											className="w-full text-left text-slate-600 text-sm sm:text-base"
+											{...props}
+										/>
+									</div>
+								),
+								thead: ({ node, ...props }) => (
+									<thead
+										className="border-slate-200 border-b bg-slate-50 font-bold text-slate-900 text-xs uppercase tracking-wider sm:text-sm"
+										{...props}
+									/>
+								),
+								th: ({ node, ...props }) => (
+									<th
+										className="border-slate-200 border-r px-6 py-5 last:border-r-0"
+										{...props}
+									/>
+								),
+								td: ({ node, ...props }) => (
+									<td
+										className="border-slate-100 border-r border-b px-6 py-4 last:border-r-0"
+										{...props}
+									/>
+								),
+								strong: ({ node, ...props }) => (
+									<strong
+										className="font-extrabold text-slate-900"
+										{...props}
+									/>
+								),
+								a: ({ node, ...props }) => (
+									<a
+										className="font-semibold text-[#EAA800] hover:text-[#C58E00] hover:underline"
+										{...props}
+									/>
+								),
+								details: ({ node, ...props }) => (
+									<details
+										className="group mb-4 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm"
+										name="faq-accordion"
+										{...props}
+									/>
+								),
+								summary: ({ node, children, ...props }) => (
+									<summary
+										className="flex cursor-pointer list-none items-center justify-between bg-slate-50 px-6 py-4 font-bold text-lg text-slate-900 outline-none transition-colors hover:bg-slate-100 focus:ring-2 focus:ring-[#EAA800] [&::-webkit-details-marker]:hidden"
+										{...props}
+									>
+										<span>{children}</span>
+										<ChevronDown className="ml-4 h-5 w-5 flex-shrink-0 text-slate-500 transition-transform duration-300 group-open:rotate-180" />
+									</summary>
+								),
+							}}
+							rehypePlugins={[rehypeRaw]}
+							remarkPlugins={[remarkGfm]}
+						>
+							{blog.content}
+						</ReactMarkdown>
 					</div>
 				</article>
 			</div>

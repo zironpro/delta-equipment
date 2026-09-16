@@ -22,8 +22,9 @@ export async function generateMetadata({
 	}
 
 	return {
-		title: `${blog.frontmatter.title} | Delta Equipment Insights`,
-		description: blog.frontmatter.excerpt,
+		title: blog.frontmatter.metaTitle || `${blog.frontmatter.title} | Delta Equipment Insights`,
+		description: blog.frontmatter.metaDescription || blog.frontmatter.excerpt,
+		keywords: blog.frontmatter.metaKeywords,
 	};
 }
 
@@ -39,5 +40,5 @@ export default async function InsightsDetailRoute({
 		notFound();
 	}
 
-	return <InsightsDetailPage blog={{ ...blog.frontmatter, content: blog.content }} />;
+	return <InsightsDetailPage blog={{ ...blog.frontmatter, content: blog.content }} locale={locale} />;
 }
