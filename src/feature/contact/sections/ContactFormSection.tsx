@@ -92,7 +92,7 @@ export function ContactFormSection({ content }: { content?: any }) {
 		companyName: "",
 		phone: "",
 		email: "",
-		interest: "Backhoe Loaders",
+		interest: "",
 		message: "",
 	});
 
@@ -214,25 +214,15 @@ export function ContactFormSection({ content }: { content?: any }) {
 										<label className="mb-1.5 block font-bold text-slate-950 text-xs">
 											{data?.labelInterest || "Equipment or Service Line of Interest"}
 										</label>
-										<select
+										<input
 											className="w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-slate-900 text-xs focus:border-[#EAA800] focus:outline-none"
 											onChange={(e) =>
 												setFormData({ ...formData, interest: e.target.value })
 											}
+											placeholder={data?.placeholderInterest || "e.g., JCB Backhoe Loaders"}
+											type="text"
 											value={formData.interest}
-										>
-											{(data?.optionsInterest || [
-												"JCB Backhoe Loaders (3CX / 4CX)",
-												"Heavy Tracked Excavators",
-												"Wheel Loaders & Telehandlers",
-												"JCB Diesel Generators (Power Solutions)",
-												"Genuine OEM Spare Parts",
-												"Annual Service Contract",
-												"On-Site Field Technical Support"
-											]).map((option: string) => (
-												<option key={option} value={option}>{option}</option>
-											))}
-										</select>
+										/>
 									</div>
 
 									<div>
