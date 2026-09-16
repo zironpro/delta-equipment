@@ -12,8 +12,8 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { ChevronDown, Navigation } from "lucide-react";
 
 // Delta Equipment Main Headquarters - Atbara, Sudan
-const LAT = 17.7022;
-const LNG = 33.9864;
+const LAT = 17.7099;
+const LNG = 34.0572;
 const LOCATION_TITLE = "Delta Equipment Main Headquarters";
 
 const DARK_MATTER_STYLE = {

@@ -227,7 +227,7 @@ export function Footer({ data }: { data?: any }) {
 							<li className="flex items-start gap-3">
 								<MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#FFB800]" />
 								<span>
-									{data?.hqAddress || "Khartoum Industrial Zone, Al Amarat, Khartoum, Sudan"}
+									{data?.hqAddress || "Airport Street, Block 4, Plot No. 388, Atbari City, River Nile State, Sudan"}
 								</span>
 							</li>
 							<li className="flex items-center gap-3">
