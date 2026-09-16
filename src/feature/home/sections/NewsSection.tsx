@@ -53,7 +53,7 @@ export function NewsSection({ content }: { content?: any }) {
 					{data?.articles?.map((article: any) => (
 						<Link
 							className="group hover:-translate-y-1 flex cursor-pointer flex-col overflow-hidden rounded-lg border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-slate-900/5"
-							href={getLocalizedHref(currentLocale, "/company/insights-and-news") as Route}
+							href={getLocalizedHref(currentLocale, `/company/insights-and-news/${article.id}`) as Route}
 							key={article.id}
 						>
 							{/* Article Image Container */}
