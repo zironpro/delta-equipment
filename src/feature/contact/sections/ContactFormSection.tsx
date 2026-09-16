@@ -57,14 +57,14 @@ const socialChannels = [
 	{
 		name: "LinkedIn",
 		handle: "Delta Equipment Sudan",
-		url: "https://linkedin.com",
+		url: "https://www.linkedin.com/company/deltaequip/home/",
 		icon: LinkedinIcon,
 		desc: "Corporate announcements & industry news",
 	},
 	{
 		name: "Facebook",
 		handle: "@DeltaEquipmentSudan",
-		url: "https://facebook.com",
+		url: "https://www.facebook.com/share/18ht1jaSqq/?mibextid=wwXIfr",
 		icon: FacebookIcon,
 		desc: "Machinery delivery & project highlights",
 	},
@@ -78,7 +78,7 @@ const socialChannels = [
 	{
 		name: "Instagram",
 		handle: "@deltaequip_sd",
-		url: "https://instagram.com",
+		url: "https://www.instagram.com/delta.equipment?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==",
 		icon: InstagramIcon,
 		desc: "On-site JCB fleet photo gallery",
 	},
@@ -292,7 +292,7 @@ export function ContactFormSection({ content }: { content?: any }) {
 								<div className="flex items-start gap-3">
 									<MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#EAA800]" />
 									<div>
-										<span className="font-bold text-slate-950">Address:</span>
+										<span className="font-bold text-slate-950">{data?.addressText || "Address:"}</span>
 										<p className="mt-0.5 text-slate-600 leading-relaxed">
 											{data?.officialLocationAddress || officialLocation.address}
 										</p>
@@ -302,7 +302,7 @@ export function ContactFormSection({ content }: { content?: any }) {
 								<div className="flex items-start gap-3">
 									<Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#EAA800]" />
 									<div>
-										<span className="font-bold text-slate-950">Phone:</span>
+										<span className="font-bold text-slate-950">{data?.phoneText || "Phone:"}</span>
 										<p className="mt-0.5 font-bold text-slate-900">
 											{officialLocation.phone}
 										</p>
@@ -312,7 +312,7 @@ export function ContactFormSection({ content }: { content?: any }) {
 								<div className="flex items-start gap-3">
 									<Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#EAA800]" />
 									<div>
-										<span className="font-bold text-slate-950">Email:</span>
+										<span className="font-bold text-slate-950">{data?.emailText || "Email:"}</span>
 										<p className="mt-0.5 font-bold text-slate-900">
 											{officialLocation.email}
 										</p>
@@ -334,12 +334,14 @@ export function ContactFormSection({ content }: { content?: any }) {
 							</p>
 
 							<div className="mt-5 space-y-2.5">
-								{(data?.socialChannels || socialChannels).map((item: any) => {
-									const Icon = socialChannels.find(s => s.name === item.name)?.icon || LinkedinIcon;
+								{(data?.socialChannels || socialChannels).map((item: any, index: number) => {
+									const baseChannel = socialChannels[index];
+									const Icon = baseChannel?.icon || LinkedinIcon;
+									const url = item.url || baseChannel?.url || "#";
 									return (
 										<a
 											className="group flex items-center justify-between rounded-lg border border-slate-200 bg-[#FAF6F0] p-3 shadow-2xs transition-all hover:border-[#FCAF20] hover:bg-white"
-											href={item.url}
+											href={url}
 											key={item.name}
 											rel="noopener noreferrer"
 											target="_blank"

@@ -2,51 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import Map, {
-	FullscreenControl,
-	Marker,
-	NavigationControl,
-} from "react-map-gl/maplibre";
-import "maplibre-gl/dist/maplibre-gl.css";
+
 
 import { ChevronDown, Navigation } from "lucide-react";
 
 // Delta Equipment Main Headquarters - Atbara, Sudan
-const LAT = 17.7099;
-const LNG = 34.0572;
+const LAT = 17.7089153;
+const LNG = 34.0005673;
 const LOCATION_TITLE = "Delta Equipment Main Headquarters";
 
-const DARK_MATTER_STYLE = {
-	version: 8 as const,
-	sources: {
-		"carto-dark": {
-			type: "raster" as const,
-			tiles: [
-				"https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-				"https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-				"https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-				"https://d.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-			],
-			tileSize: 256,
-			attribution:
-				'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-		},
-	},
-	layers: [
-		{
-			id: "carto-dark-layer",
-			type: "raster" as const,
-			source: "carto-dark",
-			minzoom: 0,
-			maxzoom: 19,
-		},
-	],
-};
+
 
 const MAP_PROVIDERS = [
 	{
 		name: "Google Maps",
-		url: `https://www.google.com/maps/dir/?api=1&destination=${LAT},${LNG}`,
+		url: "https://maps.app.goo.gl/nAPVNdBc5mkT1JT56",
 		icon: (
 			<svg
 				className="h-4 w-4 text-emerald-500"
@@ -181,42 +151,15 @@ export function ContactMapSection({ content }: { content?: any }) {
 					)}
 				</div>
 
-				{/* MapLibre Dark Matter Interactive Map Component */}
-				<Map
-					cooperativeGestures={true}
-					initialViewState={{
-						longitude: LNG,
-						latitude: LAT,
-						zoom: 15,
-					}}
-					mapStyle={DARK_MATTER_STYLE}
-					style={{ width: "100%", height: "100%" }}
-				>
-					<Marker anchor="bottom" latitude={LAT} longitude={LNG}>
-						<div className="flex flex-col items-center gap-1">
-							<span className="mb-1 whitespace-nowrap font-medium text-sm text-white drop-shadow-md">
-								{data?.locationTitle || LOCATION_TITLE}
-							</span>
-							<svg
-								className="drop-shadow-lg"
-								fill="#FCAF20"
-								height="36"
-								viewBox="0 0 24 24"
-								width="36"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									clipRule="evenodd"
-									d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
-									fillRule="evenodd"
-								/>
-							</svg>
-						</div>
-					</Marker>
-
-					<NavigationControl position="bottom-right" />
-					<FullscreenControl position="bottom-right" />
-				</Map>
+				{/* Google Maps Interactive Iframe */}
+				<iframe
+					allowFullScreen={true}
+					className="h-full w-full border-0"
+					loading="lazy"
+					referrerPolicy="no-referrer-when-downgrade"
+					src={`https://maps.google.com/maps?q=${LAT},${LNG}+(Delta+Equipment+Main+Headquarters)&z=15&output=embed`}
+					title="Delta Equipment Main Headquarters Location"
+				/>
 			</div>
 		</section>
 	);

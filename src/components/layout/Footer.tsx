@@ -53,7 +53,7 @@ export function Footer({ data }: { data?: any }) {
 							<a
 								aria-label="Instagram"
 								className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/80 text-slate-400 transition-all duration-300 hover:border-[#FFB800] hover:bg-[#FFB800] hover:text-slate-950"
-								href="https://instagram.com"
+								href="https://www.instagram.com/delta.equipment?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
 								rel="noreferrer"
 								target="_blank"
 							>
@@ -74,7 +74,7 @@ export function Footer({ data }: { data?: any }) {
 							<a
 								aria-label="Facebook"
 								className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/80 text-slate-400 transition-all duration-300 hover:border-[#FFB800] hover:bg-[#FFB800] hover:text-slate-950"
-								href="https://facebook.com"
+								href="https://www.facebook.com/share/18ht1jaSqq/?mibextid=wwXIfr"
 								rel="noreferrer"
 								target="_blank"
 							>
@@ -91,7 +91,7 @@ export function Footer({ data }: { data?: any }) {
 							<a
 								aria-label="LinkedIn"
 								className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/80 text-slate-400 transition-all duration-300 hover:border-[#FFB800] hover:bg-[#FFB800] hover:text-slate-950"
-								href="https://linkedin.com"
+								href="https://www.linkedin.com/company/deltaequip/home/"
 								rel="noreferrer"
 								target="_blank"
 							>
@@ -234,18 +234,18 @@ export function Footer({ data }: { data?: any }) {
 								<PhoneCall className="h-4 w-4 shrink-0 text-[#FFB800]" />
 								<a
 									className="font-mono transition-colors hover:text-[#FFB800]"
-									href={`tel:${data?.hqPhone?.replace(/\s/g, '') || "+249183456789"}`}
+									href={`tel:${data?.hqPhone?.replace(/\s/g, '') || "+249912370248"}`}
 								>
-									{data?.hqPhone || "+249 183 456 789"}
+									{data?.hqPhone || "+249912370248"}
 								</a>
 							</li>
 							<li className="flex items-center gap-3">
 								<Mail className="h-4 w-4 shrink-0 text-[#FFB800]" />
 								<a
 									className="transition-colors hover:text-[#FFB800]"
-									href={`mailto:${data?.hqEmail || "info@deltaequipment.sd"}`}
+									href={`mailto:${data?.hqEmail || "info@deltaequip.net"}`}
 								>
-									{data?.hqEmail || "info@deltaequipment.sd"}
+									{data?.hqEmail || "info@deltaequip.net"}
 								</a>
 							</li>
 							<li className="flex items-center gap-3">
