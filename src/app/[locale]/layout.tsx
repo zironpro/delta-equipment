@@ -108,12 +108,16 @@ export const metadata: Metadata = {
 	title: "DELTA EQUIPMENT | Premium Heavy Industrial Machinery",
 	description:
 		"High-performance excavators, wheel loaders, backhoes, and telehandlers engineered for maximum productivity, reliability, and precision.",
+	verification: {
+		google: "5K6i1rcZhWRUT-q-pXFqz5ZdB-OKeFKzp0Wkwa3aHOc",
+	},
 };
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { ScrollAnimateProvider } from "@/components/layout/ScrollAnimateProvider";
 
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { getMdxContent } from "@/lib/mdx";
 
 export default async function RootLayout({
@@ -134,11 +138,13 @@ export default async function RootLayout({
 			dir={dir}
 			lang={locale}
 		>
+			<GoogleTagManager gtmId="GTM-5JVV7SLF" />
 			<body className="flex min-h-full flex-col bg-white font-sans text-slate-900 selection:bg-[#FFB800] selection:text-slate-950">
 				<Navbar data={navbarData} />
 				<ScrollAnimateProvider>{children}</ScrollAnimateProvider>
 				<Footer data={footerData} />
 			</body>
+			<GoogleAnalytics gaId="G-KFNT07G98T" />
 		</html>
 	);
 }
