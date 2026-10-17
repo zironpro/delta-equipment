@@ -1,19 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
 	AlertCircle,
 	ArrowUpRight,
 	CheckCircle2,
+	Clock,
 	Loader2,
 	Mail,
 	MapPin,
 	Phone,
 	Send,
+	Sparkles,
+	X,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 	return (
@@ -89,6 +93,7 @@ const socialChannels = [
 export function ContactFormSection({ content }: { content?: any }) {
 	const data = content;
 	const [formSubmitted, setFormSubmitted] = useState(false);
+	const [showToast, setShowToast] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 	const [formData, setFormData] = useState({
@@ -99,6 +104,15 @@ export function ContactFormSection({ content }: { content?: any }) {
 		interest: "",
 		message: "",
 	});
+
+	useEffect(() => {
+		if (showToast) {
+			const timer = setTimeout(() => {
+				setShowToast(false);
+			}, 6000);
+			return () => clearTimeout(timer);
+		}
+	}, [showToast]);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -123,6 +137,7 @@ export function ContactFormSection({ content }: { content?: any }) {
 			}
 
 			setFormSubmitted(true);
+			setShowToast(true);
 			setFormData({
 				fullName: "",
 				companyName: "",
@@ -141,47 +156,134 @@ export function ContactFormSection({ content }: { content?: any }) {
 	};
 
 	return (
-		<section className="bg-[#FAF6F0] py-16 font-sans text-slate-900 sm:py-24">
+		<section className="relative bg-[#FAF6F0] py-16 font-sans text-slate-900 sm:py-24">
+			{/* Floating Toast Notification */}
+			<div
+				aria-live="polite"
+				className={cn(
+					"fixed top-6 right-4 sm:right-6 z-50 flex items-start gap-3.5 max-w-sm sm:max-w-md w-auto rounded-xl border border-amber-300/50 bg-slate-950/95 p-4 text-white shadow-2xl backdrop-blur-md transition-all duration-300 ease-out",
+					showToast
+						? "translate-y-0 opacity-100 scale-100"
+						: "-translate-y-4 opacity-0 pointer-events-none scale-95"
+				)}
+				role="status"
+			>
+				<div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-xs">
+					<CheckCircle2 className="h-5 w-5" />
+				</div>
+				<div className="min-w-0 flex-1 pr-1">
+					<h5 className="font-bold font-manrope text-sm text-white tracking-tight">
+						{data?.toastTitle || "Mail Sent Successfully!"}
+					</h5>
+					<p className="mt-0.5 font-sans text-xs text-slate-300 leading-relaxed">
+						{data?.toastDesc ||
+							"Your inquiry has been delivered to Delta Equipment."}
+					</p>
+				</div>
+				<button
+					aria-label="Close notification"
+					className="cursor-pointer rounded-md p-1 text-slate-400 transition-colors hover:text-white"
+					onClick={() => setShowToast(false)}
+					type="button"
+				>
+					<X className="h-4 w-4" />
+				</button>
+			</div>
+
 			<div className="container">
 				<div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-					{/* Left Column: Interactive Contact Form */}
+					{/* Left Column: Interactive Contact Form or Brand-Matched Success View */}
 					<div className="lg:col-span-7">
 						<div className="rounded-lg border border-slate-200 bg-white p-8 shadow-sm sm:p-12">
-							<span className="font-semibold text-[#D69110] text-xs uppercase tracking-wider">
-								{data?.formTag || "Official Inquiry Form"}
-							</span>
-							<h2 className="mt-2 font-manrope font-normal text-2xl text-slate-950 tracking-tight sm:text-3xl">
-								{data?.formTitle || "Send Us a Message"}
-							</h2>
-							<p className="mt-2 font-sans text-base text-slate-600 leading-relaxed">
-								{data?.formDesc || "Fill out the form below and our JCB equipment specialists will get back to you within 24 business hours."}
-							</p>
-
 							{formSubmitted ? (
-								<div className="mt-8 rounded-lg border border-emerald-200 bg-emerald-50 p-6 text-emerald-900">
-									<div className="flex items-center gap-3">
-										<CheckCircle2 className="h-6 w-6 shrink-0 text-emerald-600" />
-										<div>
-											<h4 className="font-extrabold text-sm">
-												{data?.successTitle || "Inquiry Received Successfully!"}
-											</h4>
-											<p className="mt-1 text-emerald-700 text-xs">
-												{data?.successDesc || "Thank you for contacting Delta Equipment. Our team in Atbara will review your request and reach out shortly."}
-											</p>
+								<div className="animate-in fade-in duration-300">
+									{/* Golden Accent Badge */}
+									<div className="relative inline-flex items-center justify-center">
+										<div className="absolute -inset-1.5 rounded-2xl bg-[#FCAF20]/25 blur-sm animate-pulse" />
+										<div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#FFC72C] to-[#FCAF20] text-slate-950 shadow-md">
+											<CheckCircle2 className="h-8 w-8 stroke-[2.2]" />
 										</div>
 									</div>
-									<Button
-										className="mt-4 h-9 cursor-pointer bg-emerald-800 px-4 text-white text-xs hover:bg-emerald-900"
-										onClick={() => {
-											setFormSubmitted(false);
-											setErrorMessage(null);
-										}}
-									>
-										{data?.successBtn || "Send Another Inquiry"}
-									</Button>
+
+									<div className="mt-6">
+										<span className="inline-flex items-center gap-1.5 font-bold text-[#D69110] text-xs uppercase tracking-wider">
+											<Sparkles className="h-3.5 w-3.5" />
+											<span>{data?.successTag || "Inquiry Delivered"}</span>
+										</span>
+										<h2 className="mt-2 font-manrope font-extrabold text-2xl text-slate-950 tracking-tight sm:text-3xl">
+											{data?.successTitle || "Inquiry Received Successfully!"}
+										</h2>
+										<p className="mt-3 font-sans text-slate-600 text-sm leading-relaxed sm:text-base">
+											{data?.successDesc ||
+												"Thank you for contacting Delta Equipment. Our heavy machinery specialists in Atbara will review your inquiry and reach out shortly."}
+										</p>
+									</div>
+
+									{/* Status & Priority Cards */}
+									<div className="mt-8 space-y-3.5 rounded-xl border border-amber-200/80 bg-gradient-to-br from-white via-[#FFFDF9] to-[#FFF7E8] p-5 text-xs text-slate-700 shadow-xs">
+										<div className="flex items-start gap-3">
+											<div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#FCAF20] text-slate-950">
+												<CheckCircle2 className="h-3 w-3" />
+											</div>
+											<span className="leading-relaxed">
+												{data?.successPoint1 ||
+													"Your request has been routed directly to our certified sales & technical team."}
+											</span>
+										</div>
+										<div className="flex items-start gap-3">
+											<div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#FCAF20] text-slate-950">
+												<Clock className="h-3 w-3" />
+											</div>
+											<span className="leading-relaxed">
+												{data?.successPoint2 ||
+													"Expected response timeframe: within 24 business hours."}
+											</span>
+										</div>
+										<div className="flex items-start gap-3">
+											<div className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-[#FCAF20] text-slate-950">
+												<Phone className="h-3 w-3" />
+											</div>
+											<span className="leading-relaxed">
+												{data?.successPoint3 ||
+													"For urgent machinery breakdown or spare parts support, call hotline:"}{" "}
+												<a
+													className="font-extrabold text-slate-950 underline hover:text-[#D69110]"
+													href="tel:1024"
+												>
+													1024
+												</a>
+											</span>
+										</div>
+									</div>
+
+									{/* Action Button */}
+									<div className="mt-8 flex flex-wrap items-center gap-4">
+										<Button
+											className="h-11 cursor-pointer bg-slate-950 px-6 font-bold font-sans text-white text-xs shadow-md transition-all hover:bg-slate-800 active:scale-95"
+											onClick={() => {
+												setFormSubmitted(false);
+												setErrorMessage(null);
+											}}
+										>
+											<span>{data?.successBtn || "Send Another Inquiry"}</span>
+											<ArrowUpRight className="ml-1.5 h-4 w-4 text-[#FCAF20]" />
+										</Button>
+									</div>
 								</div>
 							) : (
-								<form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+								<>
+									<span className="font-semibold text-[#D69110] text-xs uppercase tracking-wider">
+										{data?.formTag || "Official Inquiry Form"}
+									</span>
+									<h2 className="mt-2 font-manrope font-normal text-2xl text-slate-950 tracking-tight sm:text-3xl">
+										{data?.formTitle || "Send Us a Message"}
+									</h2>
+									<p className="mt-2 font-sans text-base text-slate-600 leading-relaxed">
+										{data?.formDesc ||
+											"Fill out the form below and our JCB equipment specialists will get back to you within 24 business hours."}
+									</p>
+
+									<form className="mt-8 space-y-5" onSubmit={handleSubmit}>
 									<div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
 										<div>
 											<label className="mb-1.5 block font-bold text-slate-950 text-xs">
@@ -322,6 +424,7 @@ export function ContactFormSection({ content }: { content?: any }) {
 										</a>
 									</div>
 								</form>
+								</>
 							)}
 						</div>
 					</div>
@@ -365,9 +468,12 @@ export function ContactFormSection({ content }: { content?: any }) {
 									<Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#EAA800]" />
 									<div>
 										<span className="font-bold text-slate-950">{data?.emailText || "Email:"}</span>
-										<p className="mt-0.5 font-bold text-slate-900">
-											{officialLocation.email}
-										</p>
+										<a
+											href={`mailto:${data?.officialLocationEmail || officialLocation.email}`}
+											className="mt-0.5 block font-bold text-slate-900 transition-colors hover:text-[#EAA800]"
+										>
+											{data?.officialLocationEmail || officialLocation.email}
+										</a>
 									</div>
 								</div>
 							</div>
