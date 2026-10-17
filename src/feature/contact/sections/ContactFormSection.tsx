@@ -3,8 +3,10 @@
 import { useState } from "react";
 
 import {
+	AlertCircle,
 	ArrowUpRight,
 	CheckCircle2,
+	Loader2,
 	Mail,
 	MapPin,
 	Phone,
@@ -49,7 +51,7 @@ const officialLocation = {
 	city: "Atbara",
 	address:
 		"Airport Street, Block 4, Plot No. 388, Atbari City, River Nile State, Sudan",
-	phone: "+249912370248",
+	phone: "1024",
 	email: "info@deltaequip.net",
 };
 
@@ -87,6 +89,8 @@ const socialChannels = [
 export function ContactFormSection({ content }: { content?: any }) {
 	const data = content;
 	const [formSubmitted, setFormSubmitted] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 	const [formData, setFormData] = useState({
 		fullName: "",
 		companyName: "",
@@ -96,9 +100,44 @@ export function ContactFormSection({ content }: { content?: any }) {
 		message: "",
 	});
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		setFormSubmitted(true);
+		setIsLoading(true);
+		setErrorMessage(null);
+
+		try {
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+
+			const result = await res.json();
+
+			if (!res.ok || !result.success) {
+				throw new Error(
+					result?.error || "Failed to deliver inquiry through the mail server."
+				);
+			}
+
+			setFormSubmitted(true);
+			setFormData({
+				fullName: "",
+				companyName: "",
+				phone: "",
+				email: "",
+				interest: "",
+				message: "",
+			});
+		} catch (err: any) {
+			setErrorMessage(
+				err?.message || "An unexpected error occurred. Please try again."
+			);
+		} finally {
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -133,7 +172,10 @@ export function ContactFormSection({ content }: { content?: any }) {
 									</div>
 									<Button
 										className="mt-4 h-9 cursor-pointer bg-emerald-800 px-4 text-white text-xs hover:bg-emerald-900"
-										onClick={() => setFormSubmitted(false)}
+										onClick={() => {
+											setFormSubmitted(false);
+											setErrorMessage(null);
+										}}
 									>
 										{data?.successBtn || "Send Another Inquiry"}
 									</Button>
@@ -241,12 +283,29 @@ export function ContactFormSection({ content }: { content?: any }) {
 										/>
 									</div>
 
+									{errorMessage && (
+										<div className="flex items-start gap-2.5 rounded-lg border border-red-200 bg-red-50 p-4 text-red-800 text-xs">
+											<AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" />
+											<div className="leading-relaxed">{errorMessage}</div>
+										</div>
+									)}
+
 									<Button
-										className="h-11 w-full cursor-pointer justify-center bg-slate-950 font-bold font-sans text-white text-xs hover:bg-slate-800"
+										className="h-11 w-full cursor-pointer justify-center bg-slate-950 font-bold font-sans text-white text-xs hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
 										type="submit"
+										disabled={isLoading}
 									>
-										<span>{data?.submitBtn || "Submit Inquiry to Delta Equipment"}</span>
-										<Send className="ml-2 h-4 w-4 text-[#FCAF20]" />
+										{isLoading ? (
+											<>
+												<span>Sending Inquiry...</span>
+												<Loader2 className="ml-2 h-4 w-4 animate-spin text-[#FCAF20]" />
+											</>
+										) : (
+											<>
+												<span>{data?.submitBtn || "Submit Inquiry to Delta Equipment"}</span>
+												<Send className="ml-2 h-4 w-4 text-[#FCAF20]" />
+											</>
+										)}
 									</Button>
 
 									{/* Call Booking Prompt */}
@@ -256,7 +315,7 @@ export function ContactFormSection({ content }: { content?: any }) {
 										</span>
 										<a
 											className="inline-flex items-center gap-1.5 font-bold text-[#EAA800] text-xs hover:underline"
-											href="tel:+249912370248"
+											href={`tel:${(data?.officialLocationPhone || officialLocation.phone).replace(/\s/g, "")}`}
 										>
 											<span>{data?.callPromptLink || "Book a call instead"}</span>
 											<ArrowUpRight className="h-3.5 w-3.5" />
@@ -293,9 +352,12 @@ export function ContactFormSection({ content }: { content?: any }) {
 									<Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#EAA800]" />
 									<div>
 										<span className="font-bold text-slate-950">{data?.phoneText || "Phone:"}</span>
-										<p className="mt-0.5 font-bold text-slate-900">
-											{officialLocation.phone}
-										</p>
+										<a
+											href={`tel:${(data?.officialLocationPhone || officialLocation.phone).replace(/\s/g, "")}`}
+											className="mt-0.5 block font-bold text-slate-900 transition-colors hover:text-[#EAA800]"
+										>
+											{data?.officialLocationPhone || officialLocation.phone}
+										</a>
 									</div>
 								</div>
 

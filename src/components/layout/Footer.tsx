@@ -234,9 +234,9 @@ export function Footer({ data }: { data?: any }) {
 								<PhoneCall className="h-4 w-4 shrink-0 text-[#FFB800]" />
 								<a
 									className="font-mono transition-colors hover:text-[#FFB800]"
-									href={`tel:${data?.hqPhone?.replace(/\s/g, '') || "+249912370248"}`}
+									href={`tel:${data?.hqPhone?.replace(/\s/g, '') || "1024"}`}
 								>
-									{data?.hqPhone || "+249912370248"}
+									{data?.hqPhone || "1024"}
 								</a>
 							</li>
 							<li className="flex items-center gap-3">
